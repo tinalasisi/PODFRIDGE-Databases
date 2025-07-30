@@ -185,6 +185,6 @@ cython_debug/
 /.quarto/
 
 
-# ~/.gitignore_global  (then: git config --global core.excludesfile ~/.gitignore_global)
+# ~/.gitignore_global 
 .DS_Store
 
