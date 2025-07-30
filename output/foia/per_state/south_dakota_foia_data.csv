@@ -17,15 +17,15 @@ South Dakota,Combined,race,Other/Unknown,1.32,percentage,2018-07-18
 South Dakota,Combined,race,White/Caucasian,45223,count,2018-07-18
 South Dakota,Combined,race,White/Caucasian,66.75,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_Asian,5,count,2018-07-18
-South Dakota,Combined,gender_race,Male_Asian,0.10,percentage,2018-07-18
+South Dakota,Combined,gender_race,Male_Asian,0.1,percentage,2018-07-18
 South Dakota,Combined,gender_race,Female_Asian,5,count,2018-07-18
 South Dakota,Combined,gender_race,Female_Asian,0.03,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_Black,3445,count,2018-07-18
 South Dakota,Combined,gender_race,Male_Black,6.73,percentage,2018-07-18
 South Dakota,Combined,gender_race,Female_Black,596,count,2018-07-18
-South Dakota,Combined,gender_race,Female_Black,3.60,percentage,2018-07-18
+South Dakota,Combined,gender_race,Female_Black,3.6,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_Hispanic,2560,count,2018-07-18
-South Dakota,Combined,gender_race,Male_Hispanic,5.00,percentage,2018-07-18
+South Dakota,Combined,gender_race,Male_Hispanic,5,percentage,2018-07-18
 South Dakota,Combined,gender_race,Female_Hispanic,389,count,2018-07-18
 South Dakota,Combined,gender_race,Female_Hispanic,2.35,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_Native American,9699,count,2018-07-18
@@ -33,7 +33,7 @@ South Dakota,Combined,gender_race,Male_Native American,18.94,percentage,2018-07-
 South Dakota,Combined,gender_race,Female_Native American,4894,count,2018-07-18
 South Dakota,Combined,gender_race,Female_Native American,29.56,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_Other/Unknown,719,count,2018-07-18
-South Dakota,Combined,gender_race,Male_Other/Unknown,1.40,percentage,2018-07-18
+South Dakota,Combined,gender_race,Male_Other/Unknown,1.4,percentage,2018-07-18
 South Dakota,Combined,gender_race,Female_Other/Unknown,172,count,2018-07-18
 South Dakota,Combined,gender_race,Female_Other/Unknown,1.04,percentage,2018-07-18
 South Dakota,Combined,gender_race,Male_White/Caucasian,34723,count,2018-07-18

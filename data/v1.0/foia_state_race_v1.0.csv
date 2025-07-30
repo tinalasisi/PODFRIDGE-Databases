@@ -72,6 +72,40 @@ Florida,Combined,race,Other,1176.0,count,reported
 Florida,Combined,race,Other,0.1,percentage,reported
 Florida,Combined,race,Unknown,7219.0,count,reported
 Florida,Combined,race,Unknown,0.61,percentage,reported
+Indiana,Convicted Offender,total,total_profiles,279654.0,count,reported
+Indiana,Arrestee,total,total_profiles,21087.0,count,reported
+Indiana,Combined,gender,Female,20.0,percentage,reported
+Indiana,Combined,gender,Male,80.0,percentage,reported
+Indiana,Combined,race,Caucasian,70.0,percentage,reported
+Indiana,Combined,race,Black,26.0,percentage,reported
+Indiana,Combined,race,Hispanic,4.0,percentage,reported
+Indiana,Combined,race,Other,0.5,percentage,reported
+Indiana,Combined,total,total_profiles,300741.0,count,calculated
+Indiana,Combined,gender,Female,60148.0,count,calculated
+Indiana,Combined,gender,Male,240593.0,count,calculated
+Indiana,Combined,race,Caucasian,210519.0,count,calculated
+Indiana,Combined,race,Black,78193.0,count,calculated
+Indiana,Combined,race,Hispanic,12030.0,count,calculated
+Indiana,Combined,race,Other,1504.0,count,calculated
+Maine,Combined,total,total_profiles,33711.0,count,reported
+Maine,Combined,gender,Male,27694.0,count,reported
+Maine,Combined,gender,Male,82.7,percentage,reported
+Maine,Combined,gender,Female,5734.0,count,reported
+Maine,Combined,gender,Female,17.0,percentage,reported
+Maine,Combined,gender,Unknown,83.0,count,reported
+Maine,Combined,gender,Unknown,0.2,percentage,reported
+Maine,Combined,race,White,31298.0,count,reported
+Maine,Combined,race,White,92.8,percentage,reported
+Maine,Combined,race,Black,1299.0,count,reported
+Maine,Combined,race,Black,3.9,percentage,reported
+Maine,Combined,race,Unknown,470.0,count,reported
+Maine,Combined,race,Unknown,1.4,percentage,reported
+Maine,Combined,race,Native American,345.0,count,reported
+Maine,Combined,race,Native American,1.0,percentage,reported
+Maine,Combined,race,Hispanic,171.0,count,reported
+Maine,Combined,race,Hispanic,0.5,percentage,reported
+Maine,Combined,race,Asian,128.0,count,reported
+Maine,Combined,race,Asian,0.4,percentage,reported
 Nevada,Combined,total,total_flags,344097.0,count,reported
 Nevada,Arrestee,total,total_profiles,185074.0,count,reported
 Nevada,Arrestee,total,total_profiles,53.785,percentage,reported

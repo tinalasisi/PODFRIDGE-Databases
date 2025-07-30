@@ -1,14 +1,14 @@
 state,offender_type,variable_category,variable_detailed,value,value_type,date
-Texas,Offenders,total,total_profiles,845322,count,2018-06-19
+Texas,Convicted Offender,total,total_profiles,845322,count,2018-06-19
 Texas,Arrestee,total,total_profiles,73631,count,2018-06-19
-Texas,Offenders,gender,Female,121434,count,2018-06-19
+Texas,Convicted Offender,gender,Female,121434,count,2018-06-19
 Texas,Arrestee,gender,Female,18721,count,2018-06-19
-Texas,Offenders,race,Asian,3361,count,2018-06-19
-Texas,Offenders,race,African American,254366,count,2018-06-19
-Texas,Offenders,race,Caucasian,309010,count,2018-06-19
-Texas,Offenders,race,Hispanic,276245,count,2018-06-19
-Texas,Offenders,race,Native American,138,count,2018-06-19
-Texas,Offenders,race,Other,2173,count,2018-06-19
+Texas,Convicted Offender,race,Asian,3361,count,2018-06-19
+Texas,Convicted Offender,race,African American,254366,count,2018-06-19
+Texas,Convicted Offender,race,Caucasian,309010,count,2018-06-19
+Texas,Convicted Offender,race,Hispanic,276245,count,2018-06-19
+Texas,Convicted Offender,race,Native American,138,count,2018-06-19
+Texas,Convicted Offender,race,Other,2173,count,2018-06-19
 Texas,Arrestee,race,Asian,497,count,2018-06-19
 Texas,Arrestee,race,African American,12903,count,2018-06-19
 Texas,Arrestee,race,Caucasian,33486,count,2018-06-19

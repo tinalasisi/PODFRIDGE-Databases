@@ -1,6 +1,0 @@
-state,race_report_values,gender_report_values,notes
-California,counts,counts,
-Florida,both,both,
-Nevada,both,both,Uses 'flags' terminology instead of 'profiles'
-South Dakota,both,both,Includes gender_race cross-tabulation for intersectional analysis
-Texas,counts,counts,

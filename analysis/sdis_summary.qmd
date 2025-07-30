@@ -174,12 +174,18 @@ This section examines states reporting n_total alongside component counts to det
 2. Sum of combined profiles only (n_arrestees + n_offenders)
 
 ```{python}
+# Note: This analysis uses the original data before renaming columns
+# Create a temporary copy with the original column name for this analysis
+sdis_data_temp = sdis_data.copy()
+if 'n_total_reported' in sdis_data_temp.columns and 'n_total' not in sdis_data_temp.columns:
+    sdis_data_temp['n_total'] = sdis_data_temp['n_total_reported']
+
 # Identify states with n_total and at least one component count
-states_with_totals = sdis_data[sdis_data['n_total'].notna()].copy()
+states_with_totals = sdis_data_temp[sdis_data_temp['n_total'].notna()].copy()
 
 # Calculate different possible sums
 states_with_totals['sum_all'] = states_with_totals[['n_arrestees', 'n_offenders', 'n_forensic']].sum(axis=1, skipna=True)
-states_with_totals['sum_criminal'] = states_with_totals[['n_arrestees', 'n_offenders']].sum(axis=1, skipna=True)
+states_with_totals['sum_forensic'] = states_with_totals[['n_arrestees', 'n_offenders']].sum(axis=1, skipna=True)
 
 # Check which sum matches n_total (with small tolerance for rounding)
 tolerance = 10  # Allow small differences due to rounding or timing
@@ -195,14 +201,14 @@ states_with_totals['matches_combined_forensic'] = np.where(
 # Additional condition: only True if arrestee_collection is 'no' OR n_arrestees > 0
 states_with_totals['matches_combined'] = np.where(
     states_with_totals[['n_arrestees', 'n_offenders']].notna().all(axis=1),
-    (abs(states_with_totals['n_total'] - states_with_totals['sum_criminal']) <= tolerance) & 
+    (abs(states_with_totals['n_total'] - states_with_totals['sum_forensic']) <= tolerance) & 
     ((states_with_totals['arrestee_collection'] == 'no') | (states_with_totals['n_arrestees'] > 0)),
     False
 )
 
 # Create summary dataframe for display
 total_verification = states_with_totals[['state', 'n_total', 'n_arrestees', 'n_offenders', 'n_forensic', 
-                                        'arrestee_collection', 'sum_all', 'sum_criminal', 
+                                        'arrestee_collection', 'sum_all', 'sum_forensic', 
                                         'matches_combined_forensic', 'matches_combined']].copy()
 
 # Filter to states with at least one component count
@@ -217,7 +223,7 @@ print("\nTotal calculation patterns:")
 
 # Categorize states
 includes_all = has_components[has_components['matches_combined_forensic'] == True]['state'].tolist()
-criminal_only = has_components[(has_components['matches_combined'] == True) & (has_components['matches_combined_forensic'] == False)]['state'].tolist()
+forensic_only = has_components[(has_components['matches_combined'] == True) & (has_components['matches_combined_forensic'] == False)]['state'].tolist()
 neither = has_components[(has_components['matches_combined_forensic'] == False) & (has_components['matches_combined'] == False)]['state'].tolist()
 
 if includes_all:
@@ -225,9 +231,9 @@ if includes_all:
     for state in includes_all:
         print(f"  • {state}")
 
-if criminal_only:
+if forensic_only:
     print(f"\nn_total includes combined profiles only (arrestees + offenders):")
-    for state in criminal_only:
+    for state in forensic_only:
         print(f"  • {state}")
 
 if neither:
@@ -236,7 +242,7 @@ if neither:
         state_data = has_components[has_components['state'] == state].iloc[0]
         print(f"  • {state}: n_total={state_data['n_total']:,.0f}, "
               f"Sum_all={state_data['sum_all']:,.0f}, "
-              f"Sum_criminal={state_data['sum_criminal']:,.0f}")
+              f"Sum_forensic={state_data['sum_forensic']:,.0f}")
 
 # Display detailed breakdown for verification
 print("\nDetailed breakdown:")
@@ -254,70 +260,348 @@ display(has_components[['state', 'n_total', 'n_arrestees', 'n_offenders', 'n_for
 This section examines states where N_total values reveal potential data quality issues or reporting inconsistencies.
 
 ```{python}
-# Identify states with potential data issues
-potential_issues = has_components[
-    (has_components['matches_combined_forensic'] == False) & 
-    (has_components['matches_combined'] == False)
-].copy()
+# Create enhanced data quality analysis
+sdis_enhanced = sdis_data.copy()
 
-# States that collect arrestee DNA but have zero or missing arrestee counts
-arrestee_collection_issues = has_components[
-    (has_components['arrestee_collection'] == 'yes') & 
-    ((has_components['n_arrestees'] == 0) | (has_components['n_arrestees'].isna()))
-].copy()
+# Rename n_total to n_total_reported
+sdis_enhanced = sdis_enhanced.rename(columns={'n_total': 'n_total_reported'})
 
-# States where the sum is close but not within tolerance
-close_matches = has_components.copy()
-close_matches['diff_all'] = abs(close_matches['n_total'] - close_matches['sum_all'])
-close_matches['diff_criminal'] = abs(close_matches['n_total'] - close_matches['sum_criminal'])
-close_but_not_matching = close_matches[
-    ((close_matches['diff_all'] > tolerance) & (close_matches['diff_all'] < 1000)) |
-    ((close_matches['diff_criminal'] > tolerance) & (close_matches['diff_criminal'] < 1000))
-]
+# Calculate different total relationships with small tolerance
+tolerance = 10
 
-print("Data Quality Assessment:")
+# Check if n_total equals different combinations
+# Note: Only consider values > 0 as valid data (0 means no data)
+# For offenders only: either arrestees are missing/zero OR state doesn't collect arrestees
+sdis_enhanced['total_equals_offenders'] = np.where(
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_offenders'].notna() & 
+    (sdis_enhanced['n_offenders'] > 0),
+    abs(sdis_enhanced['n_total_reported'] - sdis_enhanced['n_offenders']) <= tolerance,
+    False
+)
+
+sdis_enhanced['total_equals_off_arr'] = np.where(
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_offenders'].notna() & 
+    sdis_enhanced['n_arrestees'].notna() &
+    (sdis_enhanced['n_offenders'] > 0) &
+    (sdis_enhanced['n_arrestees'] > 0),
+    abs(sdis_enhanced['n_total_reported'] - (sdis_enhanced['n_offenders'] + sdis_enhanced['n_arrestees'])) <= tolerance,
+    False
+)
+
+sdis_enhanced['total_equals_all'] = np.where(
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_offenders'].notna() & 
+    sdis_enhanced['n_arrestees'].notna() & 
+    sdis_enhanced['n_forensic'].notna() &
+    (sdis_enhanced['n_offenders'] > 0) &
+    (sdis_enhanced['n_arrestees'] > 0) &
+    (sdis_enhanced['n_forensic'] > 0),
+    abs(sdis_enhanced['n_total_reported'] - (sdis_enhanced['n_offenders'] + sdis_enhanced['n_arrestees'] + sdis_enhanced['n_forensic'])) <= tolerance,
+    False
+)
+
+# Determine total calculation method for each state
+# Use priority order: All components > Offenders + Arrestees > Offenders only
+sdis_enhanced['total_method'] = 'Unknown'
+sdis_enhanced.loc[sdis_enhanced['total_equals_offenders'], 'total_method'] = 'Offenders only'
+sdis_enhanced.loc[sdis_enhanced['total_equals_off_arr'], 'total_method'] = 'Offenders + Arrestees'
+sdis_enhanced.loc[sdis_enhanced['total_equals_all'], 'total_method'] = 'All components'
+
+# Create n_total_estimated based on the rules specified
+sdis_enhanced['n_total_estimated'] = np.nan
+sdis_enhanced['n_total_estimated_comment'] = ''
+
+# Rule 1: States where n_total == n_offenders + n_arrestees
+mask_off_arr = sdis_enhanced['total_equals_off_arr']
+sdis_enhanced.loc[mask_off_arr, 'n_total_estimated'] = sdis_enhanced.loc[mask_off_arr, 'n_total_reported']
+sdis_enhanced.loc[mask_off_arr, 'n_total_estimated_comment'] = 'Used reported total (matches offenders + arrestees)'
+
+# Rule 2: States where n_total == n_offenders + n_arrestees + n_forensic
+mask_all = sdis_enhanced['total_equals_all']
+sdis_enhanced.loc[mask_all, 'n_total_estimated'] = (
+    sdis_enhanced.loc[mask_all, 'n_total_reported'] - sdis_enhanced.loc[mask_all, 'n_forensic']
+)
+sdis_enhanced.loc[mask_all, 'n_total_estimated_comment'] = 'Subtracted forensic from reported total'
+
+# Rule 3: States where n_total == n_offenders
+# This includes states that don't collect arrestees OR states where total just happens to equal offenders
+mask_off_only = sdis_enhanced['total_equals_offenders']
+sdis_enhanced.loc[mask_off_only, 'n_total_estimated'] = sdis_enhanced.loc[mask_off_only, 'n_total_reported']
+sdis_enhanced.loc[mask_off_only, 'n_total_estimated_comment'] = 'Used reported total (matches offenders only)'
+
+# Rule 4: For remaining states with n_total
+# First check if they have ONLY total (no component breakdown)
+mask_total_only = (
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_total_estimated'].isna() &
+    (sdis_enhanced['n_arrestees'].isna() | (sdis_enhanced['n_arrestees'] == 0)) &
+    (sdis_enhanced['n_offenders'].isna() | (sdis_enhanced['n_offenders'] == 0)) &
+    (sdis_enhanced['n_forensic'].isna() | (sdis_enhanced['n_forensic'] == 0))
+)
+sdis_enhanced.loc[mask_total_only, 'n_total_estimated'] = sdis_enhanced.loc[mask_total_only, 'n_total_reported']
+sdis_enhanced.loc[mask_total_only, 'n_total_estimated_comment'] = 'Total only reported (no breakdown available)'
+
+# Special case: States like California with n_total and n_forensic only
+# (no offenders/arrestees breakdown)
+mask_total_forensic_only = (
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_total_estimated'].isna() &
+    (sdis_enhanced['n_arrestees'].isna() | (sdis_enhanced['n_arrestees'] == 0)) &
+    (sdis_enhanced['n_offenders'].isna() | (sdis_enhanced['n_offenders'] == 0)) &
+    sdis_enhanced['n_forensic'].notna() & (sdis_enhanced['n_forensic'] > 0)
+)
+sdis_enhanced.loc[mask_total_forensic_only, 'n_total_estimated'] = sdis_enhanced.loc[mask_total_forensic_only, 'n_total_reported']
+sdis_enhanced.loc[mask_total_forensic_only, 'n_total_estimated_comment'] = 'Total only reported (forensic reported separately)'
+
+# States with total and some components but unclear calculation
+mask_has_total_unclear = (
+    sdis_enhanced['n_total_reported'].notna() & 
+    sdis_enhanced['n_total_estimated'].isna()
+)
+sdis_enhanced.loc[mask_has_total_unclear, 'n_total_estimated'] = sdis_enhanced.loc[mask_has_total_unclear, 'n_total_reported']
+sdis_enhanced.loc[mask_has_total_unclear, 'n_total_estimated_comment'] = 'Total with discrepancy (calculation unclear)'
+
+# For states without any total but with offenders and arrestees (both > 0)
+mask_no_total = (
+    sdis_enhanced['n_total_reported'].isna() & 
+    sdis_enhanced['n_offenders'].notna() & (sdis_enhanced['n_offenders'] > 0) &
+    sdis_enhanced['n_arrestees'].notna() & (sdis_enhanced['n_arrestees'] > 0)
+)
+sdis_enhanced.loc[mask_no_total, 'n_total_estimated'] = (
+    sdis_enhanced.loc[mask_no_total, 'n_offenders'] + sdis_enhanced.loc[mask_no_total, 'n_arrestees']
+)
+sdis_enhanced.loc[mask_no_total, 'n_total_estimated_comment'] = 'Calculated from offenders + arrestees (no total reported)'
+
+# For states without total but with only offenders > 0
+mask_no_total_off_only = (
+    sdis_enhanced['n_total_reported'].isna() & 
+    sdis_enhanced['n_offenders'].notna() & (sdis_enhanced['n_offenders'] > 0) &
+    (sdis_enhanced['n_arrestees'].isna() | (sdis_enhanced['n_arrestees'] == 0))
+)
+sdis_enhanced.loc[mask_no_total_off_only, 'n_total_estimated'] = sdis_enhanced.loc[mask_no_total_off_only, 'n_offenders']
+sdis_enhanced.loc[mask_no_total_off_only, 'n_total_estimated_comment'] = 'Used offenders count (no total reported, no arrestee data)'
+
+# Create data availability matrix for heatmap
+# Treat 0 values as missing data
+availability_matrix = pd.DataFrame({
+    'State': sdis_enhanced['state'],
+    'Arrestees': (sdis_enhanced['n_arrestees'].notna() & (sdis_enhanced['n_arrestees'] > 0)),
+    'Offenders': (sdis_enhanced['n_offenders'].notna() & (sdis_enhanced['n_offenders'] > 0)),
+    'Forensic': (sdis_enhanced['n_forensic'].notna() & (sdis_enhanced['n_forensic'] > 0)),
+    'Total Reported': sdis_enhanced['n_total_reported'].notna(),
+    'Total Method': sdis_enhanced['total_method']
+})
+
+# Summary of how n_total_estimated was calculated
+print("n_total_estimated Calculation Summary:")
 print("=" * 50)
 
-if len(arrestee_collection_issues) > 0:
-    print(f"\nStates that collect arrestee DNA but report zero/missing arrestee counts:")
-    for _, state in arrestee_collection_issues.iterrows():
-        arrestee_val = "0" if state['n_arrestees'] == 0 else "missing"
-        print(f"  • {state['state']}: n_arrestees = {arrestee_val}")
-        if pd.notna(state['n_total']):
-            print(f"    n_total = {state['n_total']:,.0f}", end="")
-        if pd.notna(state['n_offenders']):
-            print(f", n_offenders = {state['n_offenders']:,.0f}", end="")
-        print()
+# Create single plot with better dimensions
+fig, ax = plt.subplots(figsize=(10, 16)) 
 
-if len(close_but_not_matching) > 0:
-    print(f"\nStates with small discrepancies (>{tolerance} but <1000 difference):")
-    for _, state in close_but_not_matching.iterrows():
-        if state['diff_criminal'] < 1000 and state['diff_criminal'] > tolerance:
-            print(f"  • {state['state']}: n_total - (n_arrestees + n_offenders) = {state['diff_criminal']:.0f}")
-        if state['diff_all'] < 1000 and state['diff_all'] > tolerance:
-            print(f"    n_total - (all components) = {state['diff_all']:.0f}")
+# Prepare data for combined heatmap
+# Data availability columns
+availability_binary = availability_matrix.set_index('State')[['Arrestees', 'Offenders', 'Forensic', 'Total Reported']].astype(int)
 
-# Examine states where totals don't match any expected pattern
-unexplained_totals = has_components[
-    (has_components['matches_combined_forensic'] == False) & 
-    (has_components['matches_combined'] == False) &
-    (has_components[['n_arrestees', 'n_offenders']].notna().all(axis=1))
+# Add total method as a numeric column
+method_mapping = {
+    'Unknown': 0,
+    'Offenders only': 1,
+    'Offenders + Arrestees': 2,
+    'All components': 3
+}
+availability_binary['Total Method'] = availability_matrix.set_index('State')['Total Method'].replace(method_mapping)
+
+# Create custom colormap for the combined heatmap
+from matplotlib.colors import ListedColormap
+import matplotlib.patches as patches
+
+# Create the heatmap
+sns.heatmap(availability_binary.iloc[:, :4],  # First 4 columns (binary data)
+            cmap=['#f0f0f0', '#2E86AB'],
+            cbar=False,
+            linewidths=0.5,
+            linecolor='gray',
+            square=True,
+            ax=ax)  # Changed from ax1 to ax
+
+# Add the Total Method column with a different colormap
+x_pos = 4
+method_colors = ['#f0f0f0', '#FF6B6B', '#4ECDC4', '#45B7D1']
+for i, (idx, row) in enumerate(availability_binary.iterrows()):
+    method_val = int(row['Total Method'])
+    rect = patches.Rectangle((x_pos, i), 1, 1, 
+                           linewidth=0.5, 
+                           edgecolor='gray',
+                           facecolor=method_colors[method_val])
+    ax.add_patch(rect)  # Changed from ax1 to ax
+
+# Update x-axis labels
+column_labels = list(availability_binary.columns)
+ax.set_xticks(np.arange(len(column_labels)) + 0.5)  # Changed from ax1 to ax
+ax.set_xticklabels(column_labels, rotation=45, ha='right')  # Changed from ax1 to ax
+
+# Add checkmarks for binary columns
+for i in range(len(availability_binary)):
+    for j in range(4):  # Only first 4 columns
+        if availability_binary.iloc[i, j] == 1:
+            ax.text(j + 0.5, i + 0.5, '✓', ha='center', va='center',  # Changed from ax1 to ax
+                   fontsize=8, color='white', fontweight='bold')
+
+# Add method labels for the Total Method column
+method_labels = ['?', 'O', 'O+A', 'All']
+for i in range(len(availability_binary)):
+    method_val = int(availability_binary.iloc[i, 4])
+    ax.text(4.5, i + 0.5, method_labels[method_val], ha='center', va='center',  # Changed from ax1 to ax
+           fontsize=8, color='white' if method_val > 0 else 'black', fontweight='bold')
+
+ax.set_title('Data Field Availability and Total Calculation Method by State', fontsize=14, pad=20)  # Changed from ax1 to ax
+ax.set_xlabel('')  # Changed from ax1 to ax
+ax.set_ylabel('')  # Changed from ax1 to ax
+
+# Create legend at the bottom
+legend_elements = [
+    patches.Patch(facecolor='#f0f0f0', edgecolor='black', label='Unknown (?)'),
+    patches.Patch(facecolor='#FF6B6B', edgecolor='black', label='Offenders only (O)'),
+    patches.Patch(facecolor='#4ECDC4', edgecolor='black', label='Offenders + Arrestees (O+A)'),
+    patches.Patch(facecolor='#45B7D1', edgecolor='black', label='All components (All)')
 ]
 
-if len(unexplained_totals) > 0:
-    print(f"\nStates with unexplained total calculations:")
-    for _, state in unexplained_totals.iterrows():
-        print(f"  • {state['state']}:")
-        print(f"    - n_total: {state['n_total']:,.0f}")
-        print(f"    - Sum (arrestees + offenders): {state['sum_criminal']:,.0f}")
-        if pd.notna(state['n_forensic']):
-            print(f"    - Sum (all including forensic): {state['sum_all']:,.0f}")
-        print(f"    - Arrestee collection policy: {state['arrestee_collection']}")
+# Place legend below the plot
+ax.legend(handles=legend_elements, 
+          loc='upper center', 
+          bbox_to_anchor=(0.5, -0.02),
+          ncol=2,
+          title='Total Method',
+          frameon=True)
 
-# Summary statistics
-print(f"\nSummary:")
-print(f"  • States with clear calculation patterns: {len(includes_all) + len(criminal_only)}")
-print(f"  • States with data quality issues: {len(neither)}")
-print(f"  • States collecting arrestee DNA: {len(has_components[has_components['arrestee_collection'] == 'yes'])}")
-print(f"  • States NOT collecting arrestee DNA: {len(has_components[has_components['arrestee_collection'] == 'no'])}")
+# Adjust layout
+plt.tight_layout()
+plt.show()
+
+# Group states by how their n_total_estimated was determined
+estimation_groups = sdis_enhanced.groupby('n_total_estimated_comment')['state'].apply(list)
+
+print("\n1. States with only n_total reported (no component breakdown):")
+if 'Total only reported (no breakdown available)' in estimation_groups:
+    states = estimation_groups['Total only reported (no breakdown available)']
+    print(f"   {len(states)} states: {', '.join(states)}")
+if 'Total only reported (forensic reported separately)' in estimation_groups:
+    states = estimation_groups['Total only reported (forensic reported separately)']
+    print(f"   - With forensic reported separately: {len(states)} states ({', '.join(states)})")
+
+print("\n2. States where n_total matches component calculations:")
+if 'Used reported total (matches offenders + arrestees)' in estimation_groups:
+    states = estimation_groups['Used reported total (matches offenders + arrestees)']
+    print(f"   - Matches offenders + arrestees: {len(states)} states ({', '.join(states)})")
+if 'Subtracted forensic from reported total' in estimation_groups:
+    states = estimation_groups['Subtracted forensic from reported total']
+    print(f"   - Matches all components (forensic subtracted): {len(states)} states ({', '.join(states)})")
+if 'Used reported total (matches offenders only)' in estimation_groups:
+    states = estimation_groups['Used reported total (matches offenders only)']
+    print(f"   - Matches offenders only: {len(states)} states ({', '.join(states)})")
+
+print("\n3. States without n_total reported:")
+if 'Calculated from offenders + arrestees (no total reported)' in estimation_groups:
+    states = estimation_groups['Calculated from offenders + arrestees (no total reported)']
+    print(f"   - Calculated from offenders + arrestees: {len(states)} states ({', '.join(states)})")
+if 'Used offenders count (no total reported, no arrestee data)' in estimation_groups:
+    states = estimation_groups['Used offenders count (no total reported, no arrestee data)']
+    print(f"   - Used offenders as proxy: {len(states)} states ({', '.join(states)})")
+
+print("\n4. States with unclear calculation (total doesn't match expected patterns):")
+if 'Total with discrepancy (calculation unclear)' in estimation_groups:
+    unclear_states = sdis_enhanced[sdis_enhanced['n_total_estimated_comment'] == 'Total with discrepancy (calculation unclear)']
+    
+    # Filter to only show states that truly don't match any pattern
+    states_to_display = []
+    for _, state in unclear_states.iterrows():
+        # Calculate different possible sums
+        sum_offenders = state['n_offenders'] if pd.notna(state['n_offenders']) and state['n_offenders'] > 0 else 0
+        sum_arrestees = state['n_arrestees'] if pd.notna(state['n_arrestees']) and state['n_arrestees'] > 0 else 0
+        sum_forensic = state['n_forensic'] if pd.notna(state['n_forensic']) and state['n_forensic'] > 0 else 0
+        
+        sum_off_arr = sum_offenders + sum_arrestees
+        sum_all = sum_offenders + sum_arrestees + sum_forensic
+        
+        # Check what the total matches
+        matches_off = abs(state['n_total_reported'] - sum_offenders) <= tolerance
+        matches_off_arr = abs(state['n_total_reported'] - sum_off_arr) <= tolerance
+        matches_all = abs(state['n_total_reported'] - sum_all) <= tolerance
+        
+        # Only include states that don't match any expected pattern
+        if not (matches_off or matches_off_arr or matches_all):
+            states_to_display.append(state['state'])
+    
+    if states_to_display:
+        print(f"   {len(states_to_display)} states: {', '.join(states_to_display)}")
+        print("   (These states have totals that don't match any combination of their component counts)")
+
+# Show full enhanced data for all states
+print("\n\nFull Enhanced Data with Estimated Totals (All 50 States):")
+cols_to_show = ['state', 'n_total_estimated', 'n_total_reported', 'n_offenders', 'n_arrestees', 
+                'n_forensic', 'n_total_estimated_comment']
+display(sdis_enhanced[cols_to_show].style.format({
+    'n_total_estimated': lambda x: '{:,.0f}'.format(x) if pd.notna(x) else '',
+    'n_total_reported': lambda x: '{:,.0f}'.format(x) if pd.notna(x) else '',
+    'n_offenders': lambda x: '{:,.0f}'.format(x) if pd.notna(x) else '',
+    'n_arrestees': lambda x: '{:,.0f}'.format(x) if pd.notna(x) else '',
+    'n_forensic': lambda x: '{:,.0f}'.format(x) if pd.notna(x) else ''
+}))
+
+# Update the main dataframe for subsequent analyses
+sdis_data = sdis_enhanced
+```
+
+## Export Enhanced Dataset
+
+This section exports the enhanced dataset with the new n_total_estimated values and documentation.
+
+```{python}
+# Prepare final dataset with key columns in logical order
+final_columns = [
+    'state', 
+    'n_total_estimated',
+    'n_total_reported',
+    'n_arrestees', 
+    'n_offenders', 
+    'n_forensic',
+    'arrestee_collection',
+    'fam_search',
+    'collection_statute',
+    'n_total_estimated_comment',
+    'total_method'
+]
+
+# Select columns that exist in the dataset
+available_columns = [col for col in final_columns if col in sdis_enhanced.columns]
+sdis_final = sdis_enhanced[available_columns].copy()
+
+# Export to CSV
+output_path = base_dir / "output" / "sdis" / "sdis_clean.csv"
+sdis_final.to_csv(output_path, index=False)
+print(f"Exported enhanced SDIS dataset to: {output_path}")
+
+# Display final summary statistics
+print("\n\nFinal Summary Statistics:")
+print("=" * 50)
+print(f"Total states in dataset: {len(sdis_final)}")
+print(f"States with n_total_estimated: {sdis_final['n_total_estimated'].notna().sum()}")
+print(f"States with n_total_reported: {sdis_final['n_total_reported'].notna().sum()}")
+print(f"Total profiles (estimated): {sdis_final['n_total_estimated'].sum():,.0f}")
+
+# Show comparison of reported vs estimated totals
+comparison = sdis_final[sdis_final[['n_total_reported', 'n_total_estimated']].notna().all(axis=1)].copy()
+comparison['difference'] = comparison['n_total_estimated'] - comparison['n_total_reported']
+comparison_summary = comparison[comparison['difference'] != 0][['state', 'n_total_reported', 'n_total_estimated', 'difference', 'n_total_estimated_comment']]
+
+if len(comparison_summary) > 0:
+    print("\n\nStates where estimated differs from reported total:")
+    display(comparison_summary.style.format({
+        'n_total_reported': '{:,.0f}',
+        'n_total_estimated': '{:,.0f}',
+        'difference': '{:,.0f}'
+    }).hide(axis='index'))
 ```

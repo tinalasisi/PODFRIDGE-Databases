@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tina Lasisi">
+<meta name="dcterms.date" content="2025-07-30">
+
+<title>SDIS Summary Analysis – PODFRIDGE‑Databases</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">PODFRIDGE‑Databases</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../site/index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../site/about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analyses" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analyses</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analyses">    
+        <li>
+    <a class="dropdown-item" href="../analysis/ndis_scraping.html">
+ <span class="dropdown-text">NDIS analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/foia_processing.html">
+ <span class="dropdown-text">FOIA processing</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">Data Loading</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing">Data Preprocessing</a></li>
+  <li><a href="#data-availability-overview" id="toc-data-availability-overview" class="nav-link" data-scroll-target="#data-availability-overview">Data Availability Overview</a></li>
+  <li><a href="#total-profile-calculations-verification" id="toc-total-profile-calculations-verification" class="nav-link" data-scroll-target="#total-profile-calculations-verification">Total Profile Calculations Verification</a></li>
+  <li><a href="#analysis-of-database-totals-and-data-quality-issues" id="toc-analysis-of-database-totals-and-data-quality-issues" class="nav-link" data-scroll-target="#analysis-of-database-totals-and-data-quality-issues">Analysis of Database Totals and Data Quality Issues</a></li>
+  <li><a href="#export-enhanced-dataset" id="toc-export-enhanced-dataset" class="nav-link" data-scroll-target="#export-enhanced-dataset">Export Enhanced Dataset</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">SDIS Summary Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tina Lasisi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 30, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This analysis examines State DNA Index System (SDIS) data that includes information reported separately for each state’s DNA database. The data captures key dimensions including:</p>
+<ul>
+<li>Total size of each state’s DNA database</li>
+<li>Whether states collect DNA from arrestees (not just convicted offenders)</li>
+<li>Whether states allow familial DNA searching</li>
+<li>References to relevant state statutes (from Murphy &amp; Tong appendix)</li>
+</ul>
+<p>This information provides insight into the variation in DNA database policies, practices, and legal frameworks across U.S. states.</p>
+</section>
+<section id="data-loading" class="level2">
+<h2 class="anchored" data-anchor-id="data-loading">Data Loading</h2>
+<div id="c4a614df" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up path to data file</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>base_dir <span class="op">=</span> Path(<span class="st">".."</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data_file <span class="op">=</span> base_dir <span class="op">/</span> <span class="st">"output"</span> <span class="op">/</span> <span class="st">"sdis"</span> <span class="op">/</span> <span class="st">"sdis_raw.csv"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the SDIS data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>sdis_data <span class="op">=</span> pd.read_csv(data_file)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loaded SDIS data: </span><span class="sc">{</span><span class="bu">len</span>(sdis_data)<span class="sc">}</span><span class="ss"> rows"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(sdis_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display first few rows</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>display(sdis_data.head())</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Display data types for each column</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Data types:"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>display(sdis_data.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loaded SDIS data: 50 rows
+Columns: ['state', 'n_total', 'n_arrestees', 'n_offenders', 'n_forensic', 'arrestee_collection', 'collection_statute', 'fam_search', 'database_source', 'database_source_year', 'verification_comment']</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">state</th>
+<th data-quarto-table-cell-role="th">n_total</th>
+<th data-quarto-table-cell-role="th">n_arrestees</th>
+<th data-quarto-table-cell-role="th">n_offenders</th>
+<th data-quarto-table-cell-role="th">n_forensic</th>
+<th data-quarto-table-cell-role="th">arrestee_collection</th>
+<th data-quarto-table-cell-role="th">collection_statute</th>
+<th data-quarto-table-cell-role="th">fam_search</th>
+<th data-quarto-table-cell-role="th">database_source</th>
+<th data-quarto-table-cell-role="th">database_source_year</th>
+<th data-quarto-table-cell-role="th">verification_comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Alabama</td>
+<td>360000.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>yes</td>
+<td>Ala. Code Sec.36-18-25</td>
+<td>unspecified</td>
+<td>https://adfs.alabama.gov/services/fb/fb-statis...</td>
+<td>2024.0</td>
+<td>Alabama Department of Forensic Sciences notes ...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Alaska</td>
+<td>79146.0</td>
+<td>52149.0</td>
+<td>26997.0</td>
+<td>3866.0</td>
+<td>yes</td>
+<td>AK Stat Sec.44.41.035 (2014)</td>
+<td>unspecified</td>
+<td>https://dps.alaska.gov/Statewide/CrimeLab/Fore...</td>
+<td>2024.0</td>
+<td>Alaska DPS crime‑lab CODIS metrics (Feb&nbsp;2024) ...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Arizona</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>yes</td>
+<td>AZ Rev Stat Sec.13-610 (2016)</td>
+<td>unspecified</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Arkansas</td>
+<td>12221.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>yes</td>
+<td>AR Code Sec.12-12-1109 &amp; Sec.12-12-1006</td>
+<td>permitted</td>
+<td>https://www.dps.arkansas.gov/wp-content/upload...</td>
+<td>2022.0</td>
+<td>The Arkansas State Crime Laboratory 2022 annua...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>California</td>
+<td>3365402.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>167053.0</td>
+<td>yes</td>
+<td>CA Penal Code Sec.296</td>
+<td>permitted</td>
+<td>https://oag.ca.gov/system/files/media/databank...</td>
+<td>2024.0</td>
+<td>California’s Proposition&nbsp;69 First Quarter 2024...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Data types:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>state                    object
+n_total                 float64
+n_arrestees             float64
+n_offenders             float64
+n_forensic              float64
+arrestee_collection      object
+collection_statute       object
+fam_search               object
+database_source          object
+database_source_year    float64
+verification_comment     object
+dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section id="data-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="data-preprocessing">Data Preprocessing</h2>
+<p>This section ensures data consistency between arrestee collection policies and reported arrestee counts. States that do not collect arrestee DNA (arrestee_collection = ‘no’) should have N_arrestees set to zero to avoid data inconsistencies.</p>
+<div id="596a80a6" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a copy of the data for processing</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sdis_data_processed <span class="op">=</span> sdis_data.copy()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count states affected by this adjustment</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>states_with_no_collection <span class="op">=</span> sdis_data_processed[sdis_data_processed[<span class="st">'arrestee_collection'</span>] <span class="op">==</span> <span class="st">'no'</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>states_to_adjust <span class="op">=</span> states_with_no_collection[states_with_no_collection[<span class="st">'n_arrestees'</span>].notna() <span class="op">&amp;</span> (states_with_no_collection[<span class="st">'n_arrestees'</span>] <span class="op">!=</span> <span class="dv">0</span>)]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(states_to_adjust) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"States with arrestee_collection='no' but non-zero n_arrestees values:"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, state <span class="kw">in</span> states_to_adjust.iterrows():</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  • </span><span class="sc">{</span>state[<span class="st">'state'</span>]<span class="sc">}</span><span class="ss">: n_arrestees = </span><span class="sc">{</span>state[<span class="st">'n_arrestees'</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set n_arrestees to 0 for states that don't collect arrestee DNA</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>sdis_data_processed.loc[sdis_data_processed[<span class="st">'arrestee_collection'</span>] <span class="op">==</span> <span class="st">'no'</span>, <span class="st">'n_arrestees'</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Adjusted N_arrestees to 0 for </span><span class="sc">{</span><span class="bu">len</span>(states_with_no_collection)<span class="sc">}</span><span class="ss"> states that do not collect arrestee DNA"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Use processed data for all subsequent analyses</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>sdis_data <span class="op">=</span> sdis_data_processed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Adjusted N_arrestees to 0 for 17 states that do not collect arrestee DNA</code></pre>
+</div>
+</div>
+</section>
+<section id="data-availability-overview" class="level2">
+<h2 class="anchored" data-anchor-id="data-availability-overview">Data Availability Overview</h2>
+<p>This section provides an overview of states represented in the dataset and the completeness of data fields across states.</p>
+<div id="144fe562" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify states present in the dataset</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>states_in_data <span class="op">=</span> sdis_data[<span class="st">'state'</span>].unique()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>states_in_data <span class="op">=</span> <span class="bu">sorted</span>(states_in_data)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of states with data: </span><span class="sc">{</span><span class="bu">len</span>(states_in_data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if all 50 states are represented</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>all_states <span class="op">=</span> [<span class="st">'Alabama'</span>, <span class="st">'Alaska'</span>, <span class="st">'Arizona'</span>, <span class="st">'Arkansas'</span>, <span class="st">'California'</span>, <span class="st">'Colorado'</span>, <span class="st">'Connecticut'</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Delaware'</span>, <span class="st">'Florida'</span>, <span class="st">'Georgia'</span>, <span class="st">'Hawaii'</span>, <span class="st">'Idaho'</span>, <span class="st">'Illinois'</span>, <span class="st">'Indiana'</span>, <span class="st">'Iowa'</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Kansas'</span>, <span class="st">'Kentucky'</span>, <span class="st">'Louisiana'</span>, <span class="st">'Maine'</span>, <span class="st">'Maryland'</span>, <span class="st">'Massachusetts'</span>, <span class="st">'Michigan'</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Minnesota'</span>, <span class="st">'Mississippi'</span>, <span class="st">'Missouri'</span>, <span class="st">'Montana'</span>, <span class="st">'Nebraska'</span>, <span class="st">'Nevada'</span>, <span class="st">'New Hampshire'</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>              <span class="st">'New Jersey'</span>, <span class="st">'New Mexico'</span>, <span class="st">'New York'</span>, <span class="st">'North Carolina'</span>, <span class="st">'North Dakota'</span>, <span class="st">'Ohio'</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Oklahoma'</span>, <span class="st">'Oregon'</span>, <span class="st">'Pennsylvania'</span>, <span class="st">'Rhode Island'</span>, <span class="st">'South Carolina'</span>, <span class="st">'South Dakota'</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Tennessee'</span>, <span class="st">'Texas'</span>, <span class="st">'Utah'</span>, <span class="st">'Vermont'</span>, <span class="st">'Virginia'</span>, <span class="st">'Washington'</span>, <span class="st">'West Virginia'</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Wisconsin'</span>, <span class="st">'Wyoming'</span>]</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>missing_states <span class="op">=</span> [state <span class="cf">for</span> state <span class="kw">in</span> all_states <span class="cf">if</span> state <span class="kw">not</span> <span class="kw">in</span> states_in_data]</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> missing_states:</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Missing states: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(missing_states)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">All 50 states are represented in the dataset"</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Assess data completeness for each state</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>data_availability <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>states_in_data)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> sdis_data.columns:</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="op">!=</span> <span class="st">'state'</span>:  <span class="co"># Exclude the state identifier column</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate non-null values per state</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        availability <span class="op">=</span> sdis_data.groupby(<span class="st">'state'</span>)[col].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.notna().<span class="bu">sum</span>())</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        data_availability[col] <span class="op">=</span> availability</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate visualization of data completeness</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(data_availability.columns) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Focus on key numeric and policy fields</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    key_fields <span class="op">=</span> [<span class="st">'n_total'</span>, <span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>, </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'arrestee_collection'</span>, <span class="st">'fam_search'</span>]</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter to include only key fields that exist in the data</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    available_key_fields <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> key_fields <span class="cf">if</span> f <span class="kw">in</span> data_availability.columns]</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> available_key_fields:</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">14</span>))</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create binary matrix for visualization</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>        availability_subset <span class="op">=</span> data_availability[available_key_fields]</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>        availability_binary <span class="op">=</span> (availability_subset <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generate heatmap</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(availability_binary, </span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>                    cmap<span class="op">=</span>[<span class="st">'#f0f0f0'</span>, <span class="st">'#2E86AB'</span>],</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>                    cbar<span class="op">=</span><span class="va">False</span>,  <span class="co"># Remove colorbar for binary data</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>                    linewidths<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>                    linecolor<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>                    square<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>                    vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Data Availability by State'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Data Fields'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'States'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>        plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add annotations for clarity</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(availability_binary)):</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(availability_binary.columns)):</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> availability_binary.iloc[i, j] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>                    plt.text(j <span class="op">+</span> <span class="fl">0.5</span>, i <span class="op">+</span> <span class="fl">0.5</span>, <span class="st">'✓'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, </span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>                            fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>        plt.tight_layout()</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Total states shown in heatmap: </span><span class="sc">{</span><span class="bu">len</span>(availability_binary)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Data coverage summary</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Data field coverage across states:"</span>)</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Focus on key fields</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>key_fields <span class="op">=</span> [<span class="st">'n_total'</span>, <span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>, </span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>              <span class="st">'arrestee_collection'</span>, <span class="st">'fam_search'</span>, <span class="st">'collection_statute'</span>]</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> key_fields:</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> data_availability.columns:</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>        states_with_data <span class="op">=</span> (data_availability[col] <span class="op">&gt;</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        coverage_pct <span class="op">=</span> states_with_data<span class="op">/</span><span class="bu">len</span>(states_in_data)<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>states_with_data<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span>coverage_pct<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of states with data: 50
+
+All 50 states are represented in the dataset</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sdis_summary_files/figure-html/cell-4-output-2.png" width="342" height="1333" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Total states shown in heatmap: 50
+
+Data field coverage across states:
+n_total: 27 states (54.0%)
+n_arrestees: 23 states (46.0%)
+n_offenders: 16 states (32.0%)
+n_forensic: 11 states (22.0%)
+arrestee_collection: 50 states (100.0%)
+fam_search: 50 states (100.0%)
+collection_statute: 50 states (100.0%)</code></pre>
+</div>
+</div>
+</section>
+<section id="total-profile-calculations-verification" class="level2">
+<h2 class="anchored" data-anchor-id="total-profile-calculations-verification">Total Profile Calculations Verification</h2>
+<p>This section examines states reporting n_total alongside component counts to determine whether totals represent: 1. Sum of all profile types including forensic (n_arrestees + n_offenders + n_forensic) 2. Sum of combined profiles only (n_arrestees + n_offenders)</p>
+<div id="50a56f11" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: This analysis uses the original data before renaming columns</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a temporary copy with the original column name for this analysis</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sdis_data_temp <span class="op">=</span> sdis_data.copy()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'n_total_reported'</span> <span class="kw">in</span> sdis_data_temp.columns <span class="kw">and</span> <span class="st">'n_total'</span> <span class="kw">not</span> <span class="kw">in</span> sdis_data_temp.columns:</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    sdis_data_temp[<span class="st">'n_total'</span>] <span class="op">=</span> sdis_data_temp[<span class="st">'n_total_reported'</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify states with n_total and at least one component count</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>states_with_totals <span class="op">=</span> sdis_data_temp[sdis_data_temp[<span class="st">'n_total'</span>].notna()].copy()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate different possible sums</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>states_with_totals[<span class="st">'sum_all'</span>] <span class="op">=</span> states_with_totals[[<span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, skipna<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>states_with_totals[<span class="st">'sum_forensic'</span>] <span class="op">=</span> states_with_totals[[<span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, skipna<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which sum matches n_total (with small tolerance for rounding)</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>tolerance <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Allow small differences due to rounding or timing</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check matches_combined_forensic - will be False if any component is missing</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>states_with_totals[<span class="st">'matches_combined_forensic'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    states_with_totals[[<span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>]].notna().<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">abs</span>(states_with_totals[<span class="st">'n_total'</span>] <span class="op">-</span> states_with_totals[<span class="st">'sum_all'</span>]) <span class="op">&lt;=</span> tolerance,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Check matches_combined - will be False if n_arrestees or n_offenders is missing</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional condition: only True if arrestee_collection is 'no' OR n_arrestees &gt; 0</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>states_with_totals[<span class="st">'matches_combined'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    states_with_totals[[<span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>]].notna().<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    (<span class="bu">abs</span>(states_with_totals[<span class="st">'n_total'</span>] <span class="op">-</span> states_with_totals[<span class="st">'sum_forensic'</span>]) <span class="op">&lt;=</span> tolerance) <span class="op">&amp;</span> </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    ((states_with_totals[<span class="st">'arrestee_collection'</span>] <span class="op">==</span> <span class="st">'no'</span>) <span class="op">|</span> (states_with_totals[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)),</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Create summary dataframe for display</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>total_verification <span class="op">=</span> states_with_totals[[<span class="st">'state'</span>, <span class="st">'n_total'</span>, <span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>, </span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">'arrestee_collection'</span>, <span class="st">'sum_all'</span>, <span class="st">'sum_forensic'</span>, </span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">'matches_combined_forensic'</span>, <span class="st">'matches_combined'</span>]].copy()</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to states with at least one component count</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>has_components <span class="op">=</span> total_verification[</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    (total_verification[<span class="st">'n_arrestees'</span>].notna()) <span class="op">|</span> </span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    (total_verification[<span class="st">'n_offenders'</span>].notna()) <span class="op">|</span> </span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    (total_verification[<span class="st">'n_forensic'</span>].notna())</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"States with n_total and component data: </span><span class="sc">{</span><span class="bu">len</span>(has_components)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Total calculation patterns:"</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorize states</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>includes_all <span class="op">=</span> has_components[has_components[<span class="st">'matches_combined_forensic'</span>] <span class="op">==</span> <span class="va">True</span>][<span class="st">'state'</span>].tolist()</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>forensic_only <span class="op">=</span> has_components[(has_components[<span class="st">'matches_combined'</span>] <span class="op">==</span> <span class="va">True</span>) <span class="op">&amp;</span> (has_components[<span class="st">'matches_combined_forensic'</span>] <span class="op">==</span> <span class="va">False</span>)][<span class="st">'state'</span>].tolist()</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>neither <span class="op">=</span> has_components[(has_components[<span class="st">'matches_combined_forensic'</span>] <span class="op">==</span> <span class="va">False</span>) <span class="op">&amp;</span> (has_components[<span class="st">'matches_combined'</span>] <span class="op">==</span> <span class="va">False</span>)][<span class="st">'state'</span>].tolist()</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> includes_all:</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">n_total includes combined profiles with forensic (arrestees + offenders + forensic):"</span>)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> state <span class="kw">in</span> includes_all:</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  • </span><span class="sc">{</span>state<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> forensic_only:</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">n_total includes combined profiles only (arrestees + offenders):"</span>)</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> state <span class="kw">in</span> forensic_only:</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  • </span><span class="sc">{</span>state<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> neither:</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">n_total does not match calculated sums:"</span>)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> state <span class="kw">in</span> neither:</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>        state_data <span class="op">=</span> has_components[has_components[<span class="st">'state'</span>] <span class="op">==</span> state].iloc[<span class="dv">0</span>]</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  • </span><span class="sc">{</span>state<span class="sc">}</span><span class="ss">: n_total=</span><span class="sc">{</span>state_data[<span class="st">'n_total'</span>]<span class="sc">:,.0f}</span><span class="ss">, "</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"Sum_all=</span><span class="sc">{</span>state_data[<span class="st">'sum_all'</span>]<span class="sc">:,.0f}</span><span class="ss">, "</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"Sum_forensic=</span><span class="sc">{</span>state_data[<span class="st">'sum_forensic'</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Display detailed breakdown for verification</span></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Detailed breakdown:"</span>)</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>display(has_components[[<span class="st">'state'</span>, <span class="st">'n_total'</span>, <span class="st">'n_arrestees'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_forensic'</span>, </span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'arrestee_collection'</span>, <span class="st">'matches_combined_forensic'</span>, <span class="st">'matches_combined'</span>]].style.<span class="bu">format</span>({</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total'</span>: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>,</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_arrestees'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_offenders'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_forensic'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>States with n_total and component data: 17
+
+Total calculation patterns:
+
+n_total includes combined profiles only (arrestees + offenders):
+  • Alaska
+  • Idaho
+  • Montana
+  • North Carolina
+  • Rhode Island
+  • Tennessee
+  • Washington
+  • West Virginia
+
+n_total does not match calculated sums:
+  • California: n_total=3,365,402, Sum_all=167,053, Sum_forensic=0
+  • Connecticut: n_total=127,940, Sum_all=151,140, Sum_forensic=127,940
+  • Georgia: n_total=347,145, Sum_all=347,145, Sum_forensic=324,864
+  • Illinois: n_total=689,297, Sum_all=759,224, Sum_forensic=689,297
+  • Indiana: n_total=449,000, Sum_all=470,400, Sum_forensic=448,000
+  • Minnesota: n_total=180,000, Sum_all=180,000, Sum_forensic=180,000
+  • Missouri: n_total=400,000, Sum_all=386,000, Sum_forensic=386,000
+  • South Carolina: n_total=175,629, Sum_all=11,127, Sum_forensic=0
+  • Texas: n_total=1,308,774, Sum_all=1,308,774, Sum_forensic=1,308,774
+
+Detailed breakdown:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<style type="text/css">
+</style>
+
+<table id="T_98af9" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_98af9_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">state</th>
+<th id="T_98af9_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">n_total</th>
+<th id="T_98af9_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">n_arrestees</th>
+<th id="T_98af9_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">n_offenders</th>
+<th id="T_98af9_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">n_forensic</th>
+<th id="T_98af9_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">arrestee_collection</th>
+<th id="T_98af9_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">matches_combined_forensic</th>
+<th id="T_98af9_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">matches_combined</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_98af9_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">1</td>
+<td id="T_98af9_row0_col0" class="data row0 col0">Alaska</td>
+<td id="T_98af9_row0_col1" class="data row0 col1">79,146</td>
+<td id="T_98af9_row0_col2" class="data row0 col2">52,149</td>
+<td id="T_98af9_row0_col3" class="data row0 col3">26,997</td>
+<td id="T_98af9_row0_col4" class="data row0 col4">3,866</td>
+<td id="T_98af9_row0_col5" class="data row0 col5">yes</td>
+<td id="T_98af9_row0_col6" class="data row0 col6">False</td>
+<td id="T_98af9_row0_col7" class="data row0 col7">True</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">4</td>
+<td id="T_98af9_row1_col0" class="data row1 col0">California</td>
+<td id="T_98af9_row1_col1" class="data row1 col1">3,365,402</td>
+<td id="T_98af9_row1_col2" class="data row1 col2"></td>
+<td id="T_98af9_row1_col3" class="data row1 col3"></td>
+<td id="T_98af9_row1_col4" class="data row1 col4">167,053</td>
+<td id="T_98af9_row1_col5" class="data row1 col5">yes</td>
+<td id="T_98af9_row1_col6" class="data row1 col6">False</td>
+<td id="T_98af9_row1_col7" class="data row1 col7">False</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">6</td>
+<td id="T_98af9_row2_col0" class="data row2 col0">Connecticut</td>
+<td id="T_98af9_row2_col1" class="data row2 col1">127,940</td>
+<td id="T_98af9_row2_col2" class="data row2 col2"></td>
+<td id="T_98af9_row2_col3" class="data row2 col3">127,940</td>
+<td id="T_98af9_row2_col4" class="data row2 col4">23,200</td>
+<td id="T_98af9_row2_col5" class="data row2 col5">yes</td>
+<td id="T_98af9_row2_col6" class="data row2 col6">False</td>
+<td id="T_98af9_row2_col7" class="data row2 col7">False</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">9</td>
+<td id="T_98af9_row3_col0" class="data row3 col0">Georgia</td>
+<td id="T_98af9_row3_col1" class="data row3 col1">347,145</td>
+<td id="T_98af9_row3_col2" class="data row3 col2"></td>
+<td id="T_98af9_row3_col3" class="data row3 col3">324,864</td>
+<td id="T_98af9_row3_col4" class="data row3 col4">22,281</td>
+<td id="T_98af9_row3_col5" class="data row3 col5">yes</td>
+<td id="T_98af9_row3_col6" class="data row3 col6">False</td>
+<td id="T_98af9_row3_col7" class="data row3 col7">False</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">11</td>
+<td id="T_98af9_row4_col0" class="data row4 col0">Idaho</td>
+<td id="T_98af9_row4_col1" class="data row4 col1">39,000</td>
+<td id="T_98af9_row4_col2" class="data row4 col2">0</td>
+<td id="T_98af9_row4_col3" class="data row4 col3">39,000</td>
+<td id="T_98af9_row4_col4" class="data row4 col4"></td>
+<td id="T_98af9_row4_col5" class="data row4 col5">no</td>
+<td id="T_98af9_row4_col6" class="data row4 col6">False</td>
+<td id="T_98af9_row4_col7" class="data row4 col7">True</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">12</td>
+<td id="T_98af9_row5_col0" class="data row5 col0">Illinois</td>
+<td id="T_98af9_row5_col1" class="data row5 col1">689,297</td>
+<td id="T_98af9_row5_col2" class="data row5 col2"></td>
+<td id="T_98af9_row5_col3" class="data row5 col3">689,297</td>
+<td id="T_98af9_row5_col4" class="data row5 col4">69,927</td>
+<td id="T_98af9_row5_col5" class="data row5 col5">yes</td>
+<td id="T_98af9_row5_col6" class="data row5 col6">False</td>
+<td id="T_98af9_row5_col7" class="data row5 col7">False</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">13</td>
+<td id="T_98af9_row6_col0" class="data row6 col0">Indiana</td>
+<td id="T_98af9_row6_col1" class="data row6 col1">449,000</td>
+<td id="T_98af9_row6_col2" class="data row6 col2">144,000</td>
+<td id="T_98af9_row6_col3" class="data row6 col3">304,000</td>
+<td id="T_98af9_row6_col4" class="data row6 col4">22,400</td>
+<td id="T_98af9_row6_col5" class="data row6 col5">yes</td>
+<td id="T_98af9_row6_col6" class="data row6 col6">False</td>
+<td id="T_98af9_row6_col7" class="data row6 col7">False</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">22</td>
+<td id="T_98af9_row7_col0" class="data row7 col0">Minnesota</td>
+<td id="T_98af9_row7_col1" class="data row7 col1">180,000</td>
+<td id="T_98af9_row7_col2" class="data row7 col2"></td>
+<td id="T_98af9_row7_col3" class="data row7 col3">180,000</td>
+<td id="T_98af9_row7_col4" class="data row7 col4"></td>
+<td id="T_98af9_row7_col5" class="data row7 col5">yes</td>
+<td id="T_98af9_row7_col6" class="data row7 col6">False</td>
+<td id="T_98af9_row7_col7" class="data row7 col7">False</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">24</td>
+<td id="T_98af9_row8_col0" class="data row8 col0">Missouri</td>
+<td id="T_98af9_row8_col1" class="data row8 col1">400,000</td>
+<td id="T_98af9_row8_col2" class="data row8 col2"></td>
+<td id="T_98af9_row8_col3" class="data row8 col3">386,000</td>
+<td id="T_98af9_row8_col4" class="data row8 col4"></td>
+<td id="T_98af9_row8_col5" class="data row8 col5">yes</td>
+<td id="T_98af9_row8_col6" class="data row8 col6">False</td>
+<td id="T_98af9_row8_col7" class="data row8 col7">False</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">25</td>
+<td id="T_98af9_row9_col0" class="data row9 col0">Montana</td>
+<td id="T_98af9_row9_col1" class="data row9 col1">32,284</td>
+<td id="T_98af9_row9_col2" class="data row9 col2">0</td>
+<td id="T_98af9_row9_col3" class="data row9 col3">32,284</td>
+<td id="T_98af9_row9_col4" class="data row9 col4">878</td>
+<td id="T_98af9_row9_col5" class="data row9 col5">no</td>
+<td id="T_98af9_row9_col6" class="data row9 col6">False</td>
+<td id="T_98af9_row9_col7" class="data row9 col7">True</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">32</td>
+<td id="T_98af9_row10_col0" class="data row10 col0">North Carolina</td>
+<td id="T_98af9_row10_col1" class="data row10 col1">350,000</td>
+<td id="T_98af9_row10_col2" class="data row10 col2">50,000</td>
+<td id="T_98af9_row10_col3" class="data row10 col3">300,000</td>
+<td id="T_98af9_row10_col4" class="data row10 col4"></td>
+<td id="T_98af9_row10_col5" class="data row10 col5">yes</td>
+<td id="T_98af9_row10_col6" class="data row10 col6">False</td>
+<td id="T_98af9_row10_col7" class="data row10 col7">True</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">38</td>
+<td id="T_98af9_row11_col0" class="data row11 col0">Rhode Island</td>
+<td id="T_98af9_row11_col1" class="data row11 col1">27,818</td>
+<td id="T_98af9_row11_col2" class="data row11 col2">484</td>
+<td id="T_98af9_row11_col3" class="data row11 col3">27,334</td>
+<td id="T_98af9_row11_col4" class="data row11 col4">1,798</td>
+<td id="T_98af9_row11_col5" class="data row11 col5">yes</td>
+<td id="T_98af9_row11_col6" class="data row11 col6">False</td>
+<td id="T_98af9_row11_col7" class="data row11 col7">True</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">39</td>
+<td id="T_98af9_row12_col0" class="data row12 col0">South Carolina</td>
+<td id="T_98af9_row12_col1" class="data row12 col1">175,629</td>
+<td id="T_98af9_row12_col2" class="data row12 col2"></td>
+<td id="T_98af9_row12_col3" class="data row12 col3"></td>
+<td id="T_98af9_row12_col4" class="data row12 col4">11,127</td>
+<td id="T_98af9_row12_col5" class="data row12 col5">yes</td>
+<td id="T_98af9_row12_col6" class="data row12 col6">False</td>
+<td id="T_98af9_row12_col7" class="data row12 col7">False</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">41</td>
+<td id="T_98af9_row13_col0" class="data row13 col0">Tennessee</td>
+<td id="T_98af9_row13_col1" class="data row13 col1">518,614</td>
+<td id="T_98af9_row13_col2" class="data row13 col2">226,569</td>
+<td id="T_98af9_row13_col3" class="data row13 col3">292,045</td>
+<td id="T_98af9_row13_col4" class="data row13 col4"></td>
+<td id="T_98af9_row13_col5" class="data row13 col5">yes</td>
+<td id="T_98af9_row13_col6" class="data row13 col6">False</td>
+<td id="T_98af9_row13_col7" class="data row13 col7">True</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">42</td>
+<td id="T_98af9_row14_col0" class="data row14 col0">Texas</td>
+<td id="T_98af9_row14_col1" class="data row14 col1">1,308,774</td>
+<td id="T_98af9_row14_col2" class="data row14 col2"></td>
+<td id="T_98af9_row14_col3" class="data row14 col3">1,308,774</td>
+<td id="T_98af9_row14_col4" class="data row14 col4"></td>
+<td id="T_98af9_row14_col5" class="data row14 col5">yes</td>
+<td id="T_98af9_row14_col6" class="data row14 col6">False</td>
+<td id="T_98af9_row14_col7" class="data row14 col7">False</td>
+</tr>
+<tr class="even">
+<td id="T_98af9_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">46</td>
+<td id="T_98af9_row15_col0" class="data row15 col0">Washington</td>
+<td id="T_98af9_row15_col1" class="data row15 col1">272,000</td>
+<td id="T_98af9_row15_col2" class="data row15 col2">0</td>
+<td id="T_98af9_row15_col3" class="data row15 col3">272,000</td>
+<td id="T_98af9_row15_col4" class="data row15 col4">8,800</td>
+<td id="T_98af9_row15_col5" class="data row15 col5">no</td>
+<td id="T_98af9_row15_col6" class="data row15 col6">False</td>
+<td id="T_98af9_row15_col7" class="data row15 col7">True</td>
+</tr>
+<tr class="odd">
+<td id="T_98af9_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">47</td>
+<td id="T_98af9_row16_col0" class="data row16 col0">West Virginia</td>
+<td id="T_98af9_row16_col1" class="data row16 col1">47,444</td>
+<td id="T_98af9_row16_col2" class="data row16 col2">0</td>
+<td id="T_98af9_row16_col3" class="data row16 col3">47,444</td>
+<td id="T_98af9_row16_col4" class="data row16 col4">3,905</td>
+<td id="T_98af9_row16_col5" class="data row16 col5">no</td>
+<td id="T_98af9_row16_col6" class="data row16 col6">False</td>
+<td id="T_98af9_row16_col7" class="data row16 col7">True</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="analysis-of-database-totals-and-data-quality-issues" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-database-totals-and-data-quality-issues">Analysis of Database Totals and Data Quality Issues</h2>
+<p>This section examines states where N_total values reveal potential data quality issues or reporting inconsistencies.</p>
+<div id="c83478a5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create enhanced data quality analysis</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sdis_enhanced <span class="op">=</span> sdis_data.copy()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename n_total to n_total_reported</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>sdis_enhanced <span class="op">=</span> sdis_enhanced.rename(columns<span class="op">=</span>{<span class="st">'n_total'</span>: <span class="st">'n_total_reported'</span>})</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate different total relationships with small tolerance</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>tolerance <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if n_total equals different combinations</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: Only consider values &gt; 0 as valid data (0 means no data)</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># For offenders only: either arrestees are missing/zero OR state doesn't collect arrestees</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'total_equals_offenders'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">abs</span>(sdis_enhanced[<span class="st">'n_total_reported'</span>] <span class="op">-</span> sdis_enhanced[<span class="st">'n_offenders'</span>]) <span class="op">&lt;=</span> tolerance,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'total_equals_off_arr'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_arrestees'</span>].notna() <span class="op">&amp;</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">abs</span>(sdis_enhanced[<span class="st">'n_total_reported'</span>] <span class="op">-</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">+</span> sdis_enhanced[<span class="st">'n_arrestees'</span>])) <span class="op">&lt;=</span> tolerance,</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'total_equals_all'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_arrestees'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_forensic'</span>].notna() <span class="op">&amp;</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_forensic'</span>] <span class="op">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">abs</span>(sdis_enhanced[<span class="st">'n_total_reported'</span>] <span class="op">-</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">+</span> sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">+</span> sdis_enhanced[<span class="st">'n_forensic'</span>])) <span class="op">&lt;=</span> tolerance,</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine total calculation method for each state</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Use priority order: All components &gt; Offenders + Arrestees &gt; Offenders only</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'total_method'</span>] <span class="op">=</span> <span class="st">'Unknown'</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[sdis_enhanced[<span class="st">'total_equals_offenders'</span>], <span class="st">'total_method'</span>] <span class="op">=</span> <span class="st">'Offenders only'</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[sdis_enhanced[<span class="st">'total_equals_off_arr'</span>], <span class="st">'total_method'</span>] <span class="op">=</span> <span class="st">'Offenders + Arrestees'</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[sdis_enhanced[<span class="st">'total_equals_all'</span>], <span class="st">'total_method'</span>] <span class="op">=</span> <span class="st">'All components'</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Create n_total_estimated based on the rules specified</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'n_total_estimated'</span>] <span class="op">=</span> np.nan</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>sdis_enhanced[<span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Rule 1: States where n_total == n_offenders + n_arrestees</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>mask_off_arr <span class="op">=</span> sdis_enhanced[<span class="st">'total_equals_off_arr'</span>]</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_off_arr, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_off_arr, <span class="st">'n_total_reported'</span>]</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_off_arr, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Used reported total (matches offenders + arrestees)'</span></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Rule 2: States where n_total == n_offenders + n_arrestees + n_forensic</span></span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>mask_all <span class="op">=</span> sdis_enhanced[<span class="st">'total_equals_all'</span>]</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_all, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> (</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced.loc[mask_all, <span class="st">'n_total_reported'</span>] <span class="op">-</span> sdis_enhanced.loc[mask_all, <span class="st">'n_forensic'</span>]</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_all, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Subtracted forensic from reported total'</span></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Rule 3: States where n_total == n_offenders</span></span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes states that don't collect arrestees OR states where total just happens to equal offenders</span></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>mask_off_only <span class="op">=</span> sdis_enhanced[<span class="st">'total_equals_offenders'</span>]</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_off_only, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_off_only, <span class="st">'n_total_reported'</span>]</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_off_only, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Used reported total (matches offenders only)'</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Rule 4: For remaining states with n_total</span></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a><span class="co"># First check if they have ONLY total (no component breakdown)</span></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>mask_total_only <span class="op">=</span> (</span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_estimated'</span>].isna() <span class="op">&amp;</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_arrestees'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">==</span> <span class="dv">0</span>)) <span class="op">&amp;</span></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_offenders'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">==</span> <span class="dv">0</span>)) <span class="op">&amp;</span></span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_forensic'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_forensic'</span>] <span class="op">==</span> <span class="dv">0</span>))</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_total_only, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_total_only, <span class="st">'n_total_reported'</span>]</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_total_only, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Total only reported (no breakdown available)'</span></span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Special case: States like California with n_total and n_forensic only</span></span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a><span class="co"># (no offenders/arrestees breakdown)</span></span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>mask_total_forensic_only <span class="op">=</span> (</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_estimated'</span>].isna() <span class="op">&amp;</span></span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_arrestees'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">==</span> <span class="dv">0</span>)) <span class="op">&amp;</span></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_offenders'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">==</span> <span class="dv">0</span>)) <span class="op">&amp;</span></span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_forensic'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_forensic'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_total_forensic_only, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_total_forensic_only, <span class="st">'n_total_reported'</span>]</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_total_forensic_only, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Total only reported (forensic reported separately)'</span></span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a><span class="co"># States with total and some components but unclear calculation</span></span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>mask_has_total_unclear <span class="op">=</span> (</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].notna() <span class="op">&amp;</span> </span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_estimated'</span>].isna()</span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_has_total_unclear, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_has_total_unclear, <span class="st">'n_total_reported'</span>]</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_has_total_unclear, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Total with discrepancy (calculation unclear)'</span></span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a><span class="co"># For states without any total but with offenders and arrestees (both &gt; 0)</span></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a>mask_no_total <span class="op">=</span> (</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].isna() <span class="op">&amp;</span> </span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_arrestees'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_no_total, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> (</span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced.loc[mask_no_total, <span class="st">'n_offenders'</span>] <span class="op">+</span> sdis_enhanced.loc[mask_no_total, <span class="st">'n_arrestees'</span>]</span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_no_total, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Calculated from offenders + arrestees (no total reported)'</span></span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a><span class="co"># For states without total but with only offenders &gt; 0</span></span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a>mask_no_total_off_only <span class="op">=</span> (</span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_total_reported'</span>].isna() <span class="op">&amp;</span> </span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>    sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>    (sdis_enhanced[<span class="st">'n_arrestees'</span>].isna() <span class="op">|</span> (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">==</span> <span class="dv">0</span>))</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_no_total_off_only, <span class="st">'n_total_estimated'</span>] <span class="op">=</span> sdis_enhanced.loc[mask_no_total_off_only, <span class="st">'n_offenders'</span>]</span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>sdis_enhanced.loc[mask_no_total_off_only, <span class="st">'n_total_estimated_comment'</span>] <span class="op">=</span> <span class="st">'Used offenders count (no total reported, no arrestee data)'</span></span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data availability matrix for heatmap</span></span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Treat 0 values as missing data</span></span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a>availability_matrix <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>    <span class="st">'State'</span>: sdis_enhanced[<span class="st">'state'</span>],</span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Arrestees'</span>: (sdis_enhanced[<span class="st">'n_arrestees'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)),</span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Offenders'</span>: (sdis_enhanced[<span class="st">'n_offenders'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)),</span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Forensic'</span>: (sdis_enhanced[<span class="st">'n_forensic'</span>].notna() <span class="op">&amp;</span> (sdis_enhanced[<span class="st">'n_forensic'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)),</span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total Reported'</span>: sdis_enhanced[<span class="st">'n_total_reported'</span>].notna(),</span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total Method'</span>: sdis_enhanced[<span class="st">'total_method'</span>]</span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of how n_total_estimated was calculated</span></span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n_total_estimated Calculation Summary:"</span>)</span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Create single plot with better dimensions</span></span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">16</span>)) </span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for combined heatmap</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Data availability columns</span></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>availability_binary <span class="op">=</span> availability_matrix.set_index(<span class="st">'State'</span>)[[<span class="st">'Arrestees'</span>, <span class="st">'Offenders'</span>, <span class="st">'Forensic'</span>, <span class="st">'Total Reported'</span>]].astype(<span class="bu">int</span>)</span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Add total method as a numeric column</span></span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a>method_mapping <span class="op">=</span> {</span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unknown'</span>: <span class="dv">0</span>,</span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Offenders only'</span>: <span class="dv">1</span>,</span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Offenders + Arrestees'</span>: <span class="dv">2</span>,</span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a>    <span class="st">'All components'</span>: <span class="dv">3</span></span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a>availability_binary[<span class="st">'Total Method'</span>] <span class="op">=</span> availability_matrix.set_index(<span class="st">'State'</span>)[<span class="st">'Total Method'</span>].replace(method_mapping)</span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom colormap for the combined heatmap</span></span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> ListedColormap</span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> patches</span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the heatmap</span></span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a>sns.heatmap(availability_binary.iloc[:, :<span class="dv">4</span>],  <span class="co"># First 4 columns (binary data)</span></span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>            cmap<span class="op">=</span>[<span class="st">'#f0f0f0'</span>, <span class="st">'#2E86AB'</span>],</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a>            cbar<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a>            linewidths<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>            linecolor<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb12-165"><a href="#cb12-165" aria-hidden="true" tabindex="-1"></a>            square<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-166"><a href="#cb12-166" aria-hidden="true" tabindex="-1"></a>            ax<span class="op">=</span>ax)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the Total Method column with a different colormap</span></span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a>x_pos <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a>method_colors <span class="op">=</span> [<span class="st">'#f0f0f0'</span>, <span class="st">'#FF6B6B'</span>, <span class="st">'#4ECDC4'</span>, <span class="st">'#45B7D1'</span>]</span>
+<span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (idx, row) <span class="kw">in</span> <span class="bu">enumerate</span>(availability_binary.iterrows()):</span>
+<span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>    method_val <span class="op">=</span> <span class="bu">int</span>(row[<span class="st">'Total Method'</span>])</span>
+<span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a>    rect <span class="op">=</span> patches.Rectangle((x_pos, i), <span class="dv">1</span>, <span class="dv">1</span>, </span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>                           linewidth<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a>                           edgecolor<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a>                           facecolor<span class="op">=</span>method_colors[method_val])</span>
+<span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(rect)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Update x-axis labels</span></span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a>column_labels <span class="op">=</span> <span class="bu">list</span>(availability_binary.columns)</span>
+<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(np.arange(<span class="bu">len</span>(column_labels)) <span class="op">+</span> <span class="fl">0.5</span>)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(column_labels, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Add checkmarks for binary columns</span></span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(availability_binary)):</span>
+<span id="cb12-186"><a href="#cb12-186" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):  <span class="co"># Only first 4 columns</span></span>
+<span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> availability_binary.iloc[i, j] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a>            ax.text(j <span class="op">+</span> <span class="fl">0.5</span>, i <span class="op">+</span> <span class="fl">0.5</span>, <span class="st">'✓'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>,  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a>                   fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Add method labels for the Total Method column</span></span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a>method_labels <span class="op">=</span> [<span class="st">'?'</span>, <span class="st">'O'</span>, <span class="st">'O+A'</span>, <span class="st">'All'</span>]</span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(availability_binary)):</span>
+<span id="cb12-194"><a href="#cb12-194" aria-hidden="true" tabindex="-1"></a>    method_val <span class="op">=</span> <span class="bu">int</span>(availability_binary.iloc[i, <span class="dv">4</span>])</span>
+<span id="cb12-195"><a href="#cb12-195" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">4.5</span>, i <span class="op">+</span> <span class="fl">0.5</span>, method_labels[method_val], ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>,  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a>           fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span><span class="st">'white'</span> <span class="cf">if</span> method_val <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">'black'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb12-197"><a href="#cb12-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-198"><a href="#cb12-198" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Data Field Availability and Total Calculation Method by State'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">''</span>)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">''</span>)  <span class="co"># Changed from ax1 to ax</span></span>
+<span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Create legend at the bottom</span></span>
+<span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a>legend_elements <span class="op">=</span> [</span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>    patches.Patch(facecolor<span class="op">=</span><span class="st">'#f0f0f0'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'Unknown (?)'</span>),</span>
+<span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a>    patches.Patch(facecolor<span class="op">=</span><span class="st">'#FF6B6B'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'Offenders only (O)'</span>),</span>
+<span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a>    patches.Patch(facecolor<span class="op">=</span><span class="st">'#4ECDC4'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'Offenders + Arrestees (O+A)'</span>),</span>
+<span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a>    patches.Patch(facecolor<span class="op">=</span><span class="st">'#45B7D1'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'All components (All)'</span>)</span>
+<span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Place legend below the plot</span></span>
+<span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a>ax.legend(handles<span class="op">=</span>legend_elements, </span>
+<span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a>          loc<span class="op">=</span><span class="st">'upper center'</span>, </span>
+<span id="cb12-213"><a href="#cb12-213" aria-hidden="true" tabindex="-1"></a>          bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.02</span>),</span>
+<span id="cb12-214"><a href="#cb12-214" aria-hidden="true" tabindex="-1"></a>          ncol<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a>          title<span class="op">=</span><span class="st">'Total Method'</span>,</span>
+<span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a>          frameon<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout</span></span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a><span class="co"># Group states by how their n_total_estimated was determined</span></span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>estimation_groups <span class="op">=</span> sdis_enhanced.groupby(<span class="st">'n_total_estimated_comment'</span>)[<span class="st">'state'</span>].<span class="bu">apply</span>(<span class="bu">list</span>)</span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">1. States with only n_total reported (no component breakdown):"</span>)</span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Total only reported (no breakdown available)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Total only reported (no breakdown available)'</span>]</span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Total only reported (forensic reported separately)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Total only reported (forensic reported separately)'</span>]</span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - With forensic reported separately: </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">2. States where n_total matches component calculations:"</span>)</span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Used reported total (matches offenders + arrestees)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Used reported total (matches offenders + arrestees)'</span>]</span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - Matches offenders + arrestees: </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Subtracted forensic from reported total'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Subtracted forensic from reported total'</span>]</span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - Matches all components (forensic subtracted): </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Used reported total (matches offenders only)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-241"><a href="#cb12-241" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Used reported total (matches offenders only)'</span>]</span>
+<span id="cb12-242"><a href="#cb12-242" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - Matches offenders only: </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">3. States without n_total reported:"</span>)</span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Calculated from offenders + arrestees (no total reported)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-246"><a href="#cb12-246" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Calculated from offenders + arrestees (no total reported)'</span>]</span>
+<span id="cb12-247"><a href="#cb12-247" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - Calculated from offenders + arrestees: </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-248"><a href="#cb12-248" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Used offenders count (no total reported, no arrestee data)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-249"><a href="#cb12-249" aria-hidden="true" tabindex="-1"></a>    states <span class="op">=</span> estimation_groups[<span class="st">'Used offenders count (no total reported, no arrestee data)'</span>]</span>
+<span id="cb12-250"><a href="#cb12-250" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"   - Used offenders as proxy: </span><span class="sc">{</span><span class="bu">len</span>(states)<span class="sc">}</span><span class="ss"> states (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-251"><a href="#cb12-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-252"><a href="#cb12-252" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">4. States with unclear calculation (total doesn't match expected patterns):"</span>)</span>
+<span id="cb12-253"><a href="#cb12-253" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Total with discrepancy (calculation unclear)'</span> <span class="kw">in</span> estimation_groups:</span>
+<span id="cb12-254"><a href="#cb12-254" aria-hidden="true" tabindex="-1"></a>    unclear_states <span class="op">=</span> sdis_enhanced[sdis_enhanced[<span class="st">'n_total_estimated_comment'</span>] <span class="op">==</span> <span class="st">'Total with discrepancy (calculation unclear)'</span>]</span>
+<span id="cb12-255"><a href="#cb12-255" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-256"><a href="#cb12-256" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter to only show states that truly don't match any pattern</span></span>
+<span id="cb12-257"><a href="#cb12-257" aria-hidden="true" tabindex="-1"></a>    states_to_display <span class="op">=</span> []</span>
+<span id="cb12-258"><a href="#cb12-258" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, state <span class="kw">in</span> unclear_states.iterrows():</span>
+<span id="cb12-259"><a href="#cb12-259" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate different possible sums</span></span>
+<span id="cb12-260"><a href="#cb12-260" aria-hidden="true" tabindex="-1"></a>        sum_offenders <span class="op">=</span> state[<span class="st">'n_offenders'</span>] <span class="cf">if</span> pd.notna(state[<span class="st">'n_offenders'</span>]) <span class="kw">and</span> state[<span class="st">'n_offenders'</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb12-261"><a href="#cb12-261" aria-hidden="true" tabindex="-1"></a>        sum_arrestees <span class="op">=</span> state[<span class="st">'n_arrestees'</span>] <span class="cf">if</span> pd.notna(state[<span class="st">'n_arrestees'</span>]) <span class="kw">and</span> state[<span class="st">'n_arrestees'</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb12-262"><a href="#cb12-262" aria-hidden="true" tabindex="-1"></a>        sum_forensic <span class="op">=</span> state[<span class="st">'n_forensic'</span>] <span class="cf">if</span> pd.notna(state[<span class="st">'n_forensic'</span>]) <span class="kw">and</span> state[<span class="st">'n_forensic'</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb12-263"><a href="#cb12-263" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-264"><a href="#cb12-264" aria-hidden="true" tabindex="-1"></a>        sum_off_arr <span class="op">=</span> sum_offenders <span class="op">+</span> sum_arrestees</span>
+<span id="cb12-265"><a href="#cb12-265" aria-hidden="true" tabindex="-1"></a>        sum_all <span class="op">=</span> sum_offenders <span class="op">+</span> sum_arrestees <span class="op">+</span> sum_forensic</span>
+<span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check what the total matches</span></span>
+<span id="cb12-268"><a href="#cb12-268" aria-hidden="true" tabindex="-1"></a>        matches_off <span class="op">=</span> <span class="bu">abs</span>(state[<span class="st">'n_total_reported'</span>] <span class="op">-</span> sum_offenders) <span class="op">&lt;=</span> tolerance</span>
+<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a>        matches_off_arr <span class="op">=</span> <span class="bu">abs</span>(state[<span class="st">'n_total_reported'</span>] <span class="op">-</span> sum_off_arr) <span class="op">&lt;=</span> tolerance</span>
+<span id="cb12-270"><a href="#cb12-270" aria-hidden="true" tabindex="-1"></a>        matches_all <span class="op">=</span> <span class="bu">abs</span>(state[<span class="st">'n_total_reported'</span>] <span class="op">-</span> sum_all) <span class="op">&lt;=</span> tolerance</span>
+<span id="cb12-271"><a href="#cb12-271" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-272"><a href="#cb12-272" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Only include states that don't match any expected pattern</span></span>
+<span id="cb12-273"><a href="#cb12-273" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> (matches_off <span class="kw">or</span> matches_off_arr <span class="kw">or</span> matches_all):</span>
+<span id="cb12-274"><a href="#cb12-274" aria-hidden="true" tabindex="-1"></a>            states_to_display.append(state[<span class="st">'state'</span>])</span>
+<span id="cb12-275"><a href="#cb12-275" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-276"><a href="#cb12-276" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> states_to_display:</span>
+<span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"   </span><span class="sc">{</span><span class="bu">len</span>(states_to_display)<span class="sc">}</span><span class="ss"> states: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(states_to_display)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"   (These states have totals that don't match any combination of their component counts)"</span>)</span>
+<span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a><span class="co"># Show full enhanced data for all states</span></span>
+<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Full Enhanced Data with Estimated Totals (All 50 States):"</span>)</span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>cols_to_show <span class="op">=</span> [<span class="st">'state'</span>, <span class="st">'n_total_estimated'</span>, <span class="st">'n_total_reported'</span>, <span class="st">'n_offenders'</span>, <span class="st">'n_arrestees'</span>, </span>
+<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a>                <span class="st">'n_forensic'</span>, <span class="st">'n_total_estimated_comment'</span>]</span>
+<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a>display(sdis_enhanced[cols_to_show].style.<span class="bu">format</span>({</span>
+<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total_estimated'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total_reported'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_offenders'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb12-288"><a href="#cb12-288" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_arrestees'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span>,</span>
+<span id="cb12-289"><a href="#cb12-289" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_forensic'</span>: <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>.<span class="bu">format</span>(x) <span class="cf">if</span> pd.notna(x) <span class="cf">else</span> <span class="st">''</span></span>
+<span id="cb12-290"><a href="#cb12-290" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb12-291"><a href="#cb12-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-292"><a href="#cb12-292" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the main dataframe for subsequent analyses</span></span>
+<span id="cb12-293"><a href="#cb12-293" aria-hidden="true" tabindex="-1"></a>sdis_data <span class="op">=</span> sdis_enhanced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_total_estimated Calculation Summary:
+==================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sdis_summary_files/figure-html/cell-6-output-2.png" width="581" height="1526" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+1. States with only n_total reported (no component breakdown):
+   10 states: Alabama, Arkansas, Colorado, Florida, Louisiana, Mississippi, Nevada, New Jersey, South Dakota, Virginia
+   - With forensic reported separately: 2 states (California, South Carolina)
+
+2. States where n_total matches component calculations:
+   - Matches offenders + arrestees: 4 states (Alaska, North Carolina, Rhode Island, Tennessee)
+   - Matches offenders only: 8 states (Connecticut, Idaho, Illinois, Minnesota, Montana, Texas, Washington, West Virginia)
+
+3. States without n_total reported:
+   - Calculated from offenders + arrestees: 1 states (Maryland)
+
+4. States with unclear calculation (total doesn't match expected patterns):
+   2 states: Indiana, Missouri
+   (These states have totals that don't match any combination of their component counts)
+
+
+Full Enhanced Data with Estimated Totals (All 50 States):</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<style type="text/css">
+</style>
+
+<table id="T_0dd3c" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_0dd3c_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">state</th>
+<th id="T_0dd3c_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">n_total_estimated</th>
+<th id="T_0dd3c_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">n_total_reported</th>
+<th id="T_0dd3c_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">n_offenders</th>
+<th id="T_0dd3c_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">n_arrestees</th>
+<th id="T_0dd3c_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">n_forensic</th>
+<th id="T_0dd3c_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">n_total_estimated_comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_0dd3c_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
+<td id="T_0dd3c_row0_col0" class="data row0 col0">Alabama</td>
+<td id="T_0dd3c_row0_col1" class="data row0 col1">360,000</td>
+<td id="T_0dd3c_row0_col2" class="data row0 col2">360,000</td>
+<td id="T_0dd3c_row0_col3" class="data row0 col3"></td>
+<td id="T_0dd3c_row0_col4" class="data row0 col4"></td>
+<td id="T_0dd3c_row0_col5" class="data row0 col5"></td>
+<td id="T_0dd3c_row0_col6" class="data row0 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
+<td id="T_0dd3c_row1_col0" class="data row1 col0">Alaska</td>
+<td id="T_0dd3c_row1_col1" class="data row1 col1">79,146</td>
+<td id="T_0dd3c_row1_col2" class="data row1 col2">79,146</td>
+<td id="T_0dd3c_row1_col3" class="data row1 col3">26,997</td>
+<td id="T_0dd3c_row1_col4" class="data row1 col4">52,149</td>
+<td id="T_0dd3c_row1_col5" class="data row1 col5">3,866</td>
+<td id="T_0dd3c_row1_col6" class="data row1 col6">Used reported total (matches offenders + arrestees)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
+<td id="T_0dd3c_row2_col0" class="data row2 col0">Arizona</td>
+<td id="T_0dd3c_row2_col1" class="data row2 col1"></td>
+<td id="T_0dd3c_row2_col2" class="data row2 col2"></td>
+<td id="T_0dd3c_row2_col3" class="data row2 col3"></td>
+<td id="T_0dd3c_row2_col4" class="data row2 col4"></td>
+<td id="T_0dd3c_row2_col5" class="data row2 col5"></td>
+<td id="T_0dd3c_row2_col6" class="data row2 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
+<td id="T_0dd3c_row3_col0" class="data row3 col0">Arkansas</td>
+<td id="T_0dd3c_row3_col1" class="data row3 col1">12,221</td>
+<td id="T_0dd3c_row3_col2" class="data row3 col2">12,221</td>
+<td id="T_0dd3c_row3_col3" class="data row3 col3"></td>
+<td id="T_0dd3c_row3_col4" class="data row3 col4"></td>
+<td id="T_0dd3c_row3_col5" class="data row3 col5"></td>
+<td id="T_0dd3c_row3_col6" class="data row3 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
+<td id="T_0dd3c_row4_col0" class="data row4 col0">California</td>
+<td id="T_0dd3c_row4_col1" class="data row4 col1">3,365,402</td>
+<td id="T_0dd3c_row4_col2" class="data row4 col2">3,365,402</td>
+<td id="T_0dd3c_row4_col3" class="data row4 col3"></td>
+<td id="T_0dd3c_row4_col4" class="data row4 col4"></td>
+<td id="T_0dd3c_row4_col5" class="data row4 col5">167,053</td>
+<td id="T_0dd3c_row4_col6" class="data row4 col6">Total only reported (forensic reported separately)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</td>
+<td id="T_0dd3c_row5_col0" class="data row5 col0">Colorado</td>
+<td id="T_0dd3c_row5_col1" class="data row5 col1">499,170</td>
+<td id="T_0dd3c_row5_col2" class="data row5 col2">499,170</td>
+<td id="T_0dd3c_row5_col3" class="data row5 col3"></td>
+<td id="T_0dd3c_row5_col4" class="data row5 col4"></td>
+<td id="T_0dd3c_row5_col5" class="data row5 col5"></td>
+<td id="T_0dd3c_row5_col6" class="data row5 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</td>
+<td id="T_0dd3c_row6_col0" class="data row6 col0">Connecticut</td>
+<td id="T_0dd3c_row6_col1" class="data row6 col1">127,940</td>
+<td id="T_0dd3c_row6_col2" class="data row6 col2">127,940</td>
+<td id="T_0dd3c_row6_col3" class="data row6 col3">127,940</td>
+<td id="T_0dd3c_row6_col4" class="data row6 col4"></td>
+<td id="T_0dd3c_row6_col5" class="data row6 col5">23,200</td>
+<td id="T_0dd3c_row6_col6" class="data row6 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</td>
+<td id="T_0dd3c_row7_col0" class="data row7 col0">Delaware</td>
+<td id="T_0dd3c_row7_col1" class="data row7 col1"></td>
+<td id="T_0dd3c_row7_col2" class="data row7 col2"></td>
+<td id="T_0dd3c_row7_col3" class="data row7 col3"></td>
+<td id="T_0dd3c_row7_col4" class="data row7 col4">0</td>
+<td id="T_0dd3c_row7_col5" class="data row7 col5"></td>
+<td id="T_0dd3c_row7_col6" class="data row7 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">8</td>
+<td id="T_0dd3c_row8_col0" class="data row8 col0">Florida</td>
+<td id="T_0dd3c_row8_col1" class="data row8 col1">1,713,890</td>
+<td id="T_0dd3c_row8_col2" class="data row8 col2">1,713,890</td>
+<td id="T_0dd3c_row8_col3" class="data row8 col3"></td>
+<td id="T_0dd3c_row8_col4" class="data row8 col4"></td>
+<td id="T_0dd3c_row8_col5" class="data row8 col5"></td>
+<td id="T_0dd3c_row8_col6" class="data row8 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">9</td>
+<td id="T_0dd3c_row9_col0" class="data row9 col0">Georgia</td>
+<td id="T_0dd3c_row9_col1" class="data row9 col1">347,145</td>
+<td id="T_0dd3c_row9_col2" class="data row9 col2">347,145</td>
+<td id="T_0dd3c_row9_col3" class="data row9 col3">324,864</td>
+<td id="T_0dd3c_row9_col4" class="data row9 col4"></td>
+<td id="T_0dd3c_row9_col5" class="data row9 col5">22,281</td>
+<td id="T_0dd3c_row9_col6" class="data row9 col6">Total with discrepancy (calculation unclear)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">10</td>
+<td id="T_0dd3c_row10_col0" class="data row10 col0">Hawaii</td>
+<td id="T_0dd3c_row10_col1" class="data row10 col1"></td>
+<td id="T_0dd3c_row10_col2" class="data row10 col2"></td>
+<td id="T_0dd3c_row10_col3" class="data row10 col3"></td>
+<td id="T_0dd3c_row10_col4" class="data row10 col4">0</td>
+<td id="T_0dd3c_row10_col5" class="data row10 col5"></td>
+<td id="T_0dd3c_row10_col6" class="data row10 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">11</td>
+<td id="T_0dd3c_row11_col0" class="data row11 col0">Idaho</td>
+<td id="T_0dd3c_row11_col1" class="data row11 col1">39,000</td>
+<td id="T_0dd3c_row11_col2" class="data row11 col2">39,000</td>
+<td id="T_0dd3c_row11_col3" class="data row11 col3">39,000</td>
+<td id="T_0dd3c_row11_col4" class="data row11 col4">0</td>
+<td id="T_0dd3c_row11_col5" class="data row11 col5"></td>
+<td id="T_0dd3c_row11_col6" class="data row11 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">12</td>
+<td id="T_0dd3c_row12_col0" class="data row12 col0">Illinois</td>
+<td id="T_0dd3c_row12_col1" class="data row12 col1">689,297</td>
+<td id="T_0dd3c_row12_col2" class="data row12 col2">689,297</td>
+<td id="T_0dd3c_row12_col3" class="data row12 col3">689,297</td>
+<td id="T_0dd3c_row12_col4" class="data row12 col4"></td>
+<td id="T_0dd3c_row12_col5" class="data row12 col5">69,927</td>
+<td id="T_0dd3c_row12_col6" class="data row12 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">13</td>
+<td id="T_0dd3c_row13_col0" class="data row13 col0">Indiana</td>
+<td id="T_0dd3c_row13_col1" class="data row13 col1">449,000</td>
+<td id="T_0dd3c_row13_col2" class="data row13 col2">449,000</td>
+<td id="T_0dd3c_row13_col3" class="data row13 col3">304,000</td>
+<td id="T_0dd3c_row13_col4" class="data row13 col4">144,000</td>
+<td id="T_0dd3c_row13_col5" class="data row13 col5">22,400</td>
+<td id="T_0dd3c_row13_col6" class="data row13 col6">Total with discrepancy (calculation unclear)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">14</td>
+<td id="T_0dd3c_row14_col0" class="data row14 col0">Iowa</td>
+<td id="T_0dd3c_row14_col1" class="data row14 col1"></td>
+<td id="T_0dd3c_row14_col2" class="data row14 col2"></td>
+<td id="T_0dd3c_row14_col3" class="data row14 col3"></td>
+<td id="T_0dd3c_row14_col4" class="data row14 col4">0</td>
+<td id="T_0dd3c_row14_col5" class="data row14 col5"></td>
+<td id="T_0dd3c_row14_col6" class="data row14 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">15</td>
+<td id="T_0dd3c_row15_col0" class="data row15 col0">Kansas</td>
+<td id="T_0dd3c_row15_col1" class="data row15 col1"></td>
+<td id="T_0dd3c_row15_col2" class="data row15 col2"></td>
+<td id="T_0dd3c_row15_col3" class="data row15 col3"></td>
+<td id="T_0dd3c_row15_col4" class="data row15 col4"></td>
+<td id="T_0dd3c_row15_col5" class="data row15 col5"></td>
+<td id="T_0dd3c_row15_col6" class="data row15 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">16</td>
+<td id="T_0dd3c_row16_col0" class="data row16 col0">Kentucky</td>
+<td id="T_0dd3c_row16_col1" class="data row16 col1"></td>
+<td id="T_0dd3c_row16_col2" class="data row16 col2"></td>
+<td id="T_0dd3c_row16_col3" class="data row16 col3"></td>
+<td id="T_0dd3c_row16_col4" class="data row16 col4">0</td>
+<td id="T_0dd3c_row16_col5" class="data row16 col5"></td>
+<td id="T_0dd3c_row16_col6" class="data row16 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th">17</td>
+<td id="T_0dd3c_row17_col0" class="data row17 col0">Louisiana</td>
+<td id="T_0dd3c_row17_col1" class="data row17 col1">699,618</td>
+<td id="T_0dd3c_row17_col2" class="data row17 col2">699,618</td>
+<td id="T_0dd3c_row17_col3" class="data row17 col3"></td>
+<td id="T_0dd3c_row17_col4" class="data row17 col4"></td>
+<td id="T_0dd3c_row17_col5" class="data row17 col5"></td>
+<td id="T_0dd3c_row17_col6" class="data row17 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">18</td>
+<td id="T_0dd3c_row18_col0" class="data row18 col0">Maine</td>
+<td id="T_0dd3c_row18_col1" class="data row18 col1"></td>
+<td id="T_0dd3c_row18_col2" class="data row18 col2"></td>
+<td id="T_0dd3c_row18_col3" class="data row18 col3"></td>
+<td id="T_0dd3c_row18_col4" class="data row18 col4">0</td>
+<td id="T_0dd3c_row18_col5" class="data row18 col5"></td>
+<td id="T_0dd3c_row18_col6" class="data row18 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th">19</td>
+<td id="T_0dd3c_row19_col0" class="data row19 col0">Maryland</td>
+<td id="T_0dd3c_row19_col1" class="data row19 col1">147,803</td>
+<td id="T_0dd3c_row19_col2" class="data row19 col2"></td>
+<td id="T_0dd3c_row19_col3" class="data row19 col3">142,278</td>
+<td id="T_0dd3c_row19_col4" class="data row19 col4">5,525</td>
+<td id="T_0dd3c_row19_col5" class="data row19 col5"></td>
+<td id="T_0dd3c_row19_col6" class="data row19 col6">Calculated from offenders + arrestees (no total reported)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">20</td>
+<td id="T_0dd3c_row20_col0" class="data row20 col0">Massachusetts</td>
+<td id="T_0dd3c_row20_col1" class="data row20 col1"></td>
+<td id="T_0dd3c_row20_col2" class="data row20 col2"></td>
+<td id="T_0dd3c_row20_col3" class="data row20 col3"></td>
+<td id="T_0dd3c_row20_col4" class="data row20 col4">0</td>
+<td id="T_0dd3c_row20_col5" class="data row20 col5"></td>
+<td id="T_0dd3c_row20_col6" class="data row20 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">21</td>
+<td id="T_0dd3c_row21_col0" class="data row21 col0">Michigan</td>
+<td id="T_0dd3c_row21_col1" class="data row21 col1"></td>
+<td id="T_0dd3c_row21_col2" class="data row21 col2"></td>
+<td id="T_0dd3c_row21_col3" class="data row21 col3"></td>
+<td id="T_0dd3c_row21_col4" class="data row21 col4"></td>
+<td id="T_0dd3c_row21_col5" class="data row21 col5"></td>
+<td id="T_0dd3c_row21_col6" class="data row21 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th">22</td>
+<td id="T_0dd3c_row22_col0" class="data row22 col0">Minnesota</td>
+<td id="T_0dd3c_row22_col1" class="data row22 col1">180,000</td>
+<td id="T_0dd3c_row22_col2" class="data row22 col2">180,000</td>
+<td id="T_0dd3c_row22_col3" class="data row22 col3">180,000</td>
+<td id="T_0dd3c_row22_col4" class="data row22 col4"></td>
+<td id="T_0dd3c_row22_col5" class="data row22 col5"></td>
+<td id="T_0dd3c_row22_col6" class="data row22 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">23</td>
+<td id="T_0dd3c_row23_col0" class="data row23 col0">Mississippi</td>
+<td id="T_0dd3c_row23_col1" class="data row23 col1">118,000</td>
+<td id="T_0dd3c_row23_col2" class="data row23 col2">118,000</td>
+<td id="T_0dd3c_row23_col3" class="data row23 col3"></td>
+<td id="T_0dd3c_row23_col4" class="data row23 col4"></td>
+<td id="T_0dd3c_row23_col5" class="data row23 col5"></td>
+<td id="T_0dd3c_row23_col6" class="data row23 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">24</td>
+<td id="T_0dd3c_row24_col0" class="data row24 col0">Missouri</td>
+<td id="T_0dd3c_row24_col1" class="data row24 col1">400,000</td>
+<td id="T_0dd3c_row24_col2" class="data row24 col2">400,000</td>
+<td id="T_0dd3c_row24_col3" class="data row24 col3">386,000</td>
+<td id="T_0dd3c_row24_col4" class="data row24 col4"></td>
+<td id="T_0dd3c_row24_col5" class="data row24 col5"></td>
+<td id="T_0dd3c_row24_col6" class="data row24 col6">Total with discrepancy (calculation unclear)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th">25</td>
+<td id="T_0dd3c_row25_col0" class="data row25 col0">Montana</td>
+<td id="T_0dd3c_row25_col1" class="data row25 col1">32,284</td>
+<td id="T_0dd3c_row25_col2" class="data row25 col2">32,284</td>
+<td id="T_0dd3c_row25_col3" class="data row25 col3">32,284</td>
+<td id="T_0dd3c_row25_col4" class="data row25 col4">0</td>
+<td id="T_0dd3c_row25_col5" class="data row25 col5">878</td>
+<td id="T_0dd3c_row25_col6" class="data row25 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">26</td>
+<td id="T_0dd3c_row26_col0" class="data row26 col0">Nebraska</td>
+<td id="T_0dd3c_row26_col1" class="data row26 col1"></td>
+<td id="T_0dd3c_row26_col2" class="data row26 col2"></td>
+<td id="T_0dd3c_row26_col3" class="data row26 col3"></td>
+<td id="T_0dd3c_row26_col4" class="data row26 col4">0</td>
+<td id="T_0dd3c_row26_col5" class="data row26 col5"></td>
+<td id="T_0dd3c_row26_col6" class="data row26 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">27</td>
+<td id="T_0dd3c_row27_col0" class="data row27 col0">Nevada</td>
+<td id="T_0dd3c_row27_col1" class="data row27 col1">245,000</td>
+<td id="T_0dd3c_row27_col2" class="data row27 col2">245,000</td>
+<td id="T_0dd3c_row27_col3" class="data row27 col3"></td>
+<td id="T_0dd3c_row27_col4" class="data row27 col4"></td>
+<td id="T_0dd3c_row27_col5" class="data row27 col5"></td>
+<td id="T_0dd3c_row27_col6" class="data row27 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">28</td>
+<td id="T_0dd3c_row28_col0" class="data row28 col0">New Hampshire</td>
+<td id="T_0dd3c_row28_col1" class="data row28 col1"></td>
+<td id="T_0dd3c_row28_col2" class="data row28 col2"></td>
+<td id="T_0dd3c_row28_col3" class="data row28 col3"></td>
+<td id="T_0dd3c_row28_col4" class="data row28 col4">0</td>
+<td id="T_0dd3c_row28_col5" class="data row28 col5"></td>
+<td id="T_0dd3c_row28_col6" class="data row28 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th">29</td>
+<td id="T_0dd3c_row29_col0" class="data row29 col0">New Jersey</td>
+<td id="T_0dd3c_row29_col1" class="data row29 col1">32,696</td>
+<td id="T_0dd3c_row29_col2" class="data row29 col2">32,696</td>
+<td id="T_0dd3c_row29_col3" class="data row29 col3"></td>
+<td id="T_0dd3c_row29_col4" class="data row29 col4"></td>
+<td id="T_0dd3c_row29_col5" class="data row29 col5"></td>
+<td id="T_0dd3c_row29_col6" class="data row29 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">30</td>
+<td id="T_0dd3c_row30_col0" class="data row30 col0">New Mexico</td>
+<td id="T_0dd3c_row30_col1" class="data row30 col1"></td>
+<td id="T_0dd3c_row30_col2" class="data row30 col2"></td>
+<td id="T_0dd3c_row30_col3" class="data row30 col3"></td>
+<td id="T_0dd3c_row30_col4" class="data row30 col4"></td>
+<td id="T_0dd3c_row30_col5" class="data row30 col5"></td>
+<td id="T_0dd3c_row30_col6" class="data row30 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th">31</td>
+<td id="T_0dd3c_row31_col0" class="data row31 col0">New York</td>
+<td id="T_0dd3c_row31_col1" class="data row31 col1"></td>
+<td id="T_0dd3c_row31_col2" class="data row31 col2"></td>
+<td id="T_0dd3c_row31_col3" class="data row31 col3"></td>
+<td id="T_0dd3c_row31_col4" class="data row31 col4">0</td>
+<td id="T_0dd3c_row31_col5" class="data row31 col5"></td>
+<td id="T_0dd3c_row31_col6" class="data row31 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">32</td>
+<td id="T_0dd3c_row32_col0" class="data row32 col0">North Carolina</td>
+<td id="T_0dd3c_row32_col1" class="data row32 col1">350,000</td>
+<td id="T_0dd3c_row32_col2" class="data row32 col2">350,000</td>
+<td id="T_0dd3c_row32_col3" class="data row32 col3">300,000</td>
+<td id="T_0dd3c_row32_col4" class="data row32 col4">50,000</td>
+<td id="T_0dd3c_row32_col5" class="data row32 col5"></td>
+<td id="T_0dd3c_row32_col6" class="data row32 col6">Used reported total (matches offenders + arrestees)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row33" class="row_heading level0 row33" data-quarto-table-cell-role="th">33</td>
+<td id="T_0dd3c_row33_col0" class="data row33 col0">North Dakota</td>
+<td id="T_0dd3c_row33_col1" class="data row33 col1"></td>
+<td id="T_0dd3c_row33_col2" class="data row33 col2"></td>
+<td id="T_0dd3c_row33_col3" class="data row33 col3"></td>
+<td id="T_0dd3c_row33_col4" class="data row33 col4"></td>
+<td id="T_0dd3c_row33_col5" class="data row33 col5"></td>
+<td id="T_0dd3c_row33_col6" class="data row33 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row34" class="row_heading level0 row34" data-quarto-table-cell-role="th">34</td>
+<td id="T_0dd3c_row34_col0" class="data row34 col0">Ohio</td>
+<td id="T_0dd3c_row34_col1" class="data row34 col1"></td>
+<td id="T_0dd3c_row34_col2" class="data row34 col2"></td>
+<td id="T_0dd3c_row34_col3" class="data row34 col3"></td>
+<td id="T_0dd3c_row34_col4" class="data row34 col4"></td>
+<td id="T_0dd3c_row34_col5" class="data row34 col5"></td>
+<td id="T_0dd3c_row34_col6" class="data row34 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row35" class="row_heading level0 row35" data-quarto-table-cell-role="th">35</td>
+<td id="T_0dd3c_row35_col0" class="data row35 col0">Oklahoma</td>
+<td id="T_0dd3c_row35_col1" class="data row35 col1"></td>
+<td id="T_0dd3c_row35_col2" class="data row35 col2"></td>
+<td id="T_0dd3c_row35_col3" class="data row35 col3"></td>
+<td id="T_0dd3c_row35_col4" class="data row35 col4"></td>
+<td id="T_0dd3c_row35_col5" class="data row35 col5"></td>
+<td id="T_0dd3c_row35_col6" class="data row35 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row36" class="row_heading level0 row36" data-quarto-table-cell-role="th">36</td>
+<td id="T_0dd3c_row36_col0" class="data row36 col0">Oregon</td>
+<td id="T_0dd3c_row36_col1" class="data row36 col1"></td>
+<td id="T_0dd3c_row36_col2" class="data row36 col2"></td>
+<td id="T_0dd3c_row36_col3" class="data row36 col3"></td>
+<td id="T_0dd3c_row36_col4" class="data row36 col4">0</td>
+<td id="T_0dd3c_row36_col5" class="data row36 col5"></td>
+<td id="T_0dd3c_row36_col6" class="data row36 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row37" class="row_heading level0 row37" data-quarto-table-cell-role="th">37</td>
+<td id="T_0dd3c_row37_col0" class="data row37 col0">Pennsylvania</td>
+<td id="T_0dd3c_row37_col1" class="data row37 col1"></td>
+<td id="T_0dd3c_row37_col2" class="data row37 col2"></td>
+<td id="T_0dd3c_row37_col3" class="data row37 col3"></td>
+<td id="T_0dd3c_row37_col4" class="data row37 col4">0</td>
+<td id="T_0dd3c_row37_col5" class="data row37 col5"></td>
+<td id="T_0dd3c_row37_col6" class="data row37 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row38" class="row_heading level0 row38" data-quarto-table-cell-role="th">38</td>
+<td id="T_0dd3c_row38_col0" class="data row38 col0">Rhode Island</td>
+<td id="T_0dd3c_row38_col1" class="data row38 col1">27,818</td>
+<td id="T_0dd3c_row38_col2" class="data row38 col2">27,818</td>
+<td id="T_0dd3c_row38_col3" class="data row38 col3">27,334</td>
+<td id="T_0dd3c_row38_col4" class="data row38 col4">484</td>
+<td id="T_0dd3c_row38_col5" class="data row38 col5">1,798</td>
+<td id="T_0dd3c_row38_col6" class="data row38 col6">Used reported total (matches offenders + arrestees)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row39" class="row_heading level0 row39" data-quarto-table-cell-role="th">39</td>
+<td id="T_0dd3c_row39_col0" class="data row39 col0">South Carolina</td>
+<td id="T_0dd3c_row39_col1" class="data row39 col1">175,629</td>
+<td id="T_0dd3c_row39_col2" class="data row39 col2">175,629</td>
+<td id="T_0dd3c_row39_col3" class="data row39 col3"></td>
+<td id="T_0dd3c_row39_col4" class="data row39 col4"></td>
+<td id="T_0dd3c_row39_col5" class="data row39 col5">11,127</td>
+<td id="T_0dd3c_row39_col6" class="data row39 col6">Total only reported (forensic reported separately)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row40" class="row_heading level0 row40" data-quarto-table-cell-role="th">40</td>
+<td id="T_0dd3c_row40_col0" class="data row40 col0">South Dakota</td>
+<td id="T_0dd3c_row40_col1" class="data row40 col1">56,200</td>
+<td id="T_0dd3c_row40_col2" class="data row40 col2">56,200</td>
+<td id="T_0dd3c_row40_col3" class="data row40 col3"></td>
+<td id="T_0dd3c_row40_col4" class="data row40 col4"></td>
+<td id="T_0dd3c_row40_col5" class="data row40 col5"></td>
+<td id="T_0dd3c_row40_col6" class="data row40 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row41" class="row_heading level0 row41" data-quarto-table-cell-role="th">41</td>
+<td id="T_0dd3c_row41_col0" class="data row41 col0">Tennessee</td>
+<td id="T_0dd3c_row41_col1" class="data row41 col1">518,614</td>
+<td id="T_0dd3c_row41_col2" class="data row41 col2">518,614</td>
+<td id="T_0dd3c_row41_col3" class="data row41 col3">292,045</td>
+<td id="T_0dd3c_row41_col4" class="data row41 col4">226,569</td>
+<td id="T_0dd3c_row41_col5" class="data row41 col5"></td>
+<td id="T_0dd3c_row41_col6" class="data row41 col6">Used reported total (matches offenders + arrestees)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row42" class="row_heading level0 row42" data-quarto-table-cell-role="th">42</td>
+<td id="T_0dd3c_row42_col0" class="data row42 col0">Texas</td>
+<td id="T_0dd3c_row42_col1" class="data row42 col1">1,308,774</td>
+<td id="T_0dd3c_row42_col2" class="data row42 col2">1,308,774</td>
+<td id="T_0dd3c_row42_col3" class="data row42 col3">1,308,774</td>
+<td id="T_0dd3c_row42_col4" class="data row42 col4"></td>
+<td id="T_0dd3c_row42_col5" class="data row42 col5"></td>
+<td id="T_0dd3c_row42_col6" class="data row42 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row43" class="row_heading level0 row43" data-quarto-table-cell-role="th">43</td>
+<td id="T_0dd3c_row43_col0" class="data row43 col0">Utah</td>
+<td id="T_0dd3c_row43_col1" class="data row43 col1"></td>
+<td id="T_0dd3c_row43_col2" class="data row43 col2"></td>
+<td id="T_0dd3c_row43_col3" class="data row43 col3"></td>
+<td id="T_0dd3c_row43_col4" class="data row43 col4"></td>
+<td id="T_0dd3c_row43_col5" class="data row43 col5"></td>
+<td id="T_0dd3c_row43_col6" class="data row43 col6"></td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row44" class="row_heading level0 row44" data-quarto-table-cell-role="th">44</td>
+<td id="T_0dd3c_row44_col0" class="data row44 col0">Vermont</td>
+<td id="T_0dd3c_row44_col1" class="data row44 col1"></td>
+<td id="T_0dd3c_row44_col2" class="data row44 col2"></td>
+<td id="T_0dd3c_row44_col3" class="data row44 col3"></td>
+<td id="T_0dd3c_row44_col4" class="data row44 col4">0</td>
+<td id="T_0dd3c_row44_col5" class="data row44 col5"></td>
+<td id="T_0dd3c_row44_col6" class="data row44 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row45" class="row_heading level0 row45" data-quarto-table-cell-role="th">45</td>
+<td id="T_0dd3c_row45_col0" class="data row45 col0">Virginia</td>
+<td id="T_0dd3c_row45_col1" class="data row45 col1">520,131</td>
+<td id="T_0dd3c_row45_col2" class="data row45 col2">520,131</td>
+<td id="T_0dd3c_row45_col3" class="data row45 col3"></td>
+<td id="T_0dd3c_row45_col4" class="data row45 col4"></td>
+<td id="T_0dd3c_row45_col5" class="data row45 col5"></td>
+<td id="T_0dd3c_row45_col6" class="data row45 col6">Total only reported (no breakdown available)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row46" class="row_heading level0 row46" data-quarto-table-cell-role="th">46</td>
+<td id="T_0dd3c_row46_col0" class="data row46 col0">Washington</td>
+<td id="T_0dd3c_row46_col1" class="data row46 col1">272,000</td>
+<td id="T_0dd3c_row46_col2" class="data row46 col2">272,000</td>
+<td id="T_0dd3c_row46_col3" class="data row46 col3">272,000</td>
+<td id="T_0dd3c_row46_col4" class="data row46 col4">0</td>
+<td id="T_0dd3c_row46_col5" class="data row46 col5">8,800</td>
+<td id="T_0dd3c_row46_col6" class="data row46 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row47" class="row_heading level0 row47" data-quarto-table-cell-role="th">47</td>
+<td id="T_0dd3c_row47_col0" class="data row47 col0">West Virginia</td>
+<td id="T_0dd3c_row47_col1" class="data row47 col1">47,444</td>
+<td id="T_0dd3c_row47_col2" class="data row47 col2">47,444</td>
+<td id="T_0dd3c_row47_col3" class="data row47 col3">47,444</td>
+<td id="T_0dd3c_row47_col4" class="data row47 col4">0</td>
+<td id="T_0dd3c_row47_col5" class="data row47 col5">3,905</td>
+<td id="T_0dd3c_row47_col6" class="data row47 col6">Used reported total (matches offenders only)</td>
+</tr>
+<tr class="odd">
+<td id="T_0dd3c_level0_row48" class="row_heading level0 row48" data-quarto-table-cell-role="th">48</td>
+<td id="T_0dd3c_row48_col0" class="data row48 col0">Wisconsin</td>
+<td id="T_0dd3c_row48_col1" class="data row48 col1"></td>
+<td id="T_0dd3c_row48_col2" class="data row48 col2"></td>
+<td id="T_0dd3c_row48_col3" class="data row48 col3"></td>
+<td id="T_0dd3c_row48_col4" class="data row48 col4"></td>
+<td id="T_0dd3c_row48_col5" class="data row48 col5"></td>
+<td id="T_0dd3c_row48_col6" class="data row48 col6"></td>
+</tr>
+<tr class="even">
+<td id="T_0dd3c_level0_row49" class="row_heading level0 row49" data-quarto-table-cell-role="th">49</td>
+<td id="T_0dd3c_row49_col0" class="data row49 col0">Wyoming</td>
+<td id="T_0dd3c_row49_col1" class="data row49 col1"></td>
+<td id="T_0dd3c_row49_col2" class="data row49 col2"></td>
+<td id="T_0dd3c_row49_col3" class="data row49 col3"></td>
+<td id="T_0dd3c_row49_col4" class="data row49 col4">0</td>
+<td id="T_0dd3c_row49_col5" class="data row49 col5"></td>
+<td id="T_0dd3c_row49_col6" class="data row49 col6"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="export-enhanced-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="export-enhanced-dataset">Export Enhanced Dataset</h2>
+<p>This section exports the enhanced dataset with the new n_total_estimated values and documentation.</p>
+<div id="7dd33771" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare final dataset with key columns in logical order</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>final_columns <span class="op">=</span> [</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'state'</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total_estimated'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total_reported'</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_arrestees'</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_offenders'</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_forensic'</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'arrestee_collection'</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fam_search'</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'collection_statute'</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_total_estimated_comment'</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'total_method'</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns that exist in the dataset</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>available_columns <span class="op">=</span> [col <span class="cf">for</span> col <span class="kw">in</span> final_columns <span class="cf">if</span> col <span class="kw">in</span> sdis_enhanced.columns]</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>sdis_final <span class="op">=</span> sdis_enhanced[available_columns].copy()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to CSV</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> base_dir <span class="op">/</span> <span class="st">"output"</span> <span class="op">/</span> <span class="st">"sdis"</span> <span class="op">/</span> <span class="st">"sdis_clean.csv"</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>sdis_final.to_csv(output_path, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Exported enhanced SDIS dataset to: </span><span class="sc">{</span>output_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Display final summary statistics</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Final Summary Statistics:"</span>)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total states in dataset: </span><span class="sc">{</span><span class="bu">len</span>(sdis_final)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"States with n_total_estimated: </span><span class="sc">{</span>sdis_final[<span class="st">'n_total_estimated'</span>]<span class="sc">.</span>notna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"States with n_total_reported: </span><span class="sc">{</span>sdis_final[<span class="st">'n_total_reported'</span>]<span class="sc">.</span>notna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total profiles (estimated): </span><span class="sc">{</span>sdis_final[<span class="st">'n_total_estimated'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Show comparison of reported vs estimated totals</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> sdis_final[sdis_final[[<span class="st">'n_total_reported'</span>, <span class="st">'n_total_estimated'</span>]].notna().<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>)].copy()</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>comparison[<span class="st">'difference'</span>] <span class="op">=</span> comparison[<span class="st">'n_total_estimated'</span>] <span class="op">-</span> comparison[<span class="st">'n_total_reported'</span>]</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>comparison_summary <span class="op">=</span> comparison[comparison[<span class="st">'difference'</span>] <span class="op">!=</span> <span class="dv">0</span>][[<span class="st">'state'</span>, <span class="st">'n_total_reported'</span>, <span class="st">'n_total_estimated'</span>, <span class="st">'difference'</span>, <span class="st">'n_total_estimated_comment'</span>]]</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(comparison_summary) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">States where estimated differs from reported total:"</span>)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    display(comparison_summary.style.<span class="bu">format</span>({</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">'n_total_reported'</span>: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>,</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">'n_total_estimated'</span>: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span>,</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">'difference'</span>: <span class="st">'</span><span class="sc">{:,.0f}</span><span class="st">'</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    }).hide(axis<span class="op">=</span><span class="st">'index'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Exported enhanced SDIS dataset to: ../output/sdis/sdis_clean.csv
+
+
+Final Summary Statistics:
+==================================================
+Total states in dataset: 50
+States with n_total_estimated: 28
+States with n_total_reported: 27
+Total profiles (estimated): 12,814,222</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -183,3 +183,8 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 /.quarto/
+
+
+# ~/.gitignore_global  (then: git config --global core.excludesfile ~/.gitignore_global)
+.DS_Store
+

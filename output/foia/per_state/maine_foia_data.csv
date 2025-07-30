@@ -3,7 +3,7 @@ Maine,Combined,total,total_profiles,33711,count,2018-07-10
 Maine,Combined,gender,Male,27694,count,2018-07-10
 Maine,Combined,gender,Male,82.7,percentage,2018-07-10
 Maine,Combined,gender,Female,5734,count,2018-07-10
-Maine,Combined,gender,Female,17.0,percentage,2018-07-10
+Maine,Combined,gender,Female,17,percentage,2018-07-10
 Maine,Combined,gender,Unknown,83,count,2018-07-10
 Maine,Combined,gender,Unknown,0.2,percentage,2018-07-10
 Maine,Combined,race,White,31298,count,2018-07-10
@@ -13,7 +13,7 @@ Maine,Combined,race,Black,3.9,percentage,2018-07-10
 Maine,Combined,race,Unknown,470,count,2018-07-10
 Maine,Combined,race,Unknown,1.4,percentage,2018-07-10
 Maine,Combined,race,Native American,345,count,2018-07-10
-Maine,Combined,race,Native American,1.0,percentage,2018-07-10
+Maine,Combined,race,Native American,1,percentage,2018-07-10
 Maine,Combined,race,Hispanic,171,count,2018-07-10
 Maine,Combined,race,Hispanic,0.5,percentage,2018-07-10
 Maine,Combined,race,Asian,128,count,2018-07-10
