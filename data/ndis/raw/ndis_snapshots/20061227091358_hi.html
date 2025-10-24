@@ -1,0 +1,191 @@
+<html>
+<head>
+<title>Hawaii Stats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="450" border="0" height="450">
+  <tr valign="top"> 
+    <td> 
+      <div align="center"><img src="images/states/hawaii.jpg" width="100" height="48" align="left" alt="Graphic of Hawaii"><font size="+3">Hawaii</font> 
+      </div>
+      <hr>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <table width="400" border="2" align="center" summary="This table contains statistical information for CODIS">
+        <tr> 
+          <th> 
+            <div align="center">Statistical Information</div>
+          </th>
+          <th> 
+            <div align="center">Total</div>
+          </th>
+        </tr>
+        <tr> 
+          <td>Offender Profiles </td>
+          <td>2,095</td>
+        </tr>
+        <tr> 
+          <td>Forensic Samples </td>
+          <td>64</td>
+        </tr>
+        <tr> 
+          <td>Number of CODIS Labs </td>
+          <td>1</td>
+        </tr>
+        <tr> 
+          <td>NDIS Participating Labs </td>
+          <td>1</td>
+        </tr>
+        <tr> 
+          <td>Investigations Aided</td>
+          <td>5</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <p align="center"><a href="clickmap.htm"><font color="#000000"><b>Back to 
+        Statistical Map</b></font></a></p>
+    </td>
+  </tr>
+</table>
+<!-- START OF Data Collection Server TAG -->	
+<SCRIPT LANGUAGE="JavaScript"><!--
+var gImages=new Array;
+var gIndex=0;
+var DCS=new Object();
+var WT=new Object();
+var DCSext=new Object();
+
+var gDomain="209.235.0.153";
+//var gDomain="localhost";
+//var gDcsId="@@DCSID@@";
+var gDcsId="";
+// Add customizations here
+//WT.sp="@@SPLITVALUE@@";
+
+function dcsVar(){
+	var dCurrent=new Date();
+	WT.tz=dCurrent.getTimezoneOffset()/60*-1;
+	if (WT.tz==0){
+		WT.tz="0";
+	}
+	WT.bh=dCurrent.getHours();
+	WT.ul=navigator.appName=="Netscape"?navigator.language:navigator.userLanguage;
+	if (typeof(screen)=="object"){
+		WT.cd=screen.colorDepth;
+		WT.sr=screen.width+"x"+screen.height;
+	}
+	if (typeof(navigator.javaEnabled())=="boolean"){
+		WT.jo=navigator.javaEnabled()?"Yes":"No";
+	}
+	if (document.title){
+		WT.ti=document.title;
+	}
+	WT.js="Yes";
+	if (typeof(gVersion)!="undefined"){
+		WT.jv=gVersion;
+	}
+	DCS.dcsdat=dCurrent.getTime();
+	DCS.dcssip=window.location.hostname;
+	DCS.dcsuri=window.location.pathname;
+	if (window.location.search){
+		DCS.dcsqry=window.location.search;
+	}
+	if ((window.document.referrer!="")&&(window.document.referrer!="-")){
+		if (!(navigator.appName=="Microsoft Internet Explorer"&&parseInt(navigator.appVersion)<4)){
+			DCS.dcsref=window.document.referrer;
+		}
+	}
+}
+
+function A(N,V){
+	return "&"+N+"="+dcsEscape(V);
+}
+
+function dcsEscape(S){
+	if (typeof(RE)!="undefined"){
+		var retStr = new String(S);
+		for (R in RE){
+			retStr = retStr.replace(RE[R],R);
+		}
+		return retStr;
+	}
+	else{
+		return escape(S);
+	}
+}
+
+function dcsCreateImage(dcsSrc){
+	if (document.images){
+		gImages[gIndex]=new Image;
+		gImages[gIndex].src=dcsSrc;
+		gIndex++;
+	}
+	else{
+		document.write('<IMG BORDER="0" NAME="DCSIMG" WIDTH="1" HEIGHT="1" SRC="'+dcsSrc+'">');
+	}
+}
+
+function dcsMeta(){
+	var myDocumentElements;
+	if (document.all){
+		myDocumentElements=document.all.tags("meta");
+	}
+	else if (document.documentElement){
+		myDocumentElements=document.getElementsByTagName("meta");
+	}
+	if (typeof(myDocumentElements)!="undefined"){
+		for (var i=1;i<=myDocumentElements.length;i++){
+			myMeta=myDocumentElements.item(i-1);
+			if (myMeta.name){
+				if (myMeta.name.indexOf('WT.')==0){
+					WT[myMeta.name.substring(3)]=myMeta.content;
+				}
+				else if (myMeta.name.indexOf('DCSext.')==0){
+					DCSext[myMeta.name.substring(7)]=myMeta.content;
+				}
+				else if (myMeta.name.indexOf('DCS.')==0){
+					DCS[myMeta.name.substring(4)]=myMeta.content;
+				}
+			}
+		}
+	}
+}
+
+function dcsTag(){
+	var P="http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+(gDcsId==""?'':'/'+gDcsId)+"/dcs.gif?";
+	for (N in DCS){
+		if (DCS[N]) {
+			P+=A(N,DCS[N]);
+		}
+	}
+	for (N in WT){
+		if (WT[N]) {
+			P+=A("WT."+N,WT[N]);
+		}
+	}
+	for (N in DCSext){
+		if (DCSext[N]) {
+			P+=A(N,DCSext[N]);
+		}
+	}
+	if (P.length>2048&&navigator.userAgent.indexOf('MSIE')>=0){
+		P=P.substring(0,2040)+"&WT.tu=1";
+	}
+	dcsCreateImage(P);
+}
+
+dcsVar();
+dcsMeta();
+dcsTag();
+//-->
+</SCRIPT>
+
+<NOSCRIPT>
+<IMG BORDER="0" NAME="DCSIMG" WIDTH="1" HEIGHT="1" SRC="//209.235.0.153/njs.gif?dcsuri=/nojavascript&WT.js=No">
+</NOSCRIPT>
+<!-- END OF Data Collection Server TAG -->	
+
+</body>
+</html>

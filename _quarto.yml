@@ -1,6 +1,9 @@
 project:
   type: website
-
+  output-dir: docs
+  resources:
+    - figures/
+    
 website:
   title: "PODFRIDGE-Databases"
   navbar:
@@ -11,14 +14,16 @@ website:
         text: About
       - text: Analyses
         menu:
-          - href: analysis/ndis_scraping.html
+          - href: qmd_root/ndis_scraping.html
+            text: NDIS scraping methodology
+          - href: qmd_root/ndis_analysis.html
             text: NDIS analysis
-          - href: analysis/sdis_summary.html
+          - href: qmd_root/sdis_summary.html
             text: SDIS summary
-          - href: analysis/foia_processing.html
+          - href: qmd_root/foia_processing.html
             text: FOIA processing
-          - href: analysis/appendix_analysis.html
-            text: Appendix racial analysis
+          - href: qmd_root/appendix_analysis.html
+            text: Annual DNA Collection
 format:
   html:
     theme:

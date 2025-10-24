@@ -1,9 +1,0 @@
-state,offender_type,variable_category,variable_detailed,value,value_type,date
-Indiana,Convicted Offender,total,total_profiles,279654,count,2018-07-24
-Indiana,Arrestee,total,total_profiles,21087,count,2018-07-24
-Indiana,Combined,gender,Female,20,percentage,2018-07-24
-Indiana,Combined,gender,Male,80,percentage,2018-07-24
-Indiana,Combined,race,Caucasian,70,percentage,2018-07-24
-Indiana,Combined,race,Black,26,percentage,2018-07-24
-Indiana,Combined,race,Hispanic,4,percentage,2018-07-24
-Indiana,Combined,race,Other,<1,percentage,2018-07-24

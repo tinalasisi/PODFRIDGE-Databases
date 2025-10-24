@@ -1,7 +1,0 @@
-Download run started: 2025-07-21 16:12:25
-Total snapshots in list: 317
-Already downloaded: 317
-To download: 0
-============================================================
-
-All files already downloaded. No action needed.

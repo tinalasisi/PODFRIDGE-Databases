@@ -1,0 +1,243 @@
+{
+  "download_completed": "2025-10-09T14:32:27.352472",
+  "total_attempted": 10310,
+  "successful": 10263,
+  "failed": 47,
+  "failed_downloads": [
+    {
+      "timestamp": "20080706061357",
+      "url": "http://www.fbi.gov/hq/lab/codis/pa.htm",
+      "archive_url": "https://web.archive.org/web/20080706061357id_/http://www.fbi.gov/hq/lab/codis/pa.htm"
+    },
+    {
+      "timestamp": "20080706061621",
+      "url": "http://www.fbi.gov/hq/lab/codis/ct.htm",
+      "archive_url": "https://web.archive.org/web/20080706061621id_/http://www.fbi.gov/hq/lab/codis/ct.htm"
+    },
+    {
+      "timestamp": "20080706061653",
+      "url": "http://www.fbi.gov/hq/lab/codis/mn.htm",
+      "archive_url": "https://web.archive.org/web/20080706061653id_/http://www.fbi.gov/hq/lab/codis/mn.htm"
+    },
+    {
+      "timestamp": "20080706061941",
+      "url": "http://www.fbi.gov/hq/lab/codis/hi.htm",
+      "archive_url": "https://web.archive.org/web/20080706061941id_/http://www.fbi.gov/hq/lab/codis/hi.htm"
+    },
+    {
+      "timestamp": "20080706062053",
+      "url": "http://www.fbi.gov/hq/lab/codis/de.htm",
+      "archive_url": "https://web.archive.org/web/20080706062053id_/http://www.fbi.gov/hq/lab/codis/de.htm"
+    },
+    {
+      "timestamp": "20080706062109",
+      "url": "http://www.fbi.gov/hq/lab/codis/sd.htm",
+      "archive_url": "https://web.archive.org/web/20080706062109id_/http://www.fbi.gov/hq/lab/codis/sd.htm"
+    },
+    {
+      "timestamp": "20080706062141",
+      "url": "http://www.fbi.gov/hq/lab/codis/oh.htm",
+      "archive_url": "https://web.archive.org/web/20080706062141id_/http://www.fbi.gov/hq/lab/codis/oh.htm"
+    },
+    {
+      "timestamp": "20080706062213",
+      "url": "http://www.fbi.gov/hq/lab/codis/ar.htm",
+      "archive_url": "https://web.archive.org/web/20080706062213id_/http://www.fbi.gov/hq/lab/codis/ar.htm"
+    },
+    {
+      "timestamp": "20080706062221",
+      "url": "http://www.fbi.gov/hq/lab/codis/az.htm",
+      "archive_url": "https://web.archive.org/web/20080706062221id_/http://www.fbi.gov/hq/lab/codis/az.htm"
+    },
+    {
+      "timestamp": "20080706235118",
+      "url": "http://www.fbi.gov/hq/lab/codis/ok.htm",
+      "archive_url": "https://web.archive.org/web/20080706235118id_/http://www.fbi.gov/hq/lab/codis/ok.htm"
+    },
+    {
+      "timestamp": "20080706235406",
+      "url": "http://www.fbi.gov/hq/lab/codis/nj.htm",
+      "archive_url": "https://web.archive.org/web/20080706235406id_/http://www.fbi.gov/hq/lab/codis/nj.htm"
+    },
+    {
+      "timestamp": "20080706235518",
+      "url": "http://www.fbi.gov/hq/lab/codis/co.htm",
+      "archive_url": "https://web.archive.org/web/20080706235518id_/http://www.fbi.gov/hq/lab/codis/co.htm"
+    },
+    {
+      "timestamp": "20080718194019",
+      "url": "http://www.fbi.gov/hq/lab/codis/nv.htm",
+      "archive_url": "https://web.archive.org/web/20080718194019id_/http://www.fbi.gov/hq/lab/codis/nv.htm"
+    },
+    {
+      "timestamp": "20080718194547",
+      "url": "http://www.fbi.gov/hq/lab/codis/sc.htm",
+      "archive_url": "https://web.archive.org/web/20080718194547id_/http://www.fbi.gov/hq/lab/codis/sc.htm"
+    },
+    {
+      "timestamp": "20080718194603",
+      "url": "http://www.fbi.gov/hq/lab/codis/me.htm",
+      "archive_url": "https://web.archive.org/web/20080718194603id_/http://www.fbi.gov/hq/lab/codis/me.htm"
+    },
+    {
+      "timestamp": "20080718194643",
+      "url": "http://www.fbi.gov/hq/lab/codis/ks.htm",
+      "archive_url": "https://web.archive.org/web/20080718194643id_/http://www.fbi.gov/hq/lab/codis/ks.htm"
+    },
+    {
+      "timestamp": "20080718194819",
+      "url": "http://www.fbi.gov/hq/lab/codis/ia.htm",
+      "archive_url": "https://web.archive.org/web/20080718194819id_/http://www.fbi.gov/hq/lab/codis/ia.htm"
+    },
+    {
+      "timestamp": "20080718221243",
+      "url": "http://www.fbi.gov/hq/lab/codis/ut.htm",
+      "archive_url": "https://web.archive.org/web/20080718221243id_/http://www.fbi.gov/hq/lab/codis/ut.htm"
+    },
+    {
+      "timestamp": "20080718221342",
+      "url": "http://www.fbi.gov/hq/lab/codis/ri.htm",
+      "archive_url": "https://web.archive.org/web/20080718221342id_/http://www.fbi.gov/hq/lab/codis/ri.htm"
+    },
+    {
+      "timestamp": "20080718221548",
+      "url": "http://www.fbi.gov/hq/lab/codis/wv.htm",
+      "archive_url": "https://web.archive.org/web/20080718221548id_/http://www.fbi.gov/hq/lab/codis/wv.htm"
+    },
+    {
+      "timestamp": "20080718221708",
+      "url": "http://www.fbi.gov/hq/lab/codis/nm.htm",
+      "archive_url": "https://web.archive.org/web/20080718221708id_/http://www.fbi.gov/hq/lab/codis/nm.htm"
+    },
+    {
+      "timestamp": "20080718221716",
+      "url": "http://www.fbi.gov/hq/lab/codis/ne.htm",
+      "archive_url": "https://web.archive.org/web/20080718221716id_/http://www.fbi.gov/hq/lab/codis/ne.htm"
+    },
+    {
+      "timestamp": "20080718221956",
+      "url": "http://www.fbi.gov/hq/lab/codis/mt.htm",
+      "archive_url": "https://web.archive.org/web/20080718221956id_/http://www.fbi.gov/hq/lab/codis/mt.htm"
+    },
+    {
+      "timestamp": "20080718222043",
+      "url": "http://www.fbi.gov/hq/lab/codis/dc.htm",
+      "archive_url": "https://web.archive.org/web/20080718222043id_/http://www.fbi.gov/hq/lab/codis/dc.htm"
+    },
+    {
+      "timestamp": "20080719184822",
+      "url": "http://www.fbi.gov/hq/lab/codis/mo.htm",
+      "archive_url": "https://web.archive.org/web/20080719184822id_/http://www.fbi.gov/hq/lab/codis/mo.htm"
+    },
+    {
+      "timestamp": "20080719185146",
+      "url": "http://www.fbi.gov/hq/lab/codis/nh.htm",
+      "archive_url": "https://web.archive.org/web/20080719185146id_/http://www.fbi.gov/hq/lab/codis/nh.htm"
+    },
+    {
+      "timestamp": "20080719185407",
+      "url": "http://www.fbi.gov/hq/lab/codis/ga.htm",
+      "archive_url": "https://web.archive.org/web/20080719185407id_/http://www.fbi.gov/hq/lab/codis/ga.htm"
+    },
+    {
+      "timestamp": "20080719190148",
+      "url": "http://www.fbi.gov/hq/lab/codis/wi.htm",
+      "archive_url": "https://web.archive.org/web/20080719190148id_/http://www.fbi.gov/hq/lab/codis/wi.htm"
+    },
+    {
+      "timestamp": "20080719190205",
+      "url": "http://www.fbi.gov/hq/lab/codis/wa.htm",
+      "archive_url": "https://web.archive.org/web/20080719190205id_/http://www.fbi.gov/hq/lab/codis/wa.htm"
+    },
+    {
+      "timestamp": "20080719190240",
+      "url": "http://www.fbi.gov/hq/lab/codis/wy.htm",
+      "archive_url": "https://web.archive.org/web/20080719190240id_/http://www.fbi.gov/hq/lab/codis/wy.htm"
+    },
+    {
+      "timestamp": "20080719191316",
+      "url": "http://www.fbi.gov/hq/lab/codis/ak.htm",
+      "archive_url": "https://web.archive.org/web/20080719191316id_/http://www.fbi.gov/hq/lab/codis/ak.htm"
+    },
+    {
+      "timestamp": "20080723155339",
+      "url": "http://www.fbi.gov/hq/lab/codis/fl.htm",
+      "archive_url": "https://web.archive.org/web/20080723155339id_/http://www.fbi.gov/hq/lab/codis/fl.htm"
+    },
+    {
+      "timestamp": "20080723155435",
+      "url": "http://www.fbi.gov/hq/lab/codis/ky.htm",
+      "archive_url": "https://web.archive.org/web/20080723155435id_/http://www.fbi.gov/hq/lab/codis/ky.htm"
+    },
+    {
+      "timestamp": "20080723155523",
+      "url": "http://www.fbi.gov/hq/lab/codis/vt.htm",
+      "archive_url": "https://web.archive.org/web/20080723155523id_/http://www.fbi.gov/hq/lab/codis/vt.htm"
+    },
+    {
+      "timestamp": "20080723155827",
+      "url": "http://www.fbi.gov/hq/lab/codis/ca.htm",
+      "archive_url": "https://web.archive.org/web/20080723155827id_/http://www.fbi.gov/hq/lab/codis/ca.htm"
+    },
+    {
+      "timestamp": "20080723155939",
+      "url": "http://www.fbi.gov/hq/lab/codis/ms.htm",
+      "archive_url": "https://web.archive.org/web/20080723155939id_/http://www.fbi.gov/hq/lab/codis/ms.htm"
+    },
+    {
+      "timestamp": "20080723155947",
+      "url": "http://www.fbi.gov/hq/lab/codis/nd.htm",
+      "archive_url": "https://web.archive.org/web/20080723155947id_/http://www.fbi.gov/hq/lab/codis/nd.htm"
+    },
+    {
+      "timestamp": "20081007204844",
+      "url": "http://www.fbi.gov/hq/lab/codis/in.htm",
+      "archive_url": "https://web.archive.org/web/20081007204844id_/http://www.fbi.gov/hq/lab/codis/in.htm"
+    },
+    {
+      "timestamp": "20081122000958",
+      "url": "http://www.fbi.gov/hq/lab/codis/va.htm",
+      "archive_url": "https://web.archive.org/web/20081122000958id_/http://www.fbi.gov/hq/lab/codis/va.htm"
+    },
+    {
+      "timestamp": "20081122094659",
+      "url": "http://www.fbi.gov/hq/lab/codis/or.htm",
+      "archive_url": "https://web.archive.org/web/20081122094659id_/http://www.fbi.gov/hq/lab/codis/or.htm"
+    },
+    {
+      "timestamp": "20081122103026",
+      "url": "http://www.fbi.gov/hq/lab/codis/id.htm",
+      "archive_url": "https://web.archive.org/web/20081122103026id_/http://www.fbi.gov/hq/lab/codis/id.htm"
+    },
+    {
+      "timestamp": "20081122103307",
+      "url": "http://www.fbi.gov/hq/lab/codis/il.htm",
+      "archive_url": "https://web.archive.org/web/20081122103307id_/http://www.fbi.gov/hq/lab/codis/il.htm"
+    },
+    {
+      "timestamp": "20081122103506",
+      "url": "http://www.fbi.gov/hq/lab/codis/army.htm",
+      "archive_url": "https://web.archive.org/web/20081122103506id_/http://www.fbi.gov/hq/lab/codis/army.htm"
+    },
+    {
+      "timestamp": "20081122103842",
+      "url": "http://www.fbi.gov/hq/lab/codis/ny.htm",
+      "archive_url": "https://web.archive.org/web/20081122103842id_/http://www.fbi.gov/hq/lab/codis/ny.htm"
+    },
+    {
+      "timestamp": "20081122113207",
+      "url": "http://www.fbi.gov/hq/lab/codis/nc.htm",
+      "archive_url": "https://web.archive.org/web/20081122113207id_/http://www.fbi.gov/hq/lab/codis/nc.htm"
+    },
+    {
+      "timestamp": "20081122113539",
+      "url": "http://www.fbi.gov/hq/lab/codis/al.htm",
+      "archive_url": "https://web.archive.org/web/20081122113539id_/http://www.fbi.gov/hq/lab/codis/al.htm"
+    },
+    {
+      "timestamp": "20081122115658",
+      "url": "http://www.fbi.gov/hq/lab/codis/la.htm",
+      "archive_url": "https://web.archive.org/web/20081122115658id_/http://www.fbi.gov/hq/lab/codis/la.htm"
+    }
+  ]
+}
