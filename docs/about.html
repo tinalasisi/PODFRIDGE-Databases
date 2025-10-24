@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About PODFRIDGE-Databases – PODFRIDGE-Databases</title>
+<title>about – PODFRIDGE-Databases</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,20 +103,24 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analyses">    
         <li>
-    <a class="dropdown-item" href="./analysis/ndis_scraping.html">
+    <a class="dropdown-item" href="./qmd_root/ndis_scraping.html">
+ <span class="dropdown-text">NDIS scraping methodology</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./qmd_root/ndis_analysis.html">
  <span class="dropdown-text">NDIS analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./analysis/sdis_summary.html">
+    <a class="dropdown-item" href="./qmd_root/sdis_summary.html">
  <span class="dropdown-text">SDIS summary</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./analysis/foia_processing.html">
+    <a class="dropdown-item" href="./qmd_root/foia_processing.html">
  <span class="dropdown-text">FOIA processing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./analysis/appendix_analysis.html">
- <span class="dropdown-text">Appendix racial analysis</span></a>
+    <a class="dropdown-item" href="./qmd_root/appendix_analysis.html">
+ <span class="dropdown-text">Annual DNA Collection</span></a>
   </li>  
     </ul>
   </li>
@@ -136,118 +140,87 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#research-objectives" id="toc-research-objectives" class="nav-link" data-scroll-target="#research-objectives">Research Objectives</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a>
+  <li><a href="#podfridge---u.s.-forensic-dna-database" id="toc-podfridge---u.s.-forensic-dna-database" class="nav-link active" data-scroll-target="#podfridge---u.s.-forensic-dna-database">PODFRIDGE - U.S. Forensic DNA Database</a>
   <ul class="collapse">
-  <li><a href="#primary-data-collections" id="toc-primary-data-collections" class="nav-link" data-scroll-target="#primary-data-collections">Primary Data Collections</a></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
-  </ul></li>
-  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project Structure</a></li>
-  <li><a href="#team" id="toc-team" class="nav-link" data-scroll-target="#team">Team</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
+  <li><a href="#associated-publication" id="toc-associated-publication" class="nav-link" data-scroll-target="#associated-publication">Associated Publication</a></li>
+  <li><a href="#authors" id="toc-authors" class="nav-link" data-scroll-target="#authors">Authors</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure">Repository Structure</a></li>
+  <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access">Data Access</a></li>
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About PODFRIDGE-Databases</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>PODFRIDGE-Databases is an open-source research initiative focused on forensic DNA database systems in the United States. Our mission is to increase transparency and accessibility of DNA database information through systematic data collection, analysis, and public documentation.</p>
+<section id="podfridge---u.s.-forensic-dna-database" class="level1">
+<h1>PODFRIDGE - U.S. Forensic DNA Database</h1>
+<p>This repository contains data collection, processing, and analysis code for a comprehensive study of U.S. forensic DNA databases spanning 2001-2025. The project reconstructs the historical growth of the National DNA Index System (NDIS), compiles current state-level DNA database policies and statistics (SDIS), and standardizes demographic data from Freedom of Information Act (FOIA) requests.</p>
+<section id="associated-publication" class="level2">
+<h2 class="anchored" data-anchor-id="associated-publication">Associated Publication</h2>
+<p><strong>Lasisi, T., Donadio, J.P., Muller, M., Wilson, J., Mooney, J., &amp; Edge, M.D.</strong> (2025). United States forensic DNA databases: national time series (2001–2025) and state cross-sections.</p>
 </section>
-<section id="research-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="research-objectives">Research Objectives</h2>
-<ol type="1">
-<li><strong>Document Historical Growth</strong>: Track the expansion of the National DNA Index System (NDIS) from 2001-2025 using archived data from the FBI website</li>
-<li><strong>Analyze State Variations</strong>: Examine differences in state DNA database policies, practices, and legal frameworks</li>
-<li><strong>Investigate Demographic Patterns</strong>: Process and standardize demographic data from FOIA responses to study racial disparities</li>
-<li><strong>Ensure Reproducibility</strong>: Create transparent, documented pipelines for forensic data research</li>
-</ol>
-</section>
-<section id="data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
-<section id="primary-data-collections" class="level3">
-<h3 class="anchored" data-anchor-id="primary-data-collections">Primary Data Collections</h3>
+<section id="authors" class="level2">
+<h2 class="anchored" data-anchor-id="authors">Authors</h2>
 <ul>
-<li><strong>Wayback Machine Archives</strong>: Historical snapshots of FBI NDIS statistics (2001-2025)</li>
-<li><strong>FOIA Responses</strong>: Demographic data from 7 states (CA, FL, IN, ME, NV, SD, TX)</li>
-<li><strong>State Statutes</strong>: Legal frameworks governing DNA collection and database management</li>
-<li><strong>Government Reports</strong>: Official publications and statistical reports</li>
+<li><strong>Tina Lasisi</strong></li>
+<li><strong>J. P. Donadio</strong></li>
+<li><strong>S. C. Muller</strong></li>
+<li><strong>J. Wilson</strong></li>
+<li><strong>J. Mooney</strong></li>
+<li><strong>M. D. Edge</strong></li>
 </ul>
+<p><em>Corresponding author: tlasisi@umich.edu</em></p>
+<p><strong>Dataset DOI:</strong> [To be added]</p>
 </section>
-<section id="methodology" class="level3">
-<h3 class="anchored" data-anchor-id="methodology">Methodology</h3>
-<p>Our approach emphasizes:</p>
-<ul>
-<li><strong>Transparency</strong>: All data processing steps are documented and reproducible</li>
-<li><strong>Quality Control</strong>: Multiple validation checks for data integrity</li>
-<li><strong>Standardization</strong>: Consistent formatting across heterogeneous data sources</li>
-<li><strong>Ethical Considerations</strong>: Responsible handling of sensitive criminal justice data</li>
-</ul>
+<section id="repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
+<p>PODFRIDGE_Databases/</p>
+<p>├── _freeze/ # Quarto cache for rendered outputs</p>
+<p>├── data/ # Datasets used for NDIS analyses</p>
+<p>│ ├── ndis/ # NDIS related files (raw, intermediate and final)</p>
+<p>│ ├── sdis/ # SDIS related files (raw, intermediate and final)</p>
+<p>│ ├── foia/ # FOIA related files (raw, intermediate and final)</p>
+<p>│ ├── annual_dna_collection/ # Annual DNA Collection related files (raw, intermediate and final)</p>
+<p>│ ├── v1.0/ # Frozen csv files</p>
+<p>│ └── README.md</p>
+<p>├── docs/ # Rendered website (GitHub Pages output)</p>
+<p>├── figures/ # Figures generated by analyses</p>
+<p>├── qmd_root/ # Quarto notebooks and analysis scripts</p>
+<p>│ ├── ndis_scraping.qmd # NDIS data scraping notebook</p>
+<p>│ ├── ndis_analysis.qmd # NDIS technical validation &amp; figures</p>
+<p>│ ├── sdis_summary.qmd # SDIS compilation &amp; analysis</p>
+<p>│ ├── foia_processing.qmd # FOIA data processing</p>
+<p>│ ├── foia_processing_pdf.qmd # FOIA data processing in PDF</p>
+<p>│ ├── appendix_analysis.qmd # Murphy &amp; Tong appendix for Annual DNA Collection documentation</p>
+<p>│ └── appendix_analysis.qmd # Murphy &amp; Tong appendix for Annual DNA Collection documentation in PDF</p>
+<p>├── .gitattributes # Git file attributes</p>
+<p>├── .gitignore # Ignored files and folders</p>
+<p>├── LICENSE # Repository license</p>
+<p>├── README.md # Project overview and usage</p>
+<p>├── _quarto.yml # Quarto website configuration</p>
+<p>├── about.qmd # About page</p>
+<p>├── index.qmd # Main landing page</p>
+<p>├── requirements.txt # Python/R dependencies</p>
+<p>└── styles.css # Custom website styling</p>
 </section>
-</section>
-<section id="project-structure" class="level2">
-<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
-<p>PODFRIDGE-Databases/</p>
-<p>├── data/ # Frozen datasets</p>
-<p>├── raw/ # Raw data files</p>
-<p>├── output/ # Analysis outputs and visualizations</p>
-<p>├── analysis/ # Processing pipelines and analysis code</p>
-<p>├── archive/ # Documentation and research papers</p>
-<p>└── _site/ # Quarto website files</p>
-</section>
-<section id="team" class="level2">
-<h2 class="anchored" data-anchor-id="team">Team</h2>
-<p><strong>Tina Lasisi</strong> - Principal Investigator<br>
-<em>Assistant Professor at the University of Michigan Anthropology</em></p>
-<p><strong>João P. Donadio</strong> - Editor &amp; Technical Advisor<br>
-<em>Data Scientist &amp; Research Collaborator</em></p>
-</section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>We acknowledge the Internet Archive’s Wayback Machine for preserving historical web content that makes this research possible. The third part of this project builds upon foundational work by Professor Erin Murphy (NYU Law) and builds on the FOIA research conducted in 2018.</p>
-</section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>If you use this research or data in your work, please cite:</p>
-<p>Lasisi, T., &amp; Donadio, J.P. (2025). PODFRIDGE-Databases: Forensic DNA Database Analysis Platform. <a href="https://github.com/tinalasisi/PODFRIDGE-Databases">https://github.com/tinalasisi/PODFRIDGE-Databases</a></p>
+<section id="data-access" class="level2">
+<h2 class="anchored" data-anchor-id="data-access">Data Access</h2>
+<p>All final datasets are archived and publicly available on Zenodo:</p>
+<p><strong>Zenodo Repository:</strong> [DOI to be added upon publication]</p>
+<p>The repository includes: - <code>NDIS_time_series.csv</code> - Monthly NDIS statistics (2001-2025) - <code>SDIS_cross_section.csv</code> - State-level profiles and policies (2025) - <code>FOIA_Demographics.csv</code> - Demographic composition from FOIA responses - <code>Annual_DNA_Collection.csv</code> - Annual collection rates (Murphy &amp; Tong 2020) - Raw HTML files, intermediate processing outputs, and complete documentation</p>
+<p>For detailed data dictionaries and usage notes, see <code>data/README.md</code>.</p>
 </section>
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
-<p>This project is released under the MIT License. All data and code are available for research and educational purposes with proper attribution.</p>
+<p>Code: MIT License Data: CC BY 4.0 (pending Zenodo publication; FOIA-derived data subject to original authors’ permissions)</p>
+
+
 </section>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>For questions about this research or to collaborate:</p>
-<ul>
-<li><p>Email:</p></li>
-<li><p>GitHub: <a href="https://github.com/tinalasisi/PODFRIDGE-Databases">https://github.com/tinalasisi/PODFRIDGE-Databases</a></p></li>
-</ul>
-
-
 </section>
 
 </main> <!-- /main -->

@@ -1,6 +1,6 @@
 ---
 title: "PODFRIDGE-Databases"
-subtitle: "Forensic DNA Database Research & Analysis Platform"
+subtitle: "United States forensic DNA database platform"
 format: 
   html:
     theme: light
@@ -13,7 +13,7 @@ format:
 
 PODFRIDGE-Databases is a comprehensive research platform analyzing forensic DNA database systems in the United States. This project combines multiple data sources to examine the growth, composition, and demographic patterns within national and state DNA index systems.
 
-## Research Projects
+## Project Sections
 
 ### 1. NDIS Database Analysis
 **Tracking FBI's National DNA Index System (2001-2025)**
@@ -22,7 +22,9 @@ PODFRIDGE-Databases is a comprehensive research platform analyzing forensic DNA 
 - **Key Findings**: Exponential profile growth, jurisdictional participation patterns
 - **Methods**: Web scraping, data validation, time-series analysis
 
-[View Full Analysis →](analysis/ndis_scraping.qmd)
+[View Scraping Methodology →](qmd_root/ndis_scraping.qmd)
+
+[View Full Analysis →](qmd_root/ndis_analysis.qmd)
 
 ### 2. SDIS Summary Analysis  
 **State DNA Database Policies and Practices**
@@ -31,7 +33,7 @@ PODFRIDGE-Databases is a comprehensive research platform analyzing forensic DNA 
 - **Key Findings**: Arrestee collection policies, familial search allowances
 - **Methods**: Legal statute analysis, policy documentation
 
-[View Full Analysis →](analysis/sdis_summary.qmd)
+[View Full Analysis →](qmd_root/sdis_summary.qmd)
 
 ### 3. FOIA Document Processing
 **Racial Composition of State DNA Databases**
@@ -40,13 +42,13 @@ PODFRIDGE-Databases is a comprehensive research platform analyzing forensic DNA 
 - **Key Findings**: Standardized data from 7 states, transparency framework
 - **Methods**: OCR processing, data standardization, quality control
 
-[View Full Analysis →](analysis/foia_processing.qmd)
+[View Full Analysis →](qmd_root/foia_processing.qmd)
 
-### Complementary: Racial Disparities Methodology
-**Murphy & Tong Study Transparency Appendix**
+### 4. Annual DNA Collection
+**Murphy & Tong Study Appendix**
 
 - **Objective**: Document data sources and methodology for racial disparity research
 - **Key Findings**: Consistent disparities, data limitations, methodological challenges
 - **Methods**: Data provenance tracking, methodology documentation
 
-[View Methodology →](analysis/appendix_analysis.qmd)
+[View Full Analysis →](qmd_root/appendix_analysis.qmd)

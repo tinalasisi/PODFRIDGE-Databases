@@ -188,3 +188,4 @@ cython_debug/
 # ~/.gitignore_global 
 .DS_Store
 
+.Rproj.user

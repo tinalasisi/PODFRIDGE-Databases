@@ -1,0 +1,884 @@
+Alabama
+Legal Framework: AL Code § 36-18-25 (2013)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for all felonies and sexual offenses
+
+Data Sources:
+
+Convictions: Prison admission data from Department of Corrections Annual Report (2014)
+Arrests: Alabama Law Enforcement Agency Crime Report (2014)
+
+Source URLs:
+http://www.doc.state.al.us/docs/AnnualRpts/2014AnnualReport.pdf
+http://alea.gov/documents/documents/CrimeInAlabama-2014.pdf
+
+Data Limitations:
+No direct felony conviction data available
+No sexual misdemeanor data
+Racial categories limited to Black and White only
+Other racial groups data unavailable
+
+
+Alaska
+Legal Framework: AK Stat § 44.41.035 (2014)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for all felonies and crimes against a person
+
+Data Sources:
+Convictions: Prison admission data (2014) with racial proportions from Prison Policy Initiative
+Sex crimes: Estimated from 2015 reported sex crimes
+Arrests: 2015 Crime in Alaska Annual Report
+
+Source URLs:
+https://www.bjs.gov/content/pub/pdf/p14.pdf
+https://www.prisonpolicy.org/profiles/AK.html
+https://dps.alaska.gov/getmedia/5f0157ad-3f97-4798-8198-89de9ead6e2c/Supplemental-Crime-in-Alaska-Report
+https://dps.alaska.gov/getmedia/fd4b27c3-7660-4527-9d88-fcbaf6438cf0/2015-CIAK-Revised-02-08-2017
+
+Data Limitations:
+No specific conviction data
+Racial makeup estimated from current prison population
+Sex crime convictions not specified
+
+
+Arizona
+Legal Framework: AZ Rev Stat §13-610 (2016)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for certain dangerous/serious offenses and misdemeanors
+
+Data Sources:
+Convictions: Prison admission data (2015) with Prison Policy Initiative racial data
+Arrests: Crime in Arizona Report (2014)
+
+Source URLs:
+https://corrections.az.gov/sites/default/files/REPORTS/Inmate_Population/inmate_population_fact_sheet_as_of_06-30-2015.pdf
+https://www.prisonpolicy.org/profiles/AZ.html
+https://www.azdps.gov/sites/default/files/media/Crime_In_Arizona_Report_2014.pdf
+
+Data Limitations:
+Prison admissions used as proxy for convictions
+Hispanic/Latino counting uncertain due to separate ethnicity categorization
+
+
+Arkansas
+Legal Framework: AR Code §12-12-1109 & §12-12-1006
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for capital murder, first degree murder, kidnapping, rape, and sexual assault
+
+Data Sources:
+Convictions: Prison admission data (2015)
+Arrests: Race of persons arrested report (2015)
+
+Source URLs:
+https://adc.arkansas.gov/images/uploads/Statistical_Information_2015_rev1.pdf
+https://www.acic.org/Websites/acic/images/pdfs/2015_RaceSexPersonsArrested_State.pdf
+
+Data Limitations:
+No specific sexual misdemeanor conviction data
+Hispanic not included in racial categories
+
+
+California
+Legal Framework: CA Penal Code §296
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; any felony arrest
+
+Data Sources:
+
+Convictions & Arrests: Crime in California (2014)
+Racial makeup: Prison Policy Initiative estimates
+Source URL: https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd14/cd14.pdf
+
+Data Limitations:
+
+No sex crime misdemeanor conviction data
+Asian population data missing despite large state presence
+6% of arrestees categorized as "Other"
+
+
+Colorado
+Legal Framework: CO Rev Stat §16-23-103 (2016)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; any felony arrest
+
+Data Sources:
+
+Convictions: Prison admissions from Statistical Report (2015)
+Arrests: Community Law Enforcement Action Reporting Act report
+Source URLs:
+
+https://drive.google.com/file/d/0B21TrpBx507cczBTWVduZFRXYzQ/view
+http://cdpsdocs.state.co.us/ors/docs/reports/2016-SB15-185-Rpt.pdf
+
+
+
+Data Limitations:
+
+No sex crime misdemeanor conviction data
+Prison admissions used as proxy
+
+
+Connecticut
+Legal Framework: CT Gen Stat §54-102g (2012)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for serious felonies with prior convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2015) with racial makeup estimates
+Source URLs:
+
+https://www.bjs.gov/content/pub/pdf/p14.pdf
+https://www.prisonpolicy.org/profiles/CT.html
+
+
+
+Data Limitations:
+
+No data on arrests for prior convicts
+Prison admissions proxy used
+
+
+Delaware
+Legal Framework: 29 DE Code §4713 (2017)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2015)
+Source URL: http://www.doc.delaware.gov/assets/documents/annual_report/DOC_2015AnnualReport.pdf
+
+Data Limitations:
+
+Prison admissions proxy used
+No specific sex crime misdemeanor data
+
+
+Florida
+Legal Framework: FL Stat §943.325 (2016)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; stalking, voyeurism, obscene materials, gang-related offenses; felony arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2015) with racial estimates
+Arrests: Florida Department of Law Enforcement Arrest Data (2015)
+Source URLs:
+
+http://www.dc.state.fl.us/pub/annual/1415/FDC_AR2014-15.pdf
+https://www.prisonpolicy.org/profiles/FL.html
+http://www.fdle.state.fl.us/FSAC/Data-Statistics/UCR-Arrest-Data.aspx
+
+Data Limitations:
+
+Enumerated misdemeanor data unavailable
+Hispanic not separate category in arrests
+
+Georgia
+Legal Framework: GA Code §35-3-160 (2014)
+
+Collection Triggers: All felony convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2016)
+Source URL: http://www.dcor.state.ga.us/sites/all/themes/gdc/pdf/Profile_inmate_admissions_CY2016.pdf
+
+Data Limitations:
+
+No actual conviction data available
+
+
+Hawaii
+Legal Framework: HI Rev Stat §844D-31, 39 (2011)
+
+Collection Triggers: Felony and sex crime misdemeanor convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2015)
+Racial data: Multiple sources including Native Hawaiian justice report
+Source URLs:
+
+https://dps.hawaii.gov/wp-content/uploads/2016/12/PSD-ANNUAL-REPORT-2015.pdf
+http://www.justicepolicy.org/uploads/justicepolicy/documents/10-09_rep_disparatetreatmentofnativehawaiians_rd-ac.pdf
+https://www.prisonpolicy.org/profiles/HI.html
+
+
+
+Data Limitations:
+
+13.9% remain in "Others" category
+Sex crime misdemeanor data unavailable
+
+
+Idaho
+Legal Framework: ID Code §19-5506 (2016)
+
+Collection Triggers: All felony convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2014) with racial estimates
+Source URLs:
+
+https://www.idoc.idaho.gov/content/document/annual_report_fy14_0
+https://www.prisonpolicy.org/profiles/ID.html
+
+
+
+Data Limitations:
+
+No actual felony conviction data
+
+
+Illinois
+Legal Framework: 730 ILCS §5/5-4-3 (2013)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; specific violent crime arrests (with automatic expungement if not convicted)
+
+Data Sources:
+
+Convictions: Prison admissions (2013)
+Source URL: http://www.icjia.org/cjreform2015/research/illinois-prison-overview.html
+
+Data Limitations:
+
+Prison admissions proxy used
+
+
+Indiana
+Legal Framework: IN Code §10-13-6-10 (2017)
+
+Collection Triggers: All felony convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2014)
+Source URL: http://www.in.gov/idoc/files/2014DOCAnnualReport-Stats.pdf
+
+Data Limitations:
+
+Prison admissions proxy used
+
+
+Iowa
+Legal Framework: IA Code §81.2 (2016)
+
+Collection Triggers: All felony, sex crime misdemeanor, and aggravated misdemeanor convictions
+
+Data Sources:
+
+Convictions: Easy Access to Adult Criminal Data database (2016)
+Source URL: https://disposedcharges.iowa.gov
+
+Data Limitations:
+
+None noted (comprehensive data available)
+
+
+Kansas
+Legal Framework: KS Stat §21-2511 (2013)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; felony and misdemeanor arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2016)
+Arrests: Total arrest data (2014) with Shawnee County racial estimates
+Source URLs:
+
+https://www.doc.ks.gov/publications/Reports/2016
+https://drive.google.com/file/d/1gTc4F1GYp5pTdSoEsU5UT8Br90vjiD2q/view
+http://cjonline.com/news-local/2015-12-21/arrest-rates-race-show-wide-disparities-topeka-nationally
+
+
+
+Data Limitations:
+
+Shawnee County used as proxy for state racial makeup
+Only Black/White categories available
+
+
+Kentucky
+Legal Framework: KY Rev Stat §17.170 (1996)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions
+
+Data Sources:
+
+Convictions: Conviction statistics (2012) with prison racial makeup
+Source URLs:
+
+https://justice.ky.gov/Documents/Sourcebook/Sourcebook2012Content.pdf
+https://www.prisonpolicy.org/profiles/KY.html
+
+
+
+Data Limitations:
+
+Racial makeup estimated from prison population
+
+
+Louisiana
+Legal Framework: LA Rev Stat § 15:609 (2011)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; specific misdemeanors; related arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2015) with racial estimates
+Source URLs:
+
+http://www.doc.la.gov/media/1/Briefing%20Book/Jan%202017/recid.admis.rels.jan.17.pdf
+https://www.prisonpolicy.org/profiles/LA.html
+
+
+
+Data Limitations:
+
+No arrest racial data available
+
+
+Maine
+Legal Framework: 25 ME Rev Stat § 1574 (2017)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions
+
+Data Sources:
+
+Convictions: Partial year data (Jan-Sept 2013) extrapolated
+Source URLs:
+
+https://cpb-us-w2.wpmucdn.com/wpsites.maine.edu/dist/2/115/files/2018/06/2014-Maine-Crime-and-Justice-Databook-1anezqt.pdf
+https://www.prisonpolicy.org/profiles/ME.html
+
+Data Limitations:
+
+Incomplete year data
+No racial makeup in conviction data
+
+Maryland
+Legal Framework: MD Public Safety Code Ann. §2-504 (2009)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; 4th degree burglary; vehicle breaking/entering; related arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2013)
+Arrests: Crime data (2014)
+Source URLs:
+
+https://www.dpscs.state.md.us/publicinfo/publications/pdfs/DOC2013AnnualRpt.pdf
+https://mdsp.maryland.gov/Document%20Downloads/2014_MD_Crime_UCR.pdf
+
+
+
+Data Limitations:
+
+Only Black/White categories with 126 "others"
+
+
+Massachusetts
+Legal Framework: MA Code Chapter 22E §3 (2006)
+
+Collection Triggers: All felony convictions
+
+Data Sources:
+
+Convictions: Felony convictions (2011)
+Source URL: http://www.mass.gov/courts/docs/admin/sentcomm/fy2011survey.pdf
+
+Data Limitations:
+
+3% categorized as "others"
+
+
+Michigan
+Legal Framework: Mich. Comp. Laws §750.250m (2006)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; violent felony arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2015)
+Arrests: Violent felony arrests (2015)
+Source URLs:
+
+https://www.michigan.gov/documents/corrections/MDOC_2015_Statistical_Report_-_2016.08.23_532907_7.pdf
+https://www.prisonpolicy.org/profiles/MI.html
+
+
+
+Data Limitations:
+
+White/non-white division required estimation
+Hispanic not included in arrest data
+
+
+Minnesota
+Legal Framework: MN Stat § 299C.105 (2016)
+
+Collection Triggers: All felony and sex crime misdemeanor convictions; specific felony/misdemeanor arrests
+
+Data Sources:
+
+Convictions: Prison admissions (2015)
+Arrests: All arrests (2015)
+Source URLs:
+
+https://www.doc.state.mn.us/pages/files/6914/3826/9238/Minnesota_Department_of_Corrections_Adult_Inmate_Profile_07-01-2015.pdf
+https://dps.mn.gov/divisions/bca/bca-divisions/mnjis/Documents/2015-Minnesota-Uniform-Crime-Report.pdf
+
+Data Limitations:
+
+Hispanic classified as ethnicity, not race
+
+Mississippi
+Legal Framework: MS Code § 47-5-183 (2013)
+
+Collection Triggers: All felony convictions
+
+Data Sources:
+
+Convictions: Prison admissions (2012)
+Source URL: http://www.mdoc.ms.gov/Admin-Finance/Documents/Annual-Reports/2012/14%20-%20Admissions%20-%20General%20Characteristics.pdf
+
+Data Limitations:
+
+Only White/Black/Hispanic categories
+
+
+Missouri
+Legal Framework: MO Rev. Stat § 650.055 (2011)
+Collection Triggers: Felony convictions for offenses against the person, burglary, and sexual offenses; sex crime misdemeanor convictions; arrests for similar offenses.
+Data Sources:
+
+Convictions: 2015 prison admission data used as a proxy.
+
+Arrests: 2015 arrest data for enumerated felonies.
+Source URLs:
+
+http://www.doc.mo.gov/docs/2015-MO-Offender-Profile.pdf (p. 61)
+
+https://www.mshp.dps.missouri.gov/MSHPWeb/SAC/data_and_statistics_ucr_query_backup.html (Database query for 2015 statewide arrests)
+Data Limitations:
+
+No direct felony conviction data available.
+
+Prison admission data is not broken down by specific offense.
+
+Arrest data does not include Hispanic ethnicity as a separate category.
+
+Montana
+Legal Framework: MT Code § 44-6-103 (2017)
+Collection Triggers: All felony convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+https://cor.mt.gov/Portals/104/Resources/Reports/2015BiennialReport.pdf (p. A-8, A-16)
+Data Limitations:
+
+No direct felony conviction data available.
+
+Nebraska
+Legal Framework: NE Code § 29-4106 (2017)
+Collection Triggers: All felony and certain misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy for felony convictions.
+Source URLs:
+
+https://corrections.nebraska.gov/sites/default/files/files/46/2014_ndcs_annual_report_reduced.pdf (p. 37)
+Data Limitations:
+
+No direct felony or misdemeanor conviction data available.
+
+Nevada
+Legal Framework: NV Rev Stat § 176.09123 (2013)
+Collection Triggers: All felony and certain misdemeanor convictions; all felony arrests.
+Data Sources:
+
+Convictions: 2013 prison admission data used as a proxy.
+Source URLs:
+
+http://doc.nv.gov/uploadedFiles/docnvgov/content/About/Statistics/Annual_Abstracts_by_Fiscal_Year/fy2013.pdf (p. 35, 39)
+Data Limitations:
+
+No direct felony or misdemeanor conviction data available.
+
+Arrest data for all felonies with racial makeup was unavailable.
+
+New Hampshire
+Legal Framework: NH Rev Stat § 651-C:2 (2015)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+https://www.nh.gov/nhdoc/divisions/publicinformation/documents/annual-report-2014.pdf (p. 15-16)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+New Jersey
+Legal Framework: NJ Rev Stat § 53:1-20.20 (2016)
+Collection Triggers: All felony and certain misdemeanor convictions; arrests for enumerated offenses (e.g., murder, manslaughter, sexual offenses).
+Data Sources:
+
+Convictions: 2012 prison admissions (calculated from population change and release data), with racial makeup estimated from prison population.
+
+Arrests: 2014 arrest data for enumerated offenses.
+Source URLs:
+
+https://www.state.nj.us/corrections/pdf/annual_report/2015_Annual_Report.pdf (p. 33)
+
+https://www.state.nj.us/corrections/pdf/offender_statistics/2012_Release_Recidivism_Report.pdf (p. 13)
+
+https://www.state.nj.us/corrections/pdf/offender_statistics/2012/By%20Ethnicity_Race%202012.pdf (p. 1)
+
+https://www.njsp.org/ucr/2014/pdf/2014_uniform_crime_report.pdf (p. 50)
+Data Limitations:
+
+No direct felony or misdemeanor conviction data available.
+
+For arrest data, Hispanic is not listed as a race (likely included in White/Black categories).
+
+New Mexico
+Legal Framework: NM Stat § 29-16-6 (1996) for convictions; § 29-3-10 (2016) for arrests.
+Collection Triggers: All felony and sex crime misdemeanor convictions; all felony arrests.
+Data Sources:
+
+Convictions: 2015 prison admission data used as a proxy, with racial makeup from current prison population.
+Source URLs:
+
+http://nmsc.unm.edu/reports/2016/new-mexico-prison-population-forecast-fy2017-fy2026.pdf (p. 10-11)
+
+https://www.prisonpolicy.org/profiles/NM.html
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial makeup of new prison admissions was unavailable.
+
+Total arrest data was available, but racial makeup of that data was not.
+
+New York
+Legal Framework: NY Exec L § 995-C (2014)
+Collection Triggers: All felony and misdemeanor convictions.
+Data Sources:
+
+Convictions: Direct 2011 felony and misdemeanor conviction data.
+Source URLs:
+
+https://www.ncjrs.gov/pdffiles1/nij/grants/247227.pdf (p. 203 for felonies, p. 214 for misdemeanors)
+Data Limitations:
+
+N/A (Direct conviction data was available and used).
+
+North Carolina
+Legal Framework: NC Gen Stat § 15A-266.4 (2013)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+http://randp.doc.state.nc.us/pubdocs/0007073.PDF (p. 12)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Data only categorizes race as White, Black, or Other.
+
+North Dakota
+Legal Framework: ND Century Code § 31-13-03 (2013)
+Collection Triggers: All felony and sex crime misdemeanor convictions; all felony arrests.
+Data Sources:
+
+Convictions: 2015 prison admission data used as a proxy, with racial makeup from current prison population.
+
+Arrests: 2015 arrest data.
+Source URLs:
+
+https://docr.nd.gov/sites/www/files/documents/statistics/factsheets/2015_FACT_SHEET.pdf (p. 2)
+
+https://www.prisonpolicy.org/profiles/ND.html
+
+https://attorneygeneral.nd.gov/sites/ag/files/documents/2015-CrimeReport.pdf (p. 35-36)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial makeup of the specific prison admission data was unavailable.
+
+Ohio
+Legal Framework: Ohio Rev Code § 2901.07 (2015)
+Collection Triggers: All felony and sex crime misdemeanor convictions; all felony arrests.
+Data Sources:
+
+Convictions: 2015 prison admission data used as a proxy.
+
+Arrests: Combined data from different years (2010 violent/property crimes, 2012 drug crimes) with racial makeup applied from a 2009 report.
+Source URLs:
+
+http://drc.ohio.gov/Portals/0/Reentry/Reports/Annuals/Annual%20Report%202015.pdf?ver=2016-08-03-152549-077 (p. 37)
+
+https://ucr.fbi.gov/crime-in-the-u.s/2010/crime-in-the-u.s.-2010/tables/10tbl69.xls
+
+http://www.dispatch.com/content/stories/local/2013/09/18/drug-arrests-dwarf-those-for-other-crimes.html
+
+http://www.publicsafety.ohio.gov/links/ocjs_statistics.pdf (p. 33)
+
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Arrest data was pieced together from multiple non-matching years.
+
+Racial makeup for arrests only included White and Black categories.
+
+Oklahoma
+Legal Framework: 74 OK Stat § 74-150.27a (2015)
+Collection Triggers: All felony and sex crime misdemeanor convictions; other specified misdemeanors; arrests of undocumented aliens.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+http://doc.publishpath.com/Default.aspx?shortcut=agency-wide-2014-annual-report#inmatepop
+
+Data Limitations:
+
+No direct felony or misdemeanor conviction data available.
+
+Arrest data for undocumented aliens was unavailable.
+
+Oregon
+Legal Framework: OR Rev Stat § 137.076 (2011)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2013 prison admission data used as a proxy, with racial makeup from current prison population.
+Source URLs:
+
+https://www.oregon.gov/doc/RESRCH/docs/admissions_county_20130630.pdf
+
+https://www.prisonpolicy.org/profiles/OR.html
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial makeup of the specific admission data was unavailable.
+
+Pennsylvania
+Legal Framework: 44 PA Cons Stat § 2316 (2017)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+https://www.cor.pa.gov/About%20Us/Statistics/Documents/Reports/2014%20Annual%20Statistical%20Report.pdf
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial categories in admissions data limited to Black, White, and Other.
+
+Rhode Island
+Legal Framework: RI Gen L § 12-1.5-8 (2014)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2016 prison admission data used as a proxy.
+Source URLs:
+
+http://www.doc.ri.gov/administration/planning/docs/FY15%20Population%20Report.pdf (p. 10, 12)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+South Carolina
+Legal Framework: SC Code § 23-3-620 (2012)
+Collection Triggers: All felony and sex crime misdemeanor convictions; certain arrests (expunged automatically).
+Data Sources:
+
+Convictions: 2016 prison admission data used as a proxy.
+Source URLs:
+
+http://www.doc.sc.gov/research/SystemOverview/ADM_REL_FromBASEPOP_FY16.pdf
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Admissions data only categorizes race as Black or White.
+
+South Dakota
+Legal Framework: SD Codified L § 23-5A-6 (2013) for convictions; § 23-5A-5.2 (2013) for arrests.
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests for felonies, crimes of violence, and sex offenses.
+Data Sources:
+
+Convictions: 2012 offender data used as a proxy.
+
+Arrests: 2012 Group A crime arrest data.
+Source URLs:
+
+https://atg.sd.gov/docs/CSD2012.pdf (p. 44 for convictions, p. 53 for arrests)
+Data Limitations:
+
+No direct sex crime misdemeanor conviction data available.
+
+Hispanics are considered an ethnicity, not a race, and are not included in the racial makeup.
+
+Tennessee
+Legal Framework: TN Code § 40-35-321 (2010)
+Collection Triggers: All felony and sex crime misdemeanor convictions; all felony arrests.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+
+Arrests: 2015 arrest data.
+Source URLs:
+
+https://www.tn.gov/content/dam/tn/correction/documents/StatisticalAbstract2014.pdf (p. 33)
+
+https://www.tn.gov/content/dam/tn/tbi/documents/tibrs/Crime%20In%20Tennessee%202015.pdf (p. 8, 10)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Arrest data did not include Hispanic as a race category.
+
+Texas
+Legal Framework: TX Gov’t Code § 411.1471
+Collection Triggers: All felony and sex crime misdemeanor convictions; arrests if arrestee had a prior conviction (expunged automatically).
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+https://www.tdcj.state.tx.us/documents/Statistical_Report_FY2014.pdf (p. 2)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Utah
+Legal Framework: UT Code § 53-10-404 (2006)
+Collection Triggers: All felony, sex crime misdemeanor, and class A misdemeanor convictions; most felony arrests.
+Data Sources:
+
+Convictions: 2016 prison admission data (Q1 extrapolated to full year), with racial makeup from 2017 prison population.
+
+Arrests: 2015 arrest data, with racial makeup for felony arrests extrapolated from lesser offense arrest data.
+Source URLs:
+
+https://justice.utah.gov/Documents/CCJJ/Justice%20Reinvestment%20Initiative/JRI%202016%20Annual%20Report.pdf (p. 8)
+
+https://crbiprod.utah.gov/cognos10/cgi-bin/cognos.cgi?b_action=xts.run&m=portal/cc.xts&m_tab=i49FF9376626A452880347AFAEB8B4111 (Live data)
+
+https://site.utah.gov/dps-criminal/wp-content/uploads/sites/15/2016/09/2015-Preliminary-Crime-in-Utah-Report9_8_2016.pdf (p. 4, 83)
+
+Data Limitations:
+
+No direct felony or misdemeanor conviction data available.
+
+Racial makeup for felony arrests had to be estimated from non-felony arrest data.
+
+Hispanic is not a race category for arrests; individuals are likely mixed into other categories.
+
+Vermont
+Legal Framework: 20 V.S.A. § 1932 (2017)
+Collection Triggers: All felony and sex crime misdemeanor convictions; felony arrests (expunged automatically).
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+http://www.doc.state.vt.us/about/reports/ff-archive/facts-figures-fy2014/view (p. 64)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Data does not include Hispanic as a race.
+
+Virginia
+Legal Framework: VA Code § 19.2-310.2 (2006)
+Collection Triggers: All felony and sex crime misdemeanor convictions; felony arrests (expunged automatically).
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy.
+Source URLs:
+
+https://vadoc.virginia.gov/About/facts/research/new-statsum/offenderpopulationtrends_fy10-fy14.pdf (p. 3)
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Washington
+Legal Framework: WA Rev Code § 43.43.754 (2005)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy, with racial makeup from current prison population.
+Source URLs:
+
+https://www.bjs.gov/content/pub/pdf/p14.pdf (p. 10)
+
+https://www.prisonpolicy.org/profiles/WA.html
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial makeup for the specific prison admissions was unavailable.
+
+West Virginia
+Legal Framework: WV Code § 15-2B-6 (2012)
+Collection Triggers: All felony and sex crime misdemeanor convictions.
+Data Sources:
+
+Convictions: 2014 prison admission data used as a proxy, with racial makeup from current prison population.
+Source URLs:
+
+http://www.wvlegislature.gov/legisdocs/reports/agency/C02_FY_2014_2726.pdf (p. 62)
+
+https://www.prisonpolicy.org/profiles/WV.html
+Data Limitations:
+
+No direct felony or sex crime misdemeanor conviction data available.
+
+Racial makeup for the specific prison admissions was unavailable.
+
+Wisconsin
+Legal Framework: WI Code § 973.047 (2011)
+Collection Triggers: All felony and crimes of sexual contact convictions; arrests (expunged automatically).
+Data Sources:
+
+Convictions: 2016 prison admission data used as a proxy.
+Source URLs:
+
+https://doc.wi.gov/DataResearch/InteractiveDashboards/DAIAdmissions2000to2016.pdf (p. 7)
+Data Limitations:
+
+No direct felony or crimes of sexual contact conviction data available.
+
+Wyoming
+Legal Framework: WY Stat § 7-19-403 (1997)
+Collection Triggers: All felony convictions.
+Data Sources:
+
+Convictions: 2015 "cleared offenses" data used as a proxy, with racial makeup from current prison population.
+Source URLs:
+
+https://docs.google.com/a/wyo.gov/viewer?a=v&pid=sites&srcid=d3lvLmdvdnxkY2ktLS1wdWJsaWN8Z3g6YzI4ODdkY2RlNzRhOGNj (p. 14)
+
+https://www.prisonpolicy.org/profiles/WY.html
+Data Limitations:
+
+No direct felony conviction data available.
+
+Racial makeup of the cleared offenses data was unavailable.
