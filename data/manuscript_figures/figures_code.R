@@ -69,19 +69,19 @@ create_policy_map <- function(fill_var, fill_title, fill_colors, plot_title) {
 # Create the three maps
 map_arrestee_repos <- create_policy_map(
   "arrestee_collection", " ",
-  c("yes" = "#1f77b4", "no" = "#666666"), 
+  c("yes" = "#31688e", "no" = "#666666"), 
   "A. Arrestee DNA Collection Policy"
 )
 
 map_familial_repos <- create_policy_map(
   "fam_search", " ",
-  c("permitted" = "#1f77b4", "prohibited" = "#000000ff", "unspecified" = "#666666"),
+  c("permitted" = "#31688e", "prohibited" = "#fde724", "unspecified" = "#666666"),
   "B. Familial Search Policy"
 )
 
 map_foia_repos <- create_policy_map(
   "foia_availability", " ",
-  c("provided" = "#1f77b4", "not_provided" = "#666666"),
+  c("provided" = "#31688e", "not_provided" = "#666666"),
   "C. FOIA Response Status"
 )
 
@@ -113,11 +113,11 @@ anomaly_plot_data <- anomaly_log %>%
 
 # Custom colors matching scheme
 metric_colors <- c(
-  "Offender Profiles"    = "#1f4e79",
-  "Arrestee Profiles"    = "#2e75b6",
-  "Forensic Profiles"    = "#5b9bd5",
+  "Offender Profiles"    = "#31688e",
+  "Arrestee Profiles"    = "#35b779",
+  "Forensic Profiles"    = "#440154",
   "Investigations Aided" = "#c00000",
-  "NDIS Labs"            = "#7030a0"
+  "NDIS Labs"            = "#fde724"
 )
 
 # Create stacked bar plot
@@ -368,17 +368,24 @@ y_upper_dna <- max_dna * 1.05
 max_inv <- max(investigations_data$investigations_total, na.rm = TRUE)
 y_upper_inv <- max_inv * 1.05
 
+# Define colors for each plot type
+offender_color <- "#31688e"
+arrestee_color <- "#35b779"
+forensic_color <- "#440154"
+total_color <- "#22a884"
+investigations_color <- "#fde724"
+
 # Create individual plots for each DNA profile type
 p_offender <- ggplot() +
   geom_line(data = dna_data %>% filter(variable == "Offender"), 
             aes(x = date, y = count), 
-            color = "#0072B2", linewidth = 0.5) +
+            color = offender_color, linewidth = 0.5) +
   geom_point(data = dna_data %>% filter(variable == "Offender"), 
              aes(x = date, y = count), 
-             color = "#0072B2", size = 1.0) +
+             color = offender_color, size = 1.0) +
   geom_point(data = literature_dna %>% filter(variable == "Offender"),
              aes(x = asof_date, y = count),
-             shape = 4, size = 2.8, stroke = 1.0, color = "#0072B2") +
+             shape = 4, size = 2.8, stroke = 1.0, color = offender_color) +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Offender" & lubridate::year(asof_date) < 2020),
     aes(x = asof_date, y = count, label = short_label),
@@ -430,24 +437,24 @@ p_offender
 p_arrestee <- ggplot() +
   geom_line(data = dna_data %>% filter(variable == "Arrestee"), 
             aes(x = date, y = count), 
-            color = "#D55E00", linewidth = 0.5) +
+            color = arrestee_color, linewidth = 0.5) +
   geom_point(data = dna_data %>% filter(variable == "Arrestee"), 
              aes(x = date, y = count), 
-             color = "#D55E00", size = 1.0) +
+             color = arrestee_color, size = 1.0) +
   geom_point(data = literature_dna %>% filter(variable == "Arrestee"),
              aes(x = asof_date, y = count),
-             shape = 4, size = 2.8, stroke = 1.0, color = "#D55E00") +
+             shape = 4, size = 2.8, stroke = 1.0, color = arrestee_color) +
   geom_label_repel(
-  data = literature_dna %>% filter(variable == "Arrestee"),
-  aes(x = asof_date, y = count, label = short_label),
-  size = 45 / .pt,
-  nudge_y = 500000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "both", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    data = literature_dna %>% filter(variable == "Arrestee"),
+    aes(x = asof_date, y = count, label = short_label),
+    size = 45 / .pt,
+    nudge_y = 500000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
                limits = extended_date_range, expand = expansion(mult = 0.02)) +
   scale_y_continuous(name = "Arrestee Profiles",
@@ -476,35 +483,35 @@ p_arrestee
 p_forensic <- ggplot() +
   geom_line(data = dna_data %>% filter(variable == "Forensic"), 
             aes(x = date, y = count), 
-            color = "#009E73", linewidth = 0.5) +
+            color = forensic_color, linewidth = 0.5) +
   geom_point(data = dna_data %>% filter(variable == "Forensic"), 
              aes(x = date, y = count), 
-             color = "#009E73", size = 1.0) +
+             color = forensic_color, size = 1.0) +
   geom_point(data = literature_dna %>% filter(variable == "Forensic"),
              aes(x = asof_date, y = count),
-             shape = 4, size = 2.8, stroke = 1.0, color = "#009E73") +
+             shape = 4, size = 2.8, stroke = 1.0, color = forensic_color) +
   geom_label_repel(
-  data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) < 2020),
-  aes(x = asof_date, y = count, label = short_label),
-  size = 45 / .pt,
-  nudge_y = 500000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "both", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) < 2020),
+    aes(x = asof_date, y = count, label = short_label),
+    size = 45 / .pt,
+    nudge_y = 500000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   geom_label_repel(
-  data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) >= 2021),
-  aes(x = asof_date, y = count, label = short_label),
-  size = 45 / .pt,
-  nudge_y = 100000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "both", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) >= 2021),
+    aes(x = asof_date, y = count, label = short_label),
+    size = 45 / .pt,
+    nudge_y = 100000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
                limits = extended_date_range, expand = expansion(mult = 0.02)) +
   scale_y_continuous(name = "Forensic Profiles",
@@ -533,35 +540,35 @@ p_forensic
 p_total <- ggplot() +
   geom_line(data = dna_data %>% filter(variable == "Total"), 
             aes(x = date, y = count), 
-            color = "black", linewidth = 0.5) +
+            color = total_color, linewidth = 0.5) +
   geom_point(data = dna_data %>% filter(variable == "Total"), 
              aes(x = date, y = count), 
-             color = "black", size = 1.0) +
+             color = total_color, size = 1.0) +
   geom_point(data = literature_dna %>% filter(variable == "Total"),
              aes(x = asof_date, y = count),
-             shape = 4, size = 2.8, stroke = 1.0, color = "black") +
+             shape = 4, size = 2.8, stroke = 1.0, color = total_color) +
   geom_label_repel(
-  data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) >= 2020),
-  aes(x = asof_date, y = count, label = short_label),
-  size = 45 / .pt,
-  nudge_y = -1000000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "y", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) >= 2020),
+    aes(x = asof_date, y = count, label = short_label),
+    size = 45 / .pt,
+    nudge_y = -1000000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "y", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   geom_label_repel(
-  data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) < 2021),
-  aes(x = asof_date, y = count, label = short_label),
-  size = 45 / .pt,
-  nudge_y = 6000000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "both", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) < 2021),
+    aes(x = asof_date, y = count, label = short_label),
+    size = 45 / .pt,
+    nudge_y = 6000000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
                limits = extended_date_range, expand = expansion(mult = 0.02)) +
   scale_y_continuous(name = "Total Profiles",
@@ -590,28 +597,28 @@ p_total
 p_investigations_grid <- ggplot() +
   geom_line(data = investigations_data, 
             aes(x = date, y = investigations_total), 
-            color = "#CC79A7", linewidth = 0.5) +
+            color = investigations_color, linewidth = 0.5) +
   geom_point(data = investigations_data, 
              aes(x = date, y = investigations_total), 
-             color = "#CC79A7", size = 1.0) +
+             color = investigations_color, size = 1.0) +
   geom_point(data = literature_investigations,
              aes(x = asof_date, y = investigations_aided),
-             shape = 4, size = 2.8, stroke = 1.0, color = "#CC79A7") +
+             shape = 4, size = 2.8, stroke = 1.0, color = investigations_color) +
   geom_label_repel(
-  data = literature_investigations %>% filter(lubridate::year(asof_date) < 2021),
+    data = literature_investigations %>% filter(lubridate::year(asof_date) < 2021),
     aes(x = asof_date, y = investigations_aided, label = short_label),
     size = 45 / .pt,
-  nudge_y = 100000,
-  box.padding = 0.35, point.padding = 0.5,
-  min.segment.length = 0.5, segment.color = "gray50",
-  direction = "both", force = 5, force_pull = 1,
-  max.overlaps = Inf,
-  fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+    nudge_y = 100000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
   geom_label_repel(
     data = literature_investigations %>% filter(lubridate::year(asof_date) > 2021),
-        aes(x = asof_date, y = investigations_aided, label = short_label),
-        size = 45 / .pt,
+    aes(x = asof_date, y = investigations_aided, label = short_label),
+    size = 45 / .pt,
     nudge_x = -600,
     nudge_y = 15000,
     box.padding = 0.35, point.padding = 0.5,
@@ -620,11 +627,11 @@ p_investigations_grid <- ggplot() +
     force = 5, force_pull = 1,
     max.overlaps = Inf,
     fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+  ) +
   geom_label_repel(
     data = literature_investigations %>% filter(lubridate::year(asof_date) == 2021),
-        aes(x = asof_date, y = investigations_aided, label = short_label),
-        size = 45 / .pt,
+    aes(x = asof_date, y = investigations_aided, label = short_label),
+    size = 45 / .pt,
     nudge_y = 10000,
     nudge_x = 1000,
     box.padding = 0.35, point.padding = 0.5,
@@ -633,7 +640,7 @@ p_investigations_grid <- ggplot() +
     force = 5, force_pull = 1,
     max.overlaps = Inf,
     fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
-) +
+  ) +
   scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
                limits = extended_date_range, expand = expansion(mult = 0.02)) +
   scale_y_continuous(name = "Investigations Aided",
