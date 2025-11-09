@@ -10,9 +10,59 @@ This repository contains data collection, processing, and analysis code for a co
 
 This dataset is described in:
 
-**Lasisi, T., Donadio, J.P., Muller, M., Wilson, J., Mooney, J., & Edge, M.D.** (2025). United States forensic DNA databases: national time series (2001–2025) and state cross-sections. 
+**Pryor, Y.; Donadio, J. P.; Muller, S.C.; Wilson, J.; Lasisi, T.** (2025). United States forensic DNA databases: national time series (2001–2025) and state cross-sections. 
 
 **Dataset DOI:** [To be added]
+
+## Getting Started
+
+### Prerequisites
+- **R** ≥ 4.0 ([Download](https://cran.r-project.org/))
+- **Python** ≥ 3.13 ([Download](https://www.python.org/downloads/))
+- **Quarto** ≥ 1.3 ([Download](https://quarto.org/docs/get-started/))
+
+### Quick Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/tinalasisi/PODFRIDGE-Databases.git
+cd PODFRIDGE-Databases
+
+# Run automated setup (installs all dependencies)
+bash setup.sh
+
+# Preview the website locally
+quarto preview
+```
+
+### Manual Setup
+
+If you prefer to install dependencies separately:
+
+```bash
+# Install Python packages (for web scraping and analyses)
+pip install -r requirements.txt
+
+# Install R packages (for Quarto analyses)
+Rscript install.R
+
+# Preview the website
+quarto preview
+```
+
+### Troubleshooting
+
+**CRAN mirror error:** The `install.R` script automatically sets the CRAN mirror. If you encounter issues, manually set it in R:
+```r
+options(repos = c(CRAN = "https://cloud.r-project.org/"))
+```
+
+**Package conflicts:** Ensure you're using compatible versions:
+```bash
+R --version        # Should be >= 4.0
+python3 --version  # Should be >= 3.13
+quarto --version   # Should be >= 1.3
+```
 
 ## Project Components
 

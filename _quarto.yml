@@ -3,6 +3,9 @@ project:
   output-dir: docs
   resources:
     - figures/
+  
+execute:
+    freeze: auto  # Only re-execute when source changes
     
 website:
   title: "PODFRIDGE-Databases"
