@@ -11,7 +11,6 @@ format:
 execute:
   echo: true
   warning: false
-  eval: false  # Never execute code during preview/render
 ---
 
 ## Introduction {#introduction}

@@ -12,6 +12,8 @@ execute:
   echo: true
   warning: false
   freeze: auto
+  fig-width: 10
+  fig-height: 7
 ---
 
 ### Objectives {#objectives}
@@ -107,6 +109,29 @@ if (all(loaded_packages)) {
 } else {
   warning("The following packages failed to load: ", 
           paste(names(loaded_packages)[!loaded_packages], collapse = ", "))
+}
+
+# Define custom theme for consistent styling across all plots
+theme_ndis <- function(base_size = 11) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      # Axis styling
+      axis.text = element_text(color = "black", size = base_size),
+      axis.title = element_text(size = base_size + 1, face = "bold"),
+      
+      # Plot title and subtitle
+      plot.title = element_text(face = "bold", size = base_size + 3, hjust = 0),
+      plot.subtitle = element_text(size = base_size + 2, hjust = 0),
+      
+      # Legend styling
+      legend.text = element_text(size = base_size - 1),
+      legend.title = element_text(size = base_size, face = "bold"),
+      legend.key.size = unit(0.5, "cm"),
+      
+      # Grid and panel
+      panel.grid.major = element_line(color = "gray90", linewidth = 0.3),
+      panel.grid.minor = element_blank()
+    )
 }
 ```
 
@@ -370,20 +395,13 @@ heatmap_raw <- ggplot(temporal_coverage_intermediate, aes(x = year, y = jurisdic
     y = "Jurisdiction",
     title = " "
   ) +
-  theme_minimal(base_size = 10) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 15),
-    axis.text.y = element_text(size = 15),
-    plot.title = element_text(face = "bold", size = 20, hjust = 0),
-    plot.subtitle = element_text(size = 18, hjust = 0),
+    axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "right",
     legend.key.height = unit(0.6, "cm"), 
-    legend.key.width = unit(0.2, "cm"), 
-    legend.text = element_text(size = 15),
-    legend.title = element_text(size = 18), 
-    axis.title.x = element_text(size = 18, margin = margin(t = 12)),
-    axis.title.y = element_text(size = 18, margin = margin(r = 26))
+    legend.key.width = unit(0.2, "cm")
   )
 
 heatmap_raw
@@ -400,7 +418,7 @@ The National DNA Index System (NDIS) data for each jurisdiction is expected to s
 
 A point is flagged as `spike_dip` if it deviates significantly from adjacent observations:
 
-$$N_{j,t}^{(x)} \text{ is flagged if any of the following holds:}$$
+$N_{j,t}^{(x)} \text{ is flagged if any of the following holds:}$
 
 - $N_{j,t}^{(x)} > 2 \times N_{j,t-1}^{(x)}$ (more than double the previous value)
 - $N_{j,t}^{(x)} < 0.5 \times N_{j,t-1}^{(x)}$ (less than half the previous value)
@@ -1237,19 +1255,12 @@ p_profiles_stacked <- ggplot(profiles_latest,
     limits = c(0, NA),
     expand = c(0, 0)
   ) +
-  theme_minimal(base_size = 11) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.4),
     axis.ticks = element_line(color = "black", linewidth = 0.4),
-    axis.text = element_text(color = "black", size = 12),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    axis.title.x = element_text(size = 20, face = "bold", margin = margin(t = 15)),
-    axis.title.y = element_text(size = 20, face = "bold", margin = margin(t = 15)),
-    axis.title = element_text(size = 18, face = "bold"),
-    legend.title = element_text(size = 20, face = "bold"),
-    legend.text = element_text(size = 15),
-    legend.key.size = unit(0.5, "cm"),
     legend.key.width = unit(0.4, "cm"),
     legend.key.height = unit(0.4, "cm"),
     aspect.ratio = 0.65
@@ -1544,19 +1555,12 @@ p_anomaly_distribution <- ggplot(anomaly_plot_data,
            linewidth = 0.3, width = 1) +
   scale_fill_manual(name = "Metric", values = metric_colors) +
   scale_y_continuous(limits = c(0, NA), expand = c(0, 0)) +
-  theme_minimal(base_size = 10) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.4),
     axis.ticks = element_line(color = "black", linewidth = 0.4),
-    axis.text = element_text(color = "black", size = 12),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    axis.title.x = element_text(size = 20, face = "bold", margin = margin(t = 15)),
-    axis.title.y = element_text(size = 20, face = "bold", margin = margin(t = 15)),
-    axis.title = element_text(size = 18, face = "bold"),
-    legend.title = element_text(size = 20, face = "bold"),
-    legend.text = element_text(size = 15),
-    legend.key.size = unit(0.5, "cm"),
     legend.key.width = unit(0.4, "cm"),
     legend.key.height = unit(0.4, "cm"),
     aspect.ratio = 0.65
@@ -1809,14 +1813,12 @@ p_static <- ggplot() +
                "Forensic" = "#5b9bd5",
                "Investigations" = "#c00000") 
   ) +
-  theme_minimal(base_size = 11) +
+  theme_ndis(base_size = 12) +
   theme(
     panel.grid = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.5),
     axis.ticks = element_line(color = "black", linewidth = 0.5),
-    axis.text = element_text(color = "black", size = 16),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    axis.title = element_text(size = 20, face = "bold"),
     axis.title.x = element_text(color = "black", margin = margin(t = 10)),
     axis.title.y.left = element_text(color = "#1f4e79", margin = margin(r = 10)),
     axis.title.y.right = element_text(color = "#c00000", margin = margin(l = 10)),
@@ -1881,8 +1883,6 @@ The heat map visualizes the temporal coverage of NDIS data submissions across di
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show heatmap code"
-#| fig-width: 8  # Reduced from default 10-12 to 8
-#| fig-height: 6
 
 # Prepare data for heatmap - CLEANED DATASET
 temporal_coverage_clean <- ndis_clean %>%
@@ -1911,20 +1911,13 @@ heatmap_after_clean <- ggplot(temporal_coverage_clean, aes(x = year, y = jurisdi
     y = "Jurisdiction",
     title = " "
   ) +
-  theme_minimal(base_size = 10) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 15),
-    axis.text.y = element_text(size = 15),
-    plot.title = element_text(face = "bold", size = 20, hjust = 0),
-    plot.subtitle = element_text(size = 18, hjust = 0),
+    axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "right",
     legend.key.height = unit(0.6, "cm"), 
-    legend.key.width = unit(0.2, "cm"), 
-    legend.text = element_text(size = 15),
-    legend.title = element_text(size = 18), 
-    axis.title.x = element_text(size = 18, margin = margin(t = 12)),
-    axis.title.y = element_text(size = 18, margin = margin(r = 26))
+    legend.key.width = unit(0.2, "cm")
   )
 
 heatmap_after_clean
@@ -2074,7 +2067,7 @@ p_offender <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Offender" & lubridate::year(asof_date) < 2020),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 5000000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2085,7 +2078,7 @@ p_offender <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Offender" & lubridate::year(asof_date) >= 2021),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 1000000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2100,16 +2093,15 @@ p_offender <- ggplot() +
                                                   ifelse(x >= 1e3, paste0(x/1e3, "K"), x)),
                      limits = c(0, max(literature_dna %>% filter(variable == "Offender") %>% pull(count), na.rm = TRUE) * 1.1),
                      expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal(base_size = 35) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
-    panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.3),
     axis.ticks = element_line(color = "black", linewidth = 0.3),
-    axis.text = element_text(color = "black", size = 35),
     axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = -5)),
     axis.text.y = element_text(margin = margin(r = -10)),
-    axis.title = element_text(size = 35, face = "bold"),
     axis.title.x = element_blank(),
     axis.title.y = element_text(margin = margin(r = 2)),
     plot.title = element_blank(),
@@ -2132,7 +2124,7 @@ p_arrestee <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Arrestee"),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 500000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2147,16 +2139,15 @@ p_arrestee <- ggplot() +
                                                   ifelse(x >= 1e3, paste0(x/1e3, "K"), x)),
                      limits = c(0, max(literature_dna %>% filter(variable == "Arrestee") %>% pull(count), na.rm = TRUE) * 1.1),
                      expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal(base_size = 35) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
-    panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.3),
     axis.ticks = element_line(color = "black", linewidth = 0.3),
-    axis.text = element_text(color = "black", size = 35),
     axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = -5)),
     axis.text.y = element_text(margin = margin(r = -10)),
-    axis.title = element_text(size = 35, face = "bold"),
     axis.title.x = element_blank(),
     axis.title.y = element_text(margin = margin(r = 2)),
     plot.title = element_blank(),
@@ -2178,7 +2169,7 @@ p_forensic <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) < 2020),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 500000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2189,7 +2180,7 @@ p_forensic <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Forensic" & lubridate::year(asof_date) >= 2021),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 100000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2204,16 +2195,15 @@ p_forensic <- ggplot() +
                                                   ifelse(x >= 1e3, paste0(x/1e3, "K"), x)),
                      limits = c(0, max(literature_dna %>% filter(variable == "Forensic") %>% pull(count), na.rm = TRUE) * 1.1),
                      expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal(base_size = 35) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
-    panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.3),
     axis.ticks = element_line(color = "black", linewidth = 0.3),
-    axis.text = element_text(color = "black", size = 35),
     axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = -5)),
     axis.text.y = element_text(margin = margin(r = -10)),
-    axis.title = element_text(size = 35, face = "bold"),
     axis.title.x = element_blank(),
     axis.title.y = element_text(margin = margin(r = 2)),
     plot.title = element_blank(),
@@ -2235,7 +2225,7 @@ p_total <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) >= 2020),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = -1000000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2246,7 +2236,7 @@ p_total <- ggplot() +
   geom_label_repel(
     data = literature_dna %>% filter(variable == "Total" & lubridate::year(asof_date) < 2021),
     aes(x = asof_date, y = count, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 6000000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2261,16 +2251,15 @@ p_total <- ggplot() +
                                                   ifelse(x >= 1e3, paste0(x/1e3, "K"), x)),
                      limits = c(0, max(literature_dna %>% filter(variable == "Total") %>% pull(count), na.rm = TRUE) * 1.1),
                      expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal(base_size = 35) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
-    panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.3),
     axis.ticks = element_line(color = "black", linewidth = 0.3),
-    axis.text = element_text(color = "black", size = 35),
     axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = -5)),
     axis.text.y = element_text(margin = margin(r = -10)),
-    axis.title = element_text(size = 35, face = "bold"),
     axis.title.x = element_blank(),
     axis.title.y = element_text(margin = margin(r = 2)),
     plot.title = element_blank(),
@@ -2292,7 +2281,7 @@ p_investigations_grid <- ggplot() +
   geom_label_repel(
     data = literature_investigations %>% filter(lubridate::year(asof_date) < 2021),
     aes(x = asof_date, y = investigations_aided, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 100000,
     box.padding = 0.35, point.padding = 0.5,
     min.segment.length = 0.5, segment.color = "gray50",
@@ -2303,7 +2292,7 @@ p_investigations_grid <- ggplot() +
   geom_label_repel(
     data = literature_investigations %>% filter(lubridate::year(asof_date) > 2021),
     aes(x = asof_date, y = investigations_aided, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_x = -600,
     nudge_y = 15000,
     box.padding = 0.35, point.padding = 0.5,
@@ -2316,7 +2305,7 @@ p_investigations_grid <- ggplot() +
   geom_label_repel(
     data = literature_investigations %>% filter(lubridate::year(asof_date) == 2021),
     aes(x = asof_date, y = investigations_aided, label = short_label),
-    size = 45 / .pt,
+    size = 3.5,
     nudge_y = 10000,
     nudge_x = 1000,
     box.padding = 0.35, point.padding = 0.5,
@@ -2333,16 +2322,15 @@ p_investigations_grid <- ggplot() +
                                                   ifelse(x >= 1e3, paste0(x/1e3, "K"), x)),
                      limits = c(0, max(literature_investigations %>% pull(investigations_aided), na.rm = TRUE) * 1.1),
                      expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal(base_size = 35) +
+  theme_ndis(base_size = 11) +
   theme(
     panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
-    panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank(),
     axis.line = element_line(color = "black", linewidth = 0.3),
     axis.ticks = element_line(color = "black", linewidth = 0.3),
-    axis.text = element_text(color = "black", size = 35),
     axis.text.x = element_text(angle = 45, margin = margin(t = -5)),
     axis.text.y = element_text(margin = margin(r = -10)),
-    axis.title = element_text(size = 35, face = "bold"),
     axis.title.x = element_text(margin = margin(t = 2)),
     axis.title.y = element_text(margin = margin(r = 2)),
     plot.title = element_blank(),
@@ -2357,9 +2345,8 @@ plots_grid <- (p_offender + p_arrestee) /
 
 plots_grid <- plots_grid + 
   plot_layout(heights = c(1, 1, 1)) &
-  theme(plot.title = element_text(size = 60, face = "bold"),
-        axis.title = element_text(size = 60, face = "bold"),
-        axis.text = element_text(size = 48))
+  theme(plot.title = element_text(face = "bold"),
+        axis.title = element_text(face = "bold"))
 ```
 
 ## Summary Statistics {#summarystats}

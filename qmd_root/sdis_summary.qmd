@@ -1279,9 +1279,10 @@ available_columns <- intersect(final_columns, names(sdis_enhanced))
 sdis_final <- sdis_enhanced %>% select(all_of(available_columns))
 
 # Export to CSV
-output_path <- file.path(here("data", "sdis", "final", "SDIS_cross_section.csv"))
+output_relative <- file.path("data", "sdis", "final", "SDIS_cross_section.csv")
+output_path <- here(output_relative)
 write_csv(sdis_final, output_path)
-cat(paste("Exported enhanced SDIS dataset to:", output_path, "\n"))
+cat(paste("Exported enhanced SDIS dataset to:", output_relative, "\n"))
 
 # Display final summary statistics
 cat("\n\nFinal Summary Statistics:\n")
@@ -1319,12 +1320,14 @@ datatable(
 )
 
 # Create final frozen version (v1.0)
-frozen_dir <- here("data", "v1.0")
+frozen_dir_relative <- file.path("data", "v1.0")
+frozen_dir <- here(frozen_dir_relative)
 dir.create(frozen_dir, recursive = TRUE, showWarnings = FALSE)
 
-frozen_path <- here(frozen_dir, "SDIS_cross_section.csv")
+frozen_path_relative <- file.path(frozen_dir_relative, "SDIS_cross_section.csv")
+frozen_path <- here(frozen_path_relative)
 write_csv(sdis_final, frozen_path)
-cat(paste("✓ Created frozen version 1.0 at:", frozen_path, "\n"))
+cat(paste("✓ Created frozen version 1.0 at:", frozen_path_relative, "\n"))
 
 ```
 
