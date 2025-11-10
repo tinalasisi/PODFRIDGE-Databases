@@ -10,9 +10,9 @@ This repository is part of the *PODFRIDGE* project — **P**opulation **D**iffer
 
 This dataset is described in:
 
-**Pryor, Y.; Donadio, J. P.; Muller, S.C.; Wilson, J.; Lasisi, T.** (2025). National and state-level datasets of United States forensic DNA databases 2001–2025. arXiv preprint. [DOI to be added upon publication]
+**Pryor, Y.; Donadio, J. P.; Muller, S.C.; Wilson, J.; Lasisi, T.** (2025). National and state-level datasets of United States forensic DNA databases 2001–2025. arXiv preprint. [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)
 
-**Dataset DOI:** [To be added]
+**Dataset DOI:** [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)
 
 ## Getting Started
 
@@ -161,7 +161,7 @@ Documents the methodology and data sources used in Murphy & Tong (2020) for calc
 
 All final datasets are archived and publicly available on Zenodo:
 
-**Zenodo Repository:** [DOI to be added upon publication]
+**Zenodo Repository:** [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)
 
 The repository includes:
 - `NDIS_time_series.csv` - Monthly NDIS statistics (2001-2025)
@@ -172,6 +172,6 @@ The repository includes:
 
 ## License
 Code: MIT License  
-Data: CC BY 4.0 (pending Zenodo publication; FOIA-derived data subject to original authors' permissions)
+Data: CC BY 4.0 (see Zenodo release; FOIA-derived data subject to original authors' permissions)
 
 Last update: November 09, 2025

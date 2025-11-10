@@ -1,8 +1,25 @@
 # Data Dictionary
 
-This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [to be added]) including the raw, intermediate and final files. Below we will discuss only the versioned processed data in the `versioned_data` subfolder. The process for getting to these final files is described in each analysis file that generates the processed data from the raw (see `analysis/` subfolder).
+This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)) including the raw, intermediate and final files. Below we will discuss only the versioned processed data in the `versioned_data` subfolder. The process for getting to these final files is described in each analysis file that generates the processed data from the raw (see `analysis/` subfolder).
 
-## Dataset Overview
+---
+
+## Subfolder Descriptions
+
+- `ndis/`: Contains raw and intermediate data files related to the National DNA Index System (NDIS), including archived FBI webpages and extracted statistics used to build the time series dataset.
+
+- `sdis/`: Includes raw data and notes from state DNA index systems (SDIS) collected through web searches, legislative databases, and state government sources.
+
+- `ndis_crossref/`: Holds cross-referencing files for NDIS data, such as jurisdiction name standardizations and mappings between various data sources.
+
+- `annual_dna_collection/`: Houses data and metadata from Murphy & Tong (2020) Appendix, detailing annual DNA profile collection estimates by race for all 50 states. Users should cite *Murphy, E., & Tong, J. (2020). The racial composition of forensic DNA databases. California Law Review.* when utilizing this data.
+
+- `foia/`: Contains data obtained via FOIA requests and analyzed in Murphy & Tong (2020), documenting demographic composition and policy information from seven states. Users should cite *Murphy, E., & Tong, J. (2020). The racial composition of forensic DNA databases. California Law Review.* when using these files.
+
+- `versioned_data/`: Contains the finalized, versioned datasets ready for analysis, including cleaned and processed files like `NDIS_time_series.csv` and `SDIS_cross_section.csv`.
+
+
+## Finalized Dataset Overview (`versioned_data/`)
 
 | Dataset | Rows | Time Coverage | Spatial Coverage | Source |
 |---------|------|---------------|------------------|--------|
@@ -184,4 +201,4 @@ This folder contains four primary datasets documenting U.S. forensic DNA databas
 
 
 **Last updated:** 2025-11-09
-**Zenodo DOI:** [To be added upon publication]
+**Zenodo DOI:** [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)
