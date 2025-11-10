@@ -56,12 +56,7 @@ This folder contains four primary datasets documenting U.S. forensic DNA databas
 
 **Data Quality Notes:**
 - Outliers and monotonicity violations detected have been flagged and corrected
-- Original uncorrected data available in `intermediate/` folder
-
-**Recommended Use:**
-- Time series analysis of DNA database growth
-- Jurisdictional comparisons over time
-- Policy impact analysis (e.g., 2017 CODIS expansion to 20 loci)
+- Original uncorrected data available in `intermediate/` and `raw/` subfolders in `data/` for each respective dataset
 
 ---
 
