@@ -115,9 +115,10 @@ Documents the methodology and data sources used in Murphy & Tong (2020) for calc
 ## Repository Structure 
 
 - `analysis/` – Quarto notebooks (NDIS, SDIS, FOIA, methodology, version freeze)
-- `data/raw/` – Raw inputs (Wayback HTML snapshots, FOIA PDFs, etc.)
-- `data/intermediate/` – Staging outputs produced during processing
-- `data/final/` – Latest cleaned datasets for each component
+- `data/{annual_dna_collection, foia, ndis, ndis_crossref, sdis}` - various dataset types
+  - `/raw/` – Raw inputs (Wayback HTML snapshots, FOIA PDFs, etc.)
+  - `/intermediate/` – Staging outputs produced during processing
+  - `/final/` – Latest cleaned datasets for each component
 - `data/versioned_data/` – Snapshots created via `analysis/version_freeze.qmd`
 - `setup/` – Setup scripts to run code (`setup.sh`, `install.R`, Python requirements)
 - `docs/` – Rendered website for GitHub Pages
