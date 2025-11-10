@@ -2662,10 +2662,11 @@ ndis_clean <- ndis_clean %>%
 # Write latest final dataset
 final_dir <- here("data", "ndis", "final")
 dir.create(final_dir, recursive = TRUE, showWarnings = FALSE)
-final_path <- here(final_dir, "NDIS_time_series.csv")
+final_relative <- file.path("data", "ndis", "final", "NDIS_time_series.csv")
+final_path <- here(final_relative)
 
 write_csv(ndis_clean, final_path)
-cat(paste("✓ Created final dataset at:", final_path, "\n"))
+cat(paste("✓ Created final dataset at:", final_relative, "\n"))
 
 cat("Use analysis/version_freeze.qmd to publish processed-data releases.\n")
 ```
