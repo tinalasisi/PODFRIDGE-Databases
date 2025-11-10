@@ -1,4 +1,10 @@
-# PODFRIDGE - U.S. Forensic DNA Database
+---
+title: "PODFRIDGE - U.S. Forensic DNA Database"
+format:
+  gfm:
+    toc: false
+date: last-modified
+---
 
 **Website:** [https://tinalasisi.github.io/PODFRIDGE-Databases/](https://tinalasisi.github.io/PODFRIDGE-Databases/)
 
@@ -120,34 +126,27 @@ Documents the methodology and data sources used in Murphy & Tong (2020) for calc
 
 ## Authors
 
-- **Yemko Pryor** ([`@ypryor`](https://github.com/ypryor))
-- **João Pedro Donadio** ([`@DonadioJP`](https://github.com/DonadioJP))
+- **Yemko Pryor**
+- **João Pedro Donadio**
 - **Sam Muller**
 - **Jenna Wilson**
-- **Tina Lasisi** ([`@tinalasisi`](https://github.com/tinalasisi))
+- **Tina Lasisi** *(corresponding: tlasisi@umich.edu)*
 
 ## Technical Details
 
 ### Software Requirements
 
 - Python (≥ 3.13)
-
 - R (≥ 4.0)
-
 - Quarto (≥ 1.3)
-
 - Python packages: `requests`, `beautifulsoup4`, `lxml`, `pandas`, `tqdm`, `hashlib`, `collections`, `pathlib`, `datetime`, `os`
-
 - R packages: `tidyverse`, `rvest`, `httr`, `lubridate`, `jsonlite`, `knitr`, `plotly`
 
 ### Key Methods
 
 - **Web Scraping:** Internet Archive Wayback Machine API
-
 - **Data Validation:** Monotonicity testing, median absolute deviation (MAD) outlier detection
-
 - **External Validation:** Comparison with peer-reviewed publications and FBI press releases
-
 - **Reproducibility:** All processing code available; versioned datasets archived on Zenodo
 
 ## Data Access
@@ -164,7 +163,8 @@ The repository includes:
 - Raw HTML files, intermediate processing outputs, and complete documentation
 
 ## License
-Code: MIT License  
+
+Code: MIT License\
 Data: CC BY 4.0 (pending Zenodo publication; FOIA-derived data subject to original authors' permissions)
 
-Last update: November 09, 2025
+Last update: {{< meta date >}}
