@@ -1,6 +1,6 @@
 # Data Dictionary
 
-This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)) including the raw, intermediate and final files. Below we will discuss only the versioned processed data in the `versioned_data` subfolder. The process for getting to these final files is described in each analysis file that generates the processed data from the raw (see `analysis/` subfolder).
+This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [10.5281/zenodo.17215677](https://doi.org/10.5281/zenodo.17215677)) including the raw, intermediate and final files. Below we will discuss only the versioned processed data in the `versioned_data` subfolder. The process for getting to these final files is described in each analysis file that generates the processed data from the raw (see `analysis/` subfolder described in our GitHub repository:  [https://github.com/lasisilab/PODFRIDGE-Databases](https://github.com/lasisilab/PODFRIDGE-Databases)).
 
 ---
 
@@ -55,9 +55,9 @@ data/
 | Dataset | Rows | Time Coverage | Spatial Coverage | Source |
 |---------|------|---------------|------------------|--------|
 | `NDIS_time_series.csv` | 9,442 | 2001-2025 | 54 jurisdictions | FBI CODIS-NDIS Statistics (Wayback Machine Internet Archive) |
-| `SDIS_cross_section.csv` | 50 | 1997-2017 | 50 states | Web Searches |
+| `SDIS_cross_section.csv` | 50 | 1996-2017 | 50 states | Web Searches |
 | `FOIA_demographics.csv` | 202 | 2018 | 7 states | Murphy & Tong (2020) |
-| `Annual_DNA_Collection.csv` | 50 | 1997-2017 | 50 states | Murphy & Tong (2020) Appendix |
+| `Annual_DNA_Collection.csv` | 50 | 1996-2017 | 50 states | Murphy & Tong (2020) Appendix |
 
 
 ---
