@@ -183,6 +183,7 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 /.quarto/
+_freeze/
 
 
 # ~/.gitignore_global 

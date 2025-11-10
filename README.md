@@ -10,7 +10,7 @@ This repository contains data collection, processing, and analysis code for a co
 
 This dataset is described in:
 
-**Pryor, Y.; Donadio, J. P.; Muller, S.C.; Wilson, J.; Lasisi, T.** (2025). United States forensic DNA databases: national time series (2001–2025) and state cross-sections. 
+**Pryor, Y.; Donadio, J. P.; Muller, S.C.; Wilson, J.; Lasisi, T.** (2025). National and state-level datasets of United States forensic DNA databases 2001–2025. arXiv preprint. [DOI to be added upon publication]
 
 **Dataset DOI:** [To be added]
 
@@ -29,7 +29,7 @@ git clone https://github.com/tinalasisi/PODFRIDGE-Databases.git
 cd PODFRIDGE-Databases
 
 # Run automated setup (installs all dependencies)
-bash setup.sh
+bash setup/setup.sh
 
 # Preview the website locally
 quarto preview
@@ -41,10 +41,10 @@ If you prefer to install dependencies separately:
 
 ```bash
 # Install Python packages (for web scraping and analyses)
-pip install -r requirements.txt
+pip install -r setup/requirements.txt
 
 # Install R packages (for Quarto analyses)
-Rscript install.R
+Rscript setup/install.R
 
 # Preview the website
 quarto preview
