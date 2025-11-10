@@ -9,26 +9,22 @@ format:
     toc-depth: 2
 ---
 
-This notebook snapshots every dataset stored under `data/*/final` into a versioned
-release located in `data/processed_data/`. By default a new `v1.0` directory is
-created the first time this notebook runs. Subsequent executions can bump the
-major version (`v2.0`, `v3.0`, …) or the minor version (`v1.1`, `v1.2`, …) by
-changing the `version_bump` parameter.
+This notebook lets you freeze all finalized datasets (`data/*/final`) into a
+single release under `data/versioned_data/`. Set `version_label`,
+`version_message`, and `version_note` in the chunk below, run the notebook, and
+the files will be copied into a new `versioned_data/<version>/` folder alongside
+an auto-generated README summarizing the release.
 
 ## Version Configuration
 
-Update the variables in the following chunk before running the freeze. Leave
-`version_label` as `NA` to let the notebook compute the next version
-automatically. Otherwise, set it explicitly (e.g., `"v2.1"`). Use
-`version_note` to document what changed in this release; it will be embedded in
-the README for the new version.
+Update the variables in the chunk below before running the freeze. All values
+are required.
 
 ```{r}
 #| label: version-settings
 #| echo: true
 
-version_label <- NA_character_   # e.g., "v2.0" to override; NA = auto
-auto_bump <- "major"             # used only when version_label is NA
+version_label <- "v1.0"  # e.g., "v2.0" or "v1.1"
 version_message <- "Initial processed-data freeze capturing all final datasets."
 version_note <- "Highlights: Initial release of FOIA, SDIS, and NDIS final datasets."
 ```
@@ -46,7 +42,7 @@ library(lubridate)
 library(here)
 
 data_root <- here("data")
-processed_root <- here("data", "processed_data")
+processed_root <- here("data", "versioned_data")
 fs::dir_create(processed_root)
 ```
 
@@ -54,51 +50,18 @@ fs::dir_create(processed_root)
 
 ```{r}
 #| label: determine-version
+# Validate version label
 version_regex <- "^v(\\d+)\\.(\\d+)$"
-existing_paths <- fs::dir_ls(processed_root, type = "directory", recurse = FALSE)
-
-version_df <- tibble(
-  path = existing_paths,
-  name = basename(existing_paths)
-) %>%
-  filter(str_detect(name, version_regex)) %>%
-  mutate(
-    major = as.integer(str_match(name, version_regex)[, 2]),
-    minor = as.integer(str_match(name, version_regex)[, 3])
-  )
-
-auto_bump <- tolower(auto_bump)
-valid_bumps <- c("major", "minor")
-use_auto <- is.na(version_label) || version_label == ""
-
-if (use_auto) {
-  if (!auto_bump %in% valid_bumps) {
-    stop("auto_bump must be 'major' or 'minor' when version_label is NA.")
-  }
-  if (nrow(version_df) == 0) {
-    target_major <- 1L
-    target_minor <- 0L
-  } else {
-    latest <- version_df %>%
-      arrange(desc(major), desc(minor)) %>%
-      slice(1)
-    if (auto_bump == "major") {
-      target_major <- latest$major + 1L
-      target_minor <- 0L
-    } else {
-      target_major <- latest$major
-      target_minor <- latest$minor + 1L
-    }
-  }
-  target_version <- sprintf("v%d.%d", target_major, target_minor)
-  version_label_used <- auto_bump
-} else {
-  if (!str_detect(version_label, version_regex)) {
-    stop("version_label must follow the pattern v#.# (e.g., v2.0).")
-  }
-  target_version <- version_label
-  version_label_used <- "manual"
+if (!str_detect(version_label, version_regex)) {
+  stop("version_label must follow the pattern v#.# (e.g., v1.0, v2.1).")
 }
+
+if (version_label %in% basename(fs::dir_ls(processed_root, type = "directory", recurse = FALSE))) {
+  stop(glue("Version {version_label} already exists under data/versioned_data/. Please pick a new label."))
+}
+
+target_version <- version_label
+version_label_used <- "manual"
 
 target_dir <- fs::path(processed_root, target_version)
 fs::dir_create(target_dir)
@@ -106,7 +69,7 @@ fs::dir_create(target_dir)
 freeze_timestamp <- now(tzone = "UTC")
 
 glue("Creating processed data release: {target_version} at {target_dir}") %>% message()
-glue("Version bump type: {version_label_used}") %>% message()
+glue("Version label: {version_label_used}") %>% message()
 ```
 
 ## Collect Final Datasets
@@ -116,14 +79,16 @@ glue("Version bump type: {version_label_used}") %>% message()
 #| echo: true
 
 top_level_dirs <- fs::dir_ls(data_root, type = "directory", recurse = FALSE)
-dataset_dirs <- top_level_dirs[basename(top_level_dirs) != "processed_data"]
+dataset_dirs <- top_level_dirs[basename(top_level_dirs) != "versioned_data"]
 
 final_info <- purrr::map_dfr(dataset_dirs, function(ds_dir) {
   final_dir <- fs::path(ds_dir, "final")
   if (fs::dir_exists(final_dir)) {
+    files <- fs::dir_ls(final_dir, recurse = TRUE, type = "file")
     tibble(
       dataset = basename(ds_dir),
-      source_final = final_dir
+      source_final = final_dir,
+      files = list(files)
     )
   } else {
     NULL
@@ -135,7 +100,9 @@ if (nrow(final_info) == 0) {
 }
 
 glue("Identified {nrow(final_info)} dataset(s) with final outputs.") %>% message()
-final_info
+final_info %>%
+  mutate(file_count = purrr::map_int(files, length)) %>%
+  select(dataset, file_count)
 ```
 
 ## Copy Final Files into Version Folder
@@ -146,20 +113,20 @@ final_info
 
 copy_results <- final_info %>%
   mutate(
-    target_dataset_dir = fs::path(target_dir, dataset),
-    files_copied = purrr::map2(source_final, target_dataset_dir, function(src, dest) {
-      fs::dir_create(dest)
+    files_copied = purrr::map2(source_final, dataset, function(src, ds_name) {
       files <- fs::dir_ls(src, recurse = TRUE, type = "file")
       if (length(files)) {
-        purrr::walk(files, function(file_path) {
-          relative <- fs::path_rel(file_path, start = src)
-          dest_file <- fs::path(dest, relative)
+        purrr::map(files, function(file_path) {
+         relative <- fs::path_rel(file_path, start = src)
+          target_name <- relative
+          dest_file <- fs::path(target_dir, target_name)
           fs::dir_create(fs::path_dir(dest_file))
           fs::file_copy(file_path, dest_file, overwrite = TRUE)
+          target_name
         })
+      } else {
+        character()
       }
-      rel_paths <- fs::path_rel(fs::path(dest, fs::path_rel(files, start = src)), start = target_dir)
-      rel_paths
     })
   )
 
@@ -183,31 +150,30 @@ readme_lines <- c(
   "",
   glue("- Version: {target_version}"),
   glue("- Frozen on: {format(freeze_timestamp, '%Y-%m-%d %H:%M:%S %Z')}"),
-  glue("- Version origin: {version_label_used}"),
   glue("- Summary: {version_message}"),
   glue("- Notes: {version_note}"),
+  "",
+  glue("All files listed below now live in `data/versioned_data/{target_version}/`."),
   ""
 )
 
-for (i in seq_len(nrow(copy_results))) {
-  dataset_name <- copy_results$dataset[i]
-  source_rel <- fs::path_rel(copy_results$source_final[i], start = data_root)
-  files <- copy_results$files_copied[[i]]
-  readme_lines <- c(
-    readme_lines,
-    glue("## {dataset_name}"),
-    "",
-    glue("- Source directory: `data/{source_rel}`"),
-    glue("- Snapshot directory: `processed_data/{target_version}/{dataset_name}`"),
-    "",
-    "### Files"
-  )
-  if (length(files) == 0) {
-    readme_lines <- c(readme_lines, "- (no files found in final directory)")
-  } else {
-    readme_lines <- c(readme_lines, paste0("- ", files))
+file_listing <- purrr::map2_dfr(
+  copy_results$files_copied,
+  copy_results$source_final,
+  function(files, src) {
+    if (!length(files)) return(tibble(source_path = character()))
+    tibble(
+      source_path = fs::path_rel(fs::path(src, files), start = here())
+    )
   }
-  readme_lines <- c(readme_lines, "")
+)
+
+readme_lines <- c(readme_lines, "## Source Files", "")
+
+if (nrow(file_listing) == 0) {
+  readme_lines <- c(readme_lines, "- (no files found in final directories)")
+} else {
+  readme_lines <- c(readme_lines, paste0("- `", file_listing$source_path, "`"))
 }
 
 writeLines(readme_lines, readme_path)
@@ -224,6 +190,8 @@ copy_results %>%
   transmute(
     dataset,
     files_copied = purrr::map_int(files_copied, length),
-    snapshot_dir = fs::path(target_version, dataset)
+    example_file = purrr::map_chr(files_copied, function(x) {
+      if (length(x) == 0) "(none)" else as.character(x[[1]])
+    })
   )
 ```

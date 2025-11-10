@@ -217,17 +217,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This notebook snapshots every dataset stored under <code>data/*/final</code> into a versioned release located in <code>data/processed_data/</code>. By default a new <code>v1.0</code> directory is created the first time this notebook runs. Subsequent executions can bump the major version (<code>v2.0</code>, <code>v3.0</code>, …) or the minor version (<code>v1.1</code>, <code>v1.2</code>, …) by changing the <code>version_bump</code> parameter.</p>
+<p>This notebook lets you freeze all finalized datasets (<code>data/*/final</code>) into a single release under <code>data/versioned_data/</code>. Set <code>version_label</code>, <code>version_message</code>, and <code>version_note</code> in the chunk below, run the notebook, and the files will be copied into a new <code>versioned_data/&lt;version&gt;/</code> folder alongside an auto-generated README summarizing the release.</p>
 <section id="version-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="version-configuration">Version Configuration</h2>
-<p>Update the variables in the following chunk before running the freeze. Leave <code>version_label</code> as <code>NA</code> to let the notebook compute the next version automatically. Otherwise, set it explicitly (e.g., <code>"v2.1"</code>). Use <code>version_note</code> to document what changed in this release; it will be embedded in the README for the new version.</p>
+<p>Update the variables in the chunk below before running the freeze. All values are required.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version_label <span class="ot">&lt;-</span> <span class="cn">NA_character_</span>   <span class="co"># e.g., "v2.0" to override; NA = auto</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>auto_bump <span class="ot">&lt;-</span> <span class="st">"major"</span>             <span class="co"># used only when version_label is NA</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>version_message <span class="ot">&lt;-</span> <span class="st">"Initial processed-data freeze capturing all final datasets."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>version_note <span class="ot">&lt;-</span> <span class="st">"Highlights: Initial release of FOIA, SDIS, and NDIS final datasets."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version_label <span class="ot">&lt;-</span> <span class="st">"v1.0"</span>  <span class="co"># e.g., "v2.0" or "v1.1"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>version_message <span class="ot">&lt;-</span> <span class="st">"Initial processed-data freeze capturing all final datasets."</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>version_note <span class="ot">&lt;-</span> <span class="st">"Highlights: Initial release of FOIA, SDIS, and NDIS final datasets."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -263,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_root <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>processed_root <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"processed_data"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>processed_root <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"versioned_data"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(processed_root)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -273,68 +272,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>version_regex <span class="ot">&lt;-</span> <span class="st">"^v(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.(</span><span class="sc">\\</span><span class="st">d+)$"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>existing_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(processed_root, <span class="at">type =</span> <span class="st">"directory"</span>, <span class="at">recurse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>version_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> existing_paths,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">basename</span>(existing_paths)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(name, version_regex)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">major =</span> <span class="fu">as.integer</span>(<span class="fu">str_match</span>(name, version_regex)[, <span class="dv">2</span>]),</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor =</span> <span class="fu">as.integer</span>(<span class="fu">str_match</span>(name, version_regex)[, <span class="dv">3</span>])</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate version label</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>version_regex <span class="ot">&lt;-</span> <span class="st">"^v(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.(</span><span class="sc">\\</span><span class="st">d+)$"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">str_detect</span>(version_label, version_regex)) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"version_label must follow the pattern v#.# (e.g., v1.0, v2.1)."</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (version_label <span class="sc">%in%</span> <span class="fu">basename</span>(fs<span class="sc">::</span><span class="fu">dir_ls</span>(processed_root, <span class="at">type =</span> <span class="st">"directory"</span>, <span class="at">recurse =</span> <span class="cn">FALSE</span>))) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="fu">glue</span>(<span class="st">"Version {version_label} already exists under data/versioned_data/. Please pick a new label."</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>target_version <span class="ot">&lt;-</span> version_label</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>version_label_used <span class="ot">&lt;-</span> <span class="st">"manual"</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>auto_bump <span class="ot">&lt;-</span> <span class="fu">tolower</span>(auto_bump)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>valid_bumps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"major"</span>, <span class="st">"minor"</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>use_auto <span class="ot">&lt;-</span> <span class="fu">is.na</span>(version_label) <span class="sc">||</span> version_label <span class="sc">==</span> <span class="st">""</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (use_auto) {</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>auto_bump <span class="sc">%in%</span> valid_bumps) {</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"auto_bump must be 'major' or 'minor' when version_label is NA."</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(version_df) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    target_major <span class="ot">&lt;-</span> <span class="dv">1</span>L</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    target_minor <span class="ot">&lt;-</span> <span class="dv">0</span>L</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    latest <span class="ot">&lt;-</span> version_df <span class="sc">%&gt;%</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">arrange</span>(<span class="fu">desc</span>(major), <span class="fu">desc</span>(minor)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">slice</span>(<span class="dv">1</span>)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (auto_bump <span class="sc">==</span> <span class="st">"major"</span>) {</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>      target_major <span class="ot">&lt;-</span> latest<span class="sc">$</span>major <span class="sc">+</span> <span class="dv">1</span>L</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      target_minor <span class="ot">&lt;-</span> <span class="dv">0</span>L</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>      target_major <span class="ot">&lt;-</span> latest<span class="sc">$</span>major</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>      target_minor <span class="ot">&lt;-</span> latest<span class="sc">$</span>minor <span class="sc">+</span> <span class="dv">1</span>L</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  target_version <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"v%d.%d"</span>, target_major, target_minor)</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  version_label_used <span class="ot">&lt;-</span> auto_bump</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">str_detect</span>(version_label, version_regex)) {</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"version_label must follow the pattern v#.# (e.g., v2.0)."</span>)</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  target_version <span class="ot">&lt;-</span> version_label</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  version_label_used <span class="ot">&lt;-</span> <span class="st">"manual"</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>target_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(processed_root, target_version)</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(target_dir)</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>freeze_timestamp <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UTC"</span>)</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Creating processed data release: {target_version} at {target_dir}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>target_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(processed_root, target_version)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(target_dir)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>freeze_timestamp <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UTC"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Creating processed data release: {target_version} at {target_dir}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Creating processed data release: v1.0 at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/processed_data/v1.0</code></pre>
+<pre><code>Creating processed data release: v1.0 at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Version bump type: {version_label_used}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Version label: {version_label_used}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Version bump type: major</code></pre>
+<pre><code>Version label: manual</code></pre>
 </div>
 </div>
 </section>
@@ -344,41 +310,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>top_level_dirs <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_root, <span class="at">type =</span> <span class="st">"directory"</span>, <span class="at">recurse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataset_dirs <span class="ot">&lt;-</span> top_level_dirs[<span class="fu">basename</span>(top_level_dirs) <span class="sc">!=</span> <span class="st">"processed_data"</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataset_dirs <span class="ot">&lt;-</span> top_level_dirs[<span class="fu">basename</span>(top_level_dirs) <span class="sc">!=</span> <span class="st">"versioned_data"</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>final_info <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(dataset_dirs, <span class="cf">function</span>(ds_dir) {</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  final_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(ds_dir, <span class="st">"final"</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (fs<span class="sc">::</span><span class="fu">dir_exists</span>(final_dir)) {</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">dataset =</span> <span class="fu">basename</span>(ds_dir),</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">source_final =</span> final_dir</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(final_info) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"No datasets with a `final/` directory were found under data/."</span>)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Identified {nrow(final_info)} dataset(s) with final outputs."</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(final_dir, <span class="at">recurse =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"file"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">dataset =</span> <span class="fu">basename</span>(ds_dir),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">source_final =</span> final_dir,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">files =</span> <span class="fu">list</span>(files)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(final_info) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"No datasets with a `final/` directory were found under data/."</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Identified {nrow(final_info)} dataset(s) with final outputs."</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Identified 4 dataset(s) with final outputs.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>final_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>final_info <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">file_count =</span> purrr<span class="sc">::</span><span class="fu">map_int</span>(files, length)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dataset, file_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
-  dataset               source_final                                            
-  &lt;chr&gt;                 &lt;fs::path&gt;                                              
-1 annual_dna_collection …ub/PODFRIDGE-Databases/data/annual_dna_collection/final
-2 foia                  …sers/tlasisi/GitHub/PODFRIDGE-Databases/data/foia/final
-3 ndis                  …sers/tlasisi/GitHub/PODFRIDGE-Databases/data/ndis/final
-4 sdis                  …sers/tlasisi/GitHub/PODFRIDGE-Databases/data/sdis/final</code></pre>
+  dataset               file_count
+  &lt;chr&gt;                      &lt;int&gt;
+1 annual_dna_collection          1
+2 foia                           1
+3 ndis                           1
+4 sdis                           1</code></pre>
 </div>
 </div>
 </section>
@@ -389,20 +359,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>copy_results <span class="ot">&lt;-</span> final_info <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_dataset_dir =</span> fs<span class="sc">::</span><span class="fu">path</span>(target_dir, dataset),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">files_copied =</span> purrr<span class="sc">::</span><span class="fu">map2</span>(source_final, target_dataset_dir, <span class="cf">function</span>(src, dest) {</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      fs<span class="sc">::</span><span class="fu">dir_create</span>(dest)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(src, <span class="at">recurse =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"file"</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(files)) {</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        purrr<span class="sc">::</span><span class="fu">walk</span>(files, <span class="cf">function</span>(file_path) {</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>          relative <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path_rel</span>(file_path, <span class="at">start =</span> src)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>          dest_file <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(dest, relative)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>          fs<span class="sc">::</span><span class="fu">dir_create</span>(fs<span class="sc">::</span><span class="fu">path_dir</span>(dest_file))</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>          fs<span class="sc">::</span><span class="fu">file_copy</span>(file_path, dest_file, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">files_copied =</span> purrr<span class="sc">::</span><span class="fu">map2</span>(source_final, dataset, <span class="cf">function</span>(src, ds_name) {</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(src, <span class="at">recurse =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"file"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(files)) {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        purrr<span class="sc">::</span><span class="fu">map</span>(files, <span class="cf">function</span>(file_path) {</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>         relative <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path_rel</span>(file_path, <span class="at">start =</span> src)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>          target_name <span class="ot">&lt;-</span> relative</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>          dest_file <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(target_dir, target_name)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>          fs<span class="sc">::</span><span class="fu">dir_create</span>(fs<span class="sc">::</span><span class="fu">path_dir</span>(dest_file))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>          fs<span class="sc">::</span><span class="fu">file_copy</span>(file_path, dest_file, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>          target_name</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>      rel_paths <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path_rel</span>(fs<span class="sc">::</span><span class="fu">path</span>(dest, fs<span class="sc">::</span><span class="fu">path_rel</span>(files, <span class="at">start =</span> src)), <span class="at">start =</span> target_dir)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>      rel_paths</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">character</span>()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>      }</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    })</span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   dataset               files
   &lt;chr&gt;                 &lt;int&gt;
 1 annual_dna_collection     1
-2 foia                      2
+2 foia                      1
 3 ndis                      1
 4 sdis                      1</code></pre>
 </div>
@@ -435,38 +405,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span>,</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Version: {target_version}"</span>),</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Frozen on: {format(freeze_timestamp, '%Y-%m-%d %H:%M:%S %Z')}"</span>),</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Version origin: {version_label_used}"</span>),</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Summary: {version_message}"</span>),</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Notes: {version_note}"</span>),</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(copy_results))) {</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  dataset_name <span class="ot">&lt;-</span> copy_results<span class="sc">$</span>dataset[i]</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  source_rel <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path_rel</span>(copy_results<span class="sc">$</span>source_final[i], <span class="at">start =</span> data_root)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  files <span class="ot">&lt;-</span> copy_results<span class="sc">$</span>files_copied[[i]]</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    readme_lines,</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glue</span>(<span class="st">"## {dataset_name}"</span>),</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">""</span>,</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glue</span>(<span class="st">"- Source directory: `data/{source_rel}`"</span>),</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glue</span>(<span class="st">"- Snapshot directory: `processed_data/{target_version}/{dataset_name}`"</span>),</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">""</span>,</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"### Files"</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(files) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="st">"- (no files found in final directory)"</span>)</span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="fu">paste0</span>(<span class="st">"- "</span>, files))</span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="st">""</span>)</span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(readme_lines, readme_path)</span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"README written to {readme_path}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Summary: {version_message}"</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"- Notes: {version_note}"</span>),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"All files listed below now live in `data/versioned_data/{target_version}/`."</span>),</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>file_listing <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_dfr</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  copy_results<span class="sc">$</span>files_copied,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  copy_results<span class="sc">$</span>source_final,</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(files, src) {</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">length</span>(files)) <span class="fu">return</span>(<span class="fu">tibble</span>(<span class="at">source_path =</span> <span class="fu">character</span>()))</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">source_path =</span> fs<span class="sc">::</span><span class="fu">path_rel</span>(fs<span class="sc">::</span><span class="fu">path</span>(src, files), <span class="at">start =</span> <span class="fu">here</span>())</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="st">"## Source Files"</span>, <span class="st">""</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(file_listing) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="st">"- (no files found in final directories)"</span>)</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  readme_lines <span class="ot">&lt;-</span> <span class="fu">c</span>(readme_lines, <span class="fu">paste0</span>(<span class="st">"- `"</span>, file_listing<span class="sc">$</span>source_path, <span class="st">"`"</span>))</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(readme_lines, readme_path)</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"README written to {readme_path}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>README written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/processed_data/v1.0/README.md</code></pre>
+<pre><code>README written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0/README.md</code></pre>
 </div>
 </div>
 </section>
@@ -479,17 +448,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    dataset,</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">files_copied =</span> purrr<span class="sc">::</span><span class="fu">map_int</span>(files_copied, length),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">snapshot_dir =</span> fs<span class="sc">::</span><span class="fu">path</span>(target_version, dataset)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">example_file =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(files_copied, <span class="cf">function</span>(x) {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>) <span class="st">"(none)"</span> <span class="cf">else</span> <span class="fu">as.character</span>(x[[<span class="dv">1</span>]])</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  dataset               files_copied snapshot_dir              
-  &lt;chr&gt;                        &lt;int&gt; &lt;fs::path&gt;                
-1 annual_dna_collection            1 v1.0/annual_dna_collection
-2 foia                             2 v1.0/foia                 
-3 ndis                             1 v1.0/ndis                 
-4 sdis                             1 v1.0/sdis                 </code></pre>
+  dataset               files_copied example_file
+  &lt;chr&gt;                        &lt;int&gt; &lt;chr&gt;       
+1 annual_dna_collection            1 1           
+2 foia                             1 1           
+3 ndis                             1 1           
+4 sdis                             1 1           </code></pre>
 </div>
 </div>
 
