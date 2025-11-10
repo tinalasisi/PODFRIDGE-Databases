@@ -1,6 +1,6 @@
 # Data Dictionary v1.0 folder
 
-This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [to be added]).
+This folder contains four primary datasets documenting U.S. forensic DNA databases. All datasets are versioned and archived on Zenodo (DOI: [to be added]) including the raw, intermediate and final files. Below we will discuss only the versioned processed data in the `versioned_data` subfolder. The process for getting to these final files is described in each analysis file that generates the processed data from the raw (see `analysis/` subfolder).
 
 ## Dataset Overview
 
@@ -183,5 +183,5 @@ This folder contains four primary datasets documenting U.S. forensic DNA databas
 - Must account for varying data quality and estimation methods by state
 
 
-**Last updated:** October 5th, 2025
+**Last updated:** _today_
 **Zenodo DOI:** [To be added upon publication]

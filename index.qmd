@@ -1,6 +1,6 @@
 ---
 title: "PODFRIDGE-Databases"
-subtitle: "United States forensic DNA database platform"
+subtitle: "United States forensic DNA databases (2001-2025)"
 format: 
   html:
     theme: light
@@ -11,11 +11,7 @@ format:
 
 ## Overview
 
-PODFRIDGE-Databases is a comprehensive research platform analyzing forensic DNA database systems in the United States. This project combines multiple data sources to examine the growth, composition, and demographic patterns within national and state DNA index systems.
-
-> **About PODFRIDGE**
->
-> This work is part of the broader *PODFRIDGE* project (Population Differences in Forensic Relative Identification via Genetic Genealogy). The first phase focuses on consolidating authoritative information about where and how DNA profiles are stored in U.S. databases so later modeling can plug in realistic availability assumptions.
+This repository is part of the *PODFRIDGE* project — **P**opulation **D**ifferences in **F**orensic **R**elative **I**dentification via **G**enetic **G**enealogy. The first phase focuses on consolidating authoritative information about where and how DNA profiles are stored in U.S. databases so later modeling can plug in realistic availability assumptions.
 
 ## Project Sections
 

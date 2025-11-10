@@ -4,7 +4,7 @@
 
 ## Overview
 
-This repository contains data collection, processing, and analysis code for a comprehensive study of U.S. forensic DNA databases spanning 2001-2025. The project reconstructs the historical growth of the National DNA Index System (NDIS), compiles current state-level DNA database policies and statistics (SDIS), and standardizes demographic data from Freedom of Information Act (FOIA) requests.
+This repository is part of the *PODFRIDGE* project — **P**opulation **D**ifferences in **F**orensic **R**elative **I**dentification via **G**enetic **G**enealogy. The first phase focuses on consolidating authoritative information about where and how DNA profiles are stored in U.S. databases so later modeling can plug in realistic availability assumptions.
 
 ## Associated Publication
 
