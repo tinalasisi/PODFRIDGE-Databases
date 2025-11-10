@@ -164,7 +164,7 @@ into a single **combined long‑format table (`foia_combined`)**:
         table with both reported and calculated values,
     -   `data/foia/intermediate/foia_state_metadata.csv` — one row per state
         summarising coverage and caveats. After QC passes, freeze
-        `foia_data_clean.csv` to `data/v1.0/FOIA_demographics.csv`.
+        `foia_data_clean.csv` to `data/foia/final/foia_data_clean.csv`. Versioned releases are managed via `analysis/version_freeze.qmd`.
 
 ## Helper Functions
 

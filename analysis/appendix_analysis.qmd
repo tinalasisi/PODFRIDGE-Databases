@@ -729,23 +729,17 @@ dir.create(intermediate_dir, recursive = TRUE, showWarnings = FALSE)
 final_dir <- here("data", "annual_dna_collection", "final")
 dir.create(final_dir, recursive = TRUE, showWarnings = FALSE)
 
-frozen_dir <- here("data", "v1.0")
-dir.create(frozen_dir, recursive = TRUE, showWarnings = FALSE)
-
 # Export final combined dataset
 output_path <- file.path(final_dir, "Annual_DNA_Collection.csv")
 write_csv(annual_dna_combined, output_path)
 cat(paste("✓ Exported Annual DNA Collection dataset to:", output_path, "\n"))
 
-# Create frozen version (v1.0) for long-term reference
-frozen_path <- file.path(frozen_dir, "Annual_DNA_Collection.csv")
-write_csv(annual_dna_combined, frozen_path)
-cat(paste("✓ Created frozen version 1.0 at:", frozen_path, "\n\n"))
-
 # Also export the methodology summary separately for reference
 methodology_output_path <- file.path(intermediate_dir, "State_Methodology.csv")
 write_csv(methodology_summary, methodology_output_path)
 cat(paste("✓ Exported study methodology summary to:", methodology_output_path, "\n"))
+
+cat("Use analysis/version_freeze.qmd to create processed data releases when needed.\n")
 ```
 
 ## Summary and Key Findings

@@ -2633,7 +2633,7 @@ datatable(
 
 ### Export Cleaned Dataset {#export-dataset}
 
-After cleaning and processing the NDIS data, the final dataset is exported as a CSV file for further analysis or sharing. The file is saved to the `data/v1.0/` directory to maintain an organized workflow.
+After cleaning and processing the NDIS data, the final dataset is exported as a CSV file for further analysis or sharing. The file is saved to `data/ndis/final/` so it can be referenced by other analyses. Use `analysis/version_freeze.qmd` whenever you need a versioned snapshot.
 
 **Output:** `NDIS_time_series.csv`
 
@@ -2659,18 +2659,13 @@ ndis_clean <- ndis_clean %>%
     ndis_labs, investigations_aided
   )
 
-# Create final frozen version (v1.0)
+# Write latest final dataset
 final_dir <- here("data", "ndis", "final")
 dir.create(final_dir, recursive = TRUE, showWarnings = FALSE)
 final_path <- here(final_dir, "NDIS_time_series.csv")
 
 write_csv(ndis_clean, final_path)
-cat(paste("✓ Created final version at:", final_path, "\n"))
+cat(paste("✓ Created final dataset at:", final_path, "\n"))
 
-frozen_dir <- here("data", "v1.0")
-dir.create(frozen_dir, recursive = TRUE, showWarnings = FALSE)
-frozen_path <- here(frozen_dir, "NDIS_time_series.csv")
-
-write_csv(ndis_clean, frozen_path)
-cat(paste("✓ Created frozen version 1.0 at:", frozen_path, "\n"))
+cat("Use analysis/version_freeze.qmd to publish processed-data releases.\n")
 ```

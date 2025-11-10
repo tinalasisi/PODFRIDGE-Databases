@@ -1319,15 +1319,7 @@ datatable(
   caption = "Enhanced Data with Estimated Totals"
 )
 
-# Create final frozen version (v1.0)
-frozen_dir_relative <- file.path("data", "v1.0")
-frozen_dir <- here(frozen_dir_relative)
-dir.create(frozen_dir, recursive = TRUE, showWarnings = FALSE)
-
-frozen_path_relative <- file.path(frozen_dir_relative, "SDIS_cross_section.csv")
-frozen_path <- here(frozen_path_relative)
-write_csv(sdis_final, frozen_path)
-cat(paste("✓ Created frozen version 1.0 at:", frozen_path_relative, "\n"))
+cat("Use analysis/version_freeze.qmd for processed-data releases.\n")
 
 ```
 
@@ -1344,9 +1336,9 @@ library(here)
 library(scales)
 library(patchwork)
 
-# Read frozen datasets
-ndis <- read_csv(here("data", "v1.0", "NDIS_time_series.csv"), show_col_types = FALSE)
-sdis <- read_csv(here("data", "v1.0", "SDIS_cross_section.csv"), show_col_types = FALSE)
+# Read latest final datasets
+ndis <- read_csv(here("data", "ndis", "final", "NDIS_time_series.csv"), show_col_types = FALSE)
+sdis <- read_csv(here("data", "sdis", "final", "SDIS_cross_section.csv"), show_col_types = FALSE)
 
 # Extract latest NDIS data for each jurisdiction using capture_datetime
 # Use capture_datetime (the timestamp when data was captured) as the most reliable date
