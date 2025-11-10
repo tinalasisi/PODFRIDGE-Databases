@@ -132,7 +132,7 @@ data/
 **Description:** Demographic composition (race/gender) of state DNA databases from FOIA responses documented in Murphy & Tong (2020).
 
 **Source:** Murphy & Tong (2020) - FOIA responses from state agencies  
-**Temporal Coverage:** 
+**Temporal Coverage:** 2018 (year of FOIA responses)`
 **Spatial Coverage:** 7 states (California, Florida, Indiana, Maine, Nevada, South Dakota, Texas)  
 
 ### Column Definitions
@@ -205,7 +205,6 @@ data/
 **Missing Data Patterns:**
 - Many states have NA values for specific racial/ethnic categories
 - Collection rates may be NA where population or profile data unavailable
-- Legal framework details only available for states analyzed in detail by Murphy & Tong
 
 **Data Quality Notes:**
 - Collection rates represent annual additions, not total database size
