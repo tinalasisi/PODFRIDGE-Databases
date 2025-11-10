@@ -183,9 +183,12 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 /.quarto/
+_freeze/
 
 
 # ~/.gitignore_global 
 .DS_Store
 
 .Rproj.user
+
+.Rhistory

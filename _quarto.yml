@@ -3,26 +3,32 @@ project:
   output-dir: docs
   resources:
     - figures/
+  
+execute:
+    freeze: auto  # Only re-execute when source changes
     
 website:
   title: "PODFRIDGE-Databases"
+  site-url: https://tinalasisi.github.io/PODFRIDGE-Databases
   navbar:
+    right:
+      - icon: github
+        href: https://github.com/tinalasisi/PODFRIDGE-Databases
+        text: Source
     left:
       - href: index.html
         text: Home
-      - href: about.html
-        text: About
       - text: Analyses
         menu:
-          - href: qmd_root/ndis_scraping.html
+          - href: analysis/ndis_scraping.html
             text: NDIS scraping methodology
-          - href: qmd_root/ndis_analysis.html
+          - href: analysis/ndis_analysis.html
             text: NDIS analysis
-          - href: qmd_root/sdis_summary.html
+          - href: analysis/sdis_summary.html
             text: SDIS summary
-          - href: qmd_root/foia_processing.html
+          - href: analysis/foia_processing.html
             text: FOIA processing
-          - href: qmd_root/appendix_analysis.html
+          - href: analysis/appendix_analysis.html
             text: Annual DNA Collection
 format:
   html:

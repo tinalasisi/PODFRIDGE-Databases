@@ -1,0 +1,795 @@
+---
+title: "Manuscript Figures"
+author: "Tina Lasisi"
+date: today
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    fig-width: 12
+    fig-height: 7
+---
+
+## Setup
+
+```{r}
+#| label: setup
+#| echo: true
+
+library(tidyverse)
+library(here)
+library(lubridate)
+library(patchwork)
+library(ggrepel)
+library(viridis)
+library(sf)
+
+if (!requireNamespace("qualpalr", quietly = TRUE)) {
+  install.packages("qualpalr")
+}
+library(qualpalr)
+
+if (!requireNamespace("urbnmapr", quietly = TRUE)) {
+  remotes::install_github("UrbanInstitute/urbnmapr")
+}
+library(urbnmapr)
+
+figures_dir_relative <- file.path("output", "figures", "manuscript_figures")
+figures_dir <- here(figures_dir_relative)
+dir.create(figures_dir, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: log-output-dir
+#| echo: false
+cat(sprintf("Figures will be written to: %s\n", figures_dir_relative))
+```
+
+```{r}
+#| label: qualpal-colors
+#| echo: false
+
+qualpal_palette <- qualpal(
+  n = 10,
+  list(
+    h = c(190, 330),
+    s = c(0.35, 0.75),
+    l = c(0.45, 0.85)
+  )
+)
+qp_hex <- qualpal_palette$hex
+
+# Establish highly contrasting categorical colors for map usage
+map_colors <- list(
+  arrestee_yes = "#335C81",      # muted navy
+  arrestee_no = "#C1C1C1",       # light gray
+  fam_permitted = "#4E9F3D",     # rich green
+  fam_prohibited = "#1F1F1F",    # deep charcoal (near-black)
+  fam_unspecified = "#A5D8FF",   # pale blue
+  foia_provided = "#1B98E0",     # saturated blue
+  foia_not = "#F45B69"           # high-contrast coral
+)
+
+metric_colors <- c(
+  "Offender Profiles"    = qp_hex[1],
+  "Arrestee Profiles"    = qp_hex[3],
+  "Forensic Profiles"    = qp_hex[4],
+  "Investigations Aided" = qp_hex[6],
+  "NDIS Labs"            = qp_hex[8]
+)
+
+offender_color <- qp_hex[1]
+arrestee_color <- qp_hex[3]
+forensic_color <- qp_hex[4]
+total_color <- qp_hex[5]
+investigations_color <- qp_hex[6]
+```
+
+## Figure 1 – NDIS Snapshot Coverage
+
+```{r}
+#| label: fig1-overview
+#| echo: false
+#| fig-alt: "Line chart showing the number of NDIS snapshots available per year."
+
+knitr::include_graphics(file.path(figures_dir, "fig1_snapshots_years.png"))
+```
+
+## Figure 2 – Methodology Overview
+
+```{r}
+#| label: fig2-methodology
+#| echo: false
+#| fig-alt: "Workflow diagram summarizing the NDIS scraping and processing pipeline."
+
+knitr::include_graphics(file.path(figures_dir, "fig2_methodology.png"))
+```
+
+```{r}
+#| label: literature-data
+#| echo: false
+
+literature_data <- read_csv(
+  file.path(here("data", "ndis_crossref", "literature_data.csv")),
+  show_col_types = FALSE
+) %>%
+  mutate(
+    asof_date = as.Date(asof_date),
+    total_profiles = ifelse(
+      is.na(total_profiles),
+      rowSums(select(., offender_profiles, arrestee_profiles, forensic_profiles), na.rm = TRUE),
+      total_profiles
+    )
+  )
+```
+
+## Figure 3 – SDIS Policy Maps
+
+```{r}
+#| label: fig3-policy-maps
+#| echo: true
+#| message: true
+
+data_file <- file.path(here("data", "sdis", "raw", "sdis_raw.csv"))
+sdis_data <- read_csv(data_file, show_col_types = FALSE)
+
+sdis_data <- sdis_data %>%
+  mutate(
+    foia_availability = case_when(
+      state %in% c("California", "Florida", "Indiana", "Maine",
+                   "Nevada", "South Dakota", "Texas") ~ "provided",
+      TRUE ~ "not_provided"
+    )
+  )
+
+us_map_data <- get_urbn_map("states", sf = TRUE) %>%
+  mutate(region = tolower(state_name))
+
+sdis_data_map <- sdis_data %>%
+  mutate(region = tolower(state))
+
+map_data_repos <- us_map_data %>%
+  left_join(sdis_data_map, by = "region")
+
+create_policy_map <- function(fill_var, fill_title, fill_colors, plot_title) {
+  ggplot(map_data_repos) +
+    geom_sf(aes(fill = !!sym(fill_var)), color = "white", linewidth = 0.3) +
+    scale_fill_manual(
+      name = fill_title,
+      values = fill_colors,
+      na.value = "gray90",
+      na.translate = FALSE,
+      guide = guide_legend(
+        direction = "vertical",
+        title.position = "top",
+        title.hjust = 0.5
+      )
+    ) +
+    coord_sf(expand = FALSE) +
+    labs(title = plot_title) +
+    theme_void() +
+    theme(
+      plot.margin = margin(t = 5, r = 5, b = 5, l = 5),
+      plot.title = element_text(size = 12, face = "bold", hjust = 0.5, margin = margin(b = 2)),
+      legend.position = "bottom",
+      legend.title = element_text(size = 8, face = "bold"),
+      legend.text = element_text(size = 9),
+      legend.box = "vertical",
+      legend.margin = margin(t = 2, b = 2)
+    )
+}
+
+map_arrestee_repos <- create_policy_map(
+  "arrestee_collection", " ",
+  c("yes" = map_colors$arrestee_yes, "no" = map_colors$arrestee_no),
+  "A. Arrestee DNA Collection Policy"
+)
+
+map_familial_repos <- create_policy_map(
+  "fam_search", " ",
+  c(
+    "permitted" = map_colors$fam_permitted,
+    "prohibited" = "#000000",
+    "unspecified" = map_colors$fam_unspecified
+  ),
+  "B. Familial Search Policy"
+)
+
+map_foia_repos <- create_policy_map(
+  "foia_availability", " ",
+  c(
+    "provided" = map_colors$foia_provided,
+    "not_provided" = map_colors$foia_not
+  ),
+  "C. FOIA Response Status"
+)
+
+figure_combined <- map_arrestee_repos | map_familial_repos | map_foia_repos
+
+figure_combined + plot_annotation(
+  title = " ",
+  theme = theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
+)
+
+ggsave(
+  filename = file.path(figures_dir, "fig3_maps.png"),
+  plot = figure_combined,
+  width = 9,
+  height = 4,
+  dpi = 300,
+  units = "in"
+)
+```
+
+## Figure 5 – NDIS Anomaly Log
+
+```{r}
+#| label: fig5-anomaly-log
+#| echo: true
+
+data_file <- file.path(here("data", "ndis", "intermediate", "anomaly_log.csv"))
+anomaly_log <- read_csv(data_file, show_col_types = FALSE)
+
+metric_order <- c("Offender Profiles", "Forensic Profiles", "Arrestee Profiles",
+                  "Investigations Aided", "NDIS Labs")
+
+anomaly_plot_data <- anomaly_log %>%
+  group_by(metric, jurisdiction) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  mutate(metric = factor(metric, levels = metric_order))
+
+p_anomaly_distribution <- ggplot(anomaly_plot_data,
+                                 aes(x = jurisdiction, y = count, fill = metric)) +
+  geom_bar(stat = "identity", position = "stack", color = "black",
+           linewidth = 0.3, width = 1) +
+  scale_fill_manual(name = "Metric", values = metric_colors) +
+  scale_y_continuous(limits = c(0, NA), expand = c(0, 0)) +
+  theme_minimal(base_size = 10) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.4),
+    axis.ticks = element_line(color = "black", linewidth = 0.4),
+    axis.text = element_text(color = "black", size = 9),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.title.x = element_text(size = 11, face = "bold", margin = margin(t = 8)),
+    axis.title.y = element_text(size = 11, face = "bold", margin = margin(r = 8)),
+    legend.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 9),
+    legend.key.size = unit(0.5, "cm"),
+    legend.key.width = unit(0.4, "cm"),
+    legend.key.height = unit(0.4, "cm"),
+    plot.margin = margin(t = 5, r = 5, b = 5, l = 5)
+  ) +
+  labs(
+    title = " ",
+    x = "Jurisdiction",
+    y = "Number of Anomalies"
+  )
+
+p_anomaly_distribution
+
+ggsave(
+  filename = file.path(figures_dir, "fig5_anomaly_log.png"),
+  plot = p_anomaly_distribution,
+  width = 12,
+  height = 6,
+  dpi = 300,
+  units = "in"
+)
+```
+
+## Figure 6 – Temporal Coverage Heatmaps
+
+```{r}
+#| label: fig6-heatmaps
+#| echo: true
+
+data_file_raw <- file.path(here("data", "ndis", "intermediate", "ndis_intermediate.csv"))
+ndis_intermediate <- read_csv(data_file_raw, show_col_types = FALSE)
+
+temporal_coverage_intermediate <- ndis_intermediate %>%
+  mutate(year = year(capture_datetime)) %>%
+  count(jurisdiction, year) %>%
+  complete(jurisdiction, year = 2001:2025, fill = list(n = 0)) %>%
+  filter(!is.na(jurisdiction)) %>%
+  mutate(jurisdiction = factor(jurisdiction, levels = rev(sort(unique(jurisdiction)))))
+
+heatmap_raw <- ggplot(temporal_coverage_intermediate, aes(x = year, y = jurisdiction, fill = n)) +
+  geom_tile(color = "white", linewidth = 0.3) +
+  scale_fill_viridis(
+    name = "Snapshots\nper Year",
+    option = "plasma",
+    direction = -1,
+    breaks = c(0, 12, 24, 48),
+    labels = c("0", "12", "24", "48+")
+  ) +
+  scale_x_continuous(
+    breaks = seq(2001, 2025, by = 1),
+    expand = expansion(mult = 0.01)
+  ) +
+  labs(
+    x = NULL,
+    y = "Jurisdiction",
+    title = "A) Raw Snapshots Dataset"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, hjust = 0.75, size = 9),
+    axis.text.y = element_text(size = 9),
+    plot.title = element_text(size = 11, hjust = 0),
+    legend.position = "none",
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 11, margin = margin(r = 10))
+  )
+
+data_file_clean <- file.path(here("data", "ndis", "final", "NDIS_time_series.csv"))
+ndis_clean <- read_csv(data_file_clean, show_col_types = FALSE)
+
+temporal_coverage_clean <- ndis_clean %>%
+  mutate(year = year(capture_datetime)) %>%
+  count(jurisdiction, year) %>%
+  complete(jurisdiction, year = 2001:2025, fill = list(n = 0)) %>%
+  filter(!is.na(jurisdiction)) %>%
+  mutate(jurisdiction = factor(jurisdiction, levels = rev(sort(unique(jurisdiction)))))
+
+heatmap_after_clean <- ggplot(temporal_coverage_clean, aes(x = year, y = jurisdiction, fill = n)) +
+  geom_tile(color = "white", linewidth = 0.3) +
+  scale_fill_viridis(
+    name = "Snapshots per Year",
+    option = "plasma",
+    direction = -1,
+    breaks = c(0, 12, 24, 48),
+    labels = c("0", "12", "24", "48+")
+  ) +
+  scale_x_continuous(
+    breaks = seq(2001, 2025, by = 1),
+    expand = expansion(mult = 0.01)
+  ) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "B) Cleaned Snapshots Dataset"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, hjust = 0.75, size = 9),
+    axis.text.y = element_blank(),
+    plot.title = element_text(size = 11, hjust = 0),
+    legend.position = "right",
+    legend.key.height = unit(0.6, "cm"),
+    legend.key.width = unit(0.2, "cm"),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10, margin = margin(b = 4)),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  )
+
+figure_heatmaps <- heatmap_raw + heatmap_after_clean +
+  plot_annotation(
+    title = " ",
+    theme = theme(plot.title = element_text(face = "bold", hjust = 0.5))
+  ) +
+  plot_layout(widths = c(1, 1))
+
+figure_heatmaps
+
+ggsave(
+  filename = file.path(figures_dir, "fig6_heatmap_raw_clean.png"),
+  plot = figure_heatmaps,
+  width = 10,
+  height = 7.5,
+  dpi = 300,
+  units = "in"
+)
+```
+
+## Table 1 – Published NDIS Benchmarks
+
+```{r}
+#| label: tbl-literature
+#| echo: false
+
+literature_table <- literature_data %>%
+  arrange(asof_date) %>%
+  mutate(
+    asof_date = format(as.Date(asof_date), "%Y-%m"),
+    across(
+      c(offender_profiles, arrestee_profiles, forensic_profiles, total_profiles, investigations_aided),
+      ~ ifelse(is.na(.x), "", scales::comma(.x))
+    )
+  )
+
+knitr::kable(
+  literature_table,
+  format = "html",
+  caption = "Summary of published NDIS totals used for validation."
+)
+```
+
+The rows labeled “FBI Brochure” refer to the bureau’s 2015 CODIS brochure, which outlines the historical size of the National DNA Index System. A copy of the document is archived in this repository at [`data/ndis_crossref/CODIS_Brochure_2015-0918.pdf`](../data/ndis_crossref/CODIS_Brochure_2015-0918.pdf).
+
+For all other literature sources, please cite the original publications as follows:
+
+- Ge, J., Eisenberg, A., & Budowle, B. (2012). Developing criteria and data to determine best options for expanding the core CODIS loci. *Investigative Genetics, 3*(1), 1.
+- Ge, J., Sun, H., Li, H., Liu, C., Yan, J., & Budowle, B. (2014). Future directions of forensic DNA databases. *Croatian Medical Journal, 55*(2), 163–166.
+- Wickenheiser, R. A. (2022). Expanding DNA database effectiveness. *Forensic Science International: Synergy, 4*, 100226.
+- Link, V., Zavaleta, Y. J. A., Reyes, R.-J., Ding, L., Wang, J., Rohlfs, R. V., & Edge, M. D. (2023). Microsatellites used in forensics are in regions enriched for trait-associated variants. *iScience, 26*(10), 107992.
+- Greenwald, E., & Phiri, L. (2024). On Accountability: Genetic Tools for Justice and Injustice in Criminal Proceedings. *Journal of Science Policy & Governance, 25*(1).
+
+
+## Figure 7 – Growth & Validation Grid
+
+```{r}
+#| label: fig7-validation-grid
+#| echo: true
+#| fig-width: 20
+#| fig-height: 18
+
+ndis_clean <- read_csv(file.path(here("data", "ndis", "final", "NDIS_time_series.csv")), show_col_types = FALSE)
+
+growth_data_yearly <- ndis_clean %>%
+  mutate(year = year(capture_datetime)) %>%
+  group_by(jurisdiction, year) %>%
+  arrange(jurisdiction, capture_datetime) %>%
+  mutate(
+    selection_priority = case_when(
+      year <= 2018 ~ arrestee,
+      year > 2018 ~ offender_profiles
+    )
+  ) %>%
+  slice_max(order_by = selection_priority, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  group_by(year) %>%
+  summarise(
+    offender_total = sum(offender_profiles, na.rm = TRUE),
+    arrestee_total = sum(arrestee, na.rm = TRUE),
+    forensic_total = sum(forensic_profiles, na.rm = TRUE),
+    investigations_total = sum(investigations_aided, na.rm = TRUE),
+    n_jurisdictions = n(),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    total_profiles = offender_total + arrestee_total + forensic_total,
+    date = as.Date(paste0(year, "-06-01"))
+  )
+
+dna_data <- growth_data_yearly %>%
+  select(date, offender_total, arrestee_total, forensic_total, total_profiles) %>%
+  pivot_longer(
+    cols = c(offender_total, arrestee_total, forensic_total, total_profiles),
+    names_to = "variable", values_to = "count"
+  ) %>%
+  mutate(
+    variable = case_when(
+      variable == "offender_total" ~ "Offender",
+      variable == "arrestee_total" ~ "Arrestee",
+      variable == "forensic_total" ~ "Forensic",
+      variable == "total_profiles" ~ "Total"
+    )
+  )
+
+investigations_data <- growth_data_yearly %>%
+  select(date, investigations_total)
+
+literature_dna <- literature_data %>%
+  select(short_label, asof_date, offender_profiles, arrestee_profiles, forensic_profiles, total_profiles) %>%
+  pivot_longer(
+    cols = c(offender_profiles, arrestee_profiles, forensic_profiles, total_profiles),
+    names_to = "variable",
+    values_to = "count"
+  ) %>%
+  filter(!is.na(count)) %>%
+  mutate(
+    variable = case_when(
+      variable == "offender_profiles" ~ "Offender",
+      variable == "arrestee_profiles" ~ "Arrestee",
+      variable == "forensic_profiles" ~ "Forensic",
+      variable == "total_profiles" ~ "Total"
+    )
+  )
+
+literature_investigations <- literature_data %>%
+  select(short_label, asof_date, investigations_aided) %>%
+  filter(!is.na(investigations_aided))
+
+extended_date_range <- c(
+  min(growth_data_yearly$date) - years(1),
+  max(growth_data_yearly$date) + years(1)
+)
+
+scale_axis <- function(values) {
+  ifelse(values >= 1e6, paste0(values / 1e6, "M"),
+         ifelse(values >= 1e3, paste0(values / 1e3, "K"), values))
+}
+
+label_size_large <- 12 / .pt
+label_size_small <- 11 / .pt
+
+offender_data <- dna_data %>% filter(variable == "Offender")
+offender_lit <- literature_dna %>% filter(variable == "Offender")
+
+p_offender <- ggplot() +
+  geom_line(data = offender_data, aes(x = date, y = count),
+            color = offender_color, linewidth = 0.5, na.rm = TRUE) +
+  geom_point(data = offender_data, aes(x = date, y = count),
+             color = offender_color, size = 1.0, na.rm = TRUE) +
+  geom_point(data = offender_lit, aes(x = asof_date, y = count),
+             shape = 4, size = 2.6, stroke = 1.0, color = offender_color) +
+  geom_label_repel(
+    data = offender_lit %>% filter(lubridate::year(asof_date) < 2020),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 5e6,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  geom_label_repel(
+    data = offender_lit %>% filter(lubridate::year(asof_date) >= 2021),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 1e6,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
+               limits = extended_date_range, expand = expansion(mult = c(0.02, 0.05))) +
+  scale_y_continuous(name = NULL, labels = scale_axis,
+                     limits = c(0, max(offender_lit$count, na.rm = TRUE) * 1.1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.3),
+    axis.ticks = element_line(color = "black", linewidth = 0.3),
+    axis.text = element_text(color = "black", size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = 12)),
+    axis.text.y = element_text(margin = margin(r = 6)),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
+  ) +
+  labs(x = "Year", y = NULL, title = "(A) Offender Profiles")
+
+arrestee_data <- dna_data %>% filter(variable == "Arrestee")
+arrestee_lit <- literature_dna %>% filter(variable == "Arrestee")
+
+p_arrestee <- ggplot() +
+  geom_line(data = arrestee_data, aes(x = date, y = count),
+            color = arrestee_color, linewidth = 0.5, na.rm = TRUE) +
+  geom_point(data = arrestee_data, aes(x = date, y = count),
+             color = arrestee_color, size = 1.0, na.rm = TRUE) +
+  geom_point(data = arrestee_lit, aes(x = asof_date, y = count),
+             shape = 4, size = 2.6, stroke = 1.0, color = arrestee_color) +
+  geom_label_repel(
+    data = arrestee_lit,
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 5e5,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
+               limits = extended_date_range, expand = expansion(mult = c(0.02, 0.05))) +
+  scale_y_continuous(name = NULL, labels = scale_axis,
+                     limits = c(0, max(arrestee_lit$count, na.rm = TRUE) * 1.1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.3),
+    axis.ticks = element_line(color = "black", linewidth = 0.3),
+    axis.text = element_text(color = "black", size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = 12)),
+    axis.text.y = element_text(margin = margin(r = 6)),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
+  ) +
+  labs(x = "Year", y = NULL, title = "(B) Arrestee Profiles")
+
+forensic_data <- dna_data %>% filter(variable == "Forensic") %>% mutate(plot_label = "(A) Forensic Profiles")
+forensic_lit <- literature_dna %>% filter(variable == "Forensic")
+
+p_forensic <- ggplot() +
+  geom_line(data = forensic_data, aes(x = date, y = count),
+            color = forensic_color, linewidth = 0.5, na.rm = TRUE) +
+  geom_point(data = forensic_data, aes(x = date, y = count),
+             color = forensic_color, size = 1.0, na.rm = TRUE) +
+  geom_point(data = forensic_lit, aes(x = asof_date, y = count),
+             shape = 4, size = 2.6, stroke = 1.0, color = forensic_color) +
+  geom_label_repel(
+    data = forensic_lit %>% filter(lubridate::year(asof_date) < 2020),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 5e5,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  geom_label_repel(
+    data = forensic_lit %>% filter(lubridate::year(asof_date) >= 2021),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 1e5,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
+               limits = extended_date_range, expand = expansion(mult = c(0.02, 0.05))) +
+  scale_y_continuous(name = NULL, labels = scale_axis,
+                     limits = c(0, max(forensic_lit$count, na.rm = TRUE) * 1.1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.3),
+    axis.ticks = element_line(color = "black", linewidth = 0.3),
+    axis.text = element_text(color = "black", size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = 12)),
+    axis.text.y = element_text(margin = margin(r = 6)),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
+  ) +
+  labs(x = "Year", y = NULL, title = "(C) Forensic Profiles")
+
+total_data <- dna_data %>% filter(variable == "Total") %>% mutate(plot_label = "(B) Total Profiles")
+total_lit <- literature_dna %>% filter(variable == "Total")
+
+p_total <- ggplot() +
+  geom_line(data = total_data, aes(x = date, y = count),
+            color = total_color, linewidth = 0.5, na.rm = TRUE) +
+  geom_point(data = total_data, aes(x = date, y = count),
+             color = total_color, size = 1.0, na.rm = TRUE) +
+  geom_point(data = total_lit, aes(x = asof_date, y = count),
+             shape = 4, size = 2.6, stroke = 1.0, color = total_color) +
+  geom_label_repel(
+    data = total_lit %>% filter(lubridate::year(asof_date) >= 2020),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = -1e6,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "y", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  geom_label_repel(
+    data = total_lit %>% filter(lubridate::year(asof_date) < 2021),
+    aes(x = asof_date, y = count, label = short_label),
+    size = label_size_large,
+    nudge_y = 6e6,
+    box.padding = 0.3, point.padding = 0.4,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.12, "lines")
+  ) +
+  scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
+               limits = extended_date_range, expand = expansion(mult = c(0.02, 0.05))) +
+  scale_y_continuous(name = NULL, labels = scale_axis,
+                     limits = c(0, max(total_lit$count, na.rm = TRUE) * 1.1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.3),
+    axis.ticks = element_line(color = "black", linewidth = 0.3),
+    axis.text = element_text(color = "black", size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(t = 12)),
+    axis.text.y = element_text(margin = margin(r = 6)),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
+  ) +
+  labs(x = "Year", y = NULL, title = "(D) Total Profiles")
+
+p_investigations_grid <- ggplot() +
+  geom_line(data = investigations_data,
+            aes(x = date, y = investigations_total),
+            color = investigations_color, linewidth = 0.5, na.rm = TRUE) +
+  geom_point(data = investigations_data,
+             aes(x = date, y = investigations_total),
+             color = investigations_color, size = 1.0, na.rm = TRUE) +
+  geom_point(data = literature_investigations,
+             aes(x = asof_date, y = investigations_aided),
+             shape = 4, size = 2.8, stroke = 1.0, color = investigations_color) +
+  geom_label_repel(
+    data = literature_investigations %>% filter(lubridate::year(asof_date) < 2021),
+    aes(x = asof_date, y = investigations_aided, label = short_label),
+    size = 16 / .pt,
+    nudge_y = 100000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both", force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
+  geom_label_repel(
+    data = literature_investigations %>% filter(lubridate::year(asof_date) > 2021),
+    aes(x = asof_date, y = investigations_aided, label = short_label),
+    size = 16 / .pt,
+    nudge_x = -600,
+    nudge_y = 15000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "x",
+    force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
+  geom_label_repel(
+    data = literature_investigations %>% filter(lubridate::year(asof_date) == 2021),
+    aes(x = asof_date, y = investigations_aided, label = short_label),
+    size = 16 / .pt,
+    nudge_y = 10000,
+    nudge_x = 1000,
+    box.padding = 0.35, point.padding = 0.5,
+    min.segment.length = 0.5, segment.color = "gray50",
+    direction = "both",
+    force = 5, force_pull = 1,
+    max.overlaps = Inf,
+    fill = "white", label.size = 0.2, label.padding = unit(0.15, "lines")
+  ) +
+  scale_x_date(name = "Year", date_breaks = "1 years", date_labels = "%Y",
+               limits = extended_date_range, expand = expansion(mult = c(0.02, 0.06))) +
+  scale_y_continuous(name = NULL,
+                     labels = scale_axis,
+                     limits = c(0, max(literature_investigations$investigations_aided, na.rm = TRUE) * 1.1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_line(color = "gray90", linewidth = 0.3),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.3),
+    axis.ticks = element_line(color = "black", linewidth = 0.3),
+    axis.text = element_text(color = "black", size = 20),
+    axis.text.x = element_text(angle = 45, margin = margin(t = 12)),
+    axis.text.y = element_text(margin = margin(r = 6)),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
+  ) +
+  labs(x = "Year", y = NULL, title = "(C) Investigations Aided")
+
+plots_grid <- (p_offender + p_arrestee) /
+              (p_forensic + p_total) /
+              (p_investigations_grid)
+
+plots_grid <- plots_grid +
+  plot_layout(heights = c(1, 1, 1)) &
+  theme(plot.title = element_text(size = 14, face = "bold"),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 13))
+
+plots_grid
+
+ggsave(file.path(figures_dir, "fig7_verification_grid.png"),
+       plot = plots_grid,
+       width = 20,
+       height = 18,
+       dpi = 300)
+```
