@@ -96,7 +96,7 @@ Compiles current state-level DNA database statistics and policy information acro
 Standardizes demographic composition data from state DNA databases obtained through public records requests documented in Murphy & Tong (2020).
 
 - **Data Source:** FOIA responses from 7 states (Murphy & Tong, 2020, Appendix A)
-- **Coverage:** 2012-2018 (varies by state)
+- **Coverage:** ~2018 
 - **Content:** Racial and gender composition by profile type (offender/arrestee/forensic)
 - **Methods:** OCR processing, data standardization, quality validation
 
@@ -119,9 +119,11 @@ Documents the methodology and data sources used in Murphy & Tong (2020) for calc
   - `/raw/` – Raw inputs (Wayback HTML snapshots, FOIA PDFs, etc.)
   - `/intermediate/` – Staging outputs produced during processing
   - `/final/` – Latest cleaned datasets for each component
-- `data/versioned_data/` – Snapshots created via `analysis/version_freeze.qmd`
+- `data/versioned_data/` – Snapshots of final processed datasets created via `analysis/version_freeze.qmd`
 - `setup/` – Setup scripts to run code (`setup.sh`, `install.R`, Python requirements)
 - `docs/` – Rendered website for GitHub Pages
+- `_freeze` - caching some expensive computation for some of the analysis to simplify render
+- `podfridge-db-env` - venv info for running python scripts fors craping
 
 ## Authors
 
