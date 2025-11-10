@@ -10,23 +10,23 @@ format:
 ---
 
 This notebook lets you freeze all finalized datasets (`data/*/final`) into a
-single release under `data/versioned_data/`. Set `version_label`,
-`version_message`, and `version_note` in the chunk below, run the notebook, and
-the files will be copied into a new `versioned_data/<version>/` folder alongside
-an auto-generated README summarizing the release.
+single release under `data/versioned_data/`. Each run automatically stamps the
+release with the current UTC datetime so you never have to manually create
+version labels. Update the optional summary/note variables in the chunk below,
+run the notebook, and the files will be copied into a new
+`versioned_data/<timestamp>/` folder alongside an auto-generated README
+summarizing the release.
 
 ## Version Configuration
 
-Update the variables in the chunk below before running the freeze. All values
-are required.
+Update the description fields if you want to add extra context to the release.
 
 ```{r}
 #| label: version-settings
 #| echo: true
 
-version_label <- "v1.0"  # e.g., "v2.0" or "v1.1"
-version_message <- "Initial processed-data freeze capturing all final datasets."
-version_note <- "Highlights: Initial release of FOIA, SDIS, and NDIS final datasets."
+version_message <- "Processed-data freeze capturing all final datasets."
+version_note <- "Highlights: Add release-specific notes here."
 ```
 
 ## Setup
@@ -50,26 +50,22 @@ fs::dir_create(processed_root)
 
 ```{r}
 #| label: determine-version
-# Validate version label
-version_regex <- "^v(\\d+)\\.(\\d+)$"
-if (!str_detect(version_label, version_regex)) {
-  stop("version_label must follow the pattern v#.# (e.g., v1.0, v2.1).")
-}
-
-if (version_label %in% basename(fs::dir_ls(processed_root, type = "directory", recurse = FALSE))) {
-  stop(glue("Version {version_label} already exists under data/versioned_data/. Please pick a new label."))
-}
-
-target_version <- version_label
-version_label_used <- "manual"
-
+freeze_timestamp <- now(tzone = "UTC")
+timestamp_label <- format(freeze_timestamp, "%Y%m%dT%H%M%SZ")
+target_version <- timestamp_label
 target_dir <- fs::path(processed_root, target_version)
+
+suffix <- 1
+while (fs::dir_exists(target_dir)) {
+  target_version <- glue("{timestamp_label}-run{suffix}")
+  target_dir <- fs::path(processed_root, target_version)
+  suffix <- suffix + 1
+}
+
 fs::dir_create(target_dir)
 
-freeze_timestamp <- now(tzone = "UTC")
-
 glue("Creating processed data release: {target_version} at {target_dir}") %>% message()
-glue("Version label: {version_label_used}") %>% message()
+glue("Release timestamp (UTC): {freeze_timestamp}") %>% message()
 ```
 
 ## Collect Final Datasets

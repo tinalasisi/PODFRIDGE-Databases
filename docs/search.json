@@ -25,14 +25,14 @@
     "href": "analysis/version_freeze.html",
     "title": "Processed Data Version Freeze",
     "section": "",
-    "text": "This notebook lets you freeze all finalized datasets (data/*/final) into a single release under data/versioned_data/. Set version_label, version_message, and version_note in the chunk below, run the notebook, and the files will be copied into a new versioned_data/&lt;version&gt;/ folder alongside an auto-generated README summarizing the release."
+    "text": "This notebook lets you freeze all finalized datasets (data/*/final) into a single release under data/versioned_data/. Each run automatically stamps the release with the current UTC datetime so you never have to manually create version labels. Update the optional summary/note variables in the chunk below, run the notebook, and the files will be copied into a new versioned_data/&lt;timestamp&gt;/ folder alongside an auto-generated README summarizing the release."
   },
   {
     "objectID": "analysis/version_freeze.html#version-configuration",
     "href": "analysis/version_freeze.html#version-configuration",
     "title": "Processed Data Version Freeze",
     "section": "Version Configuration",
-    "text": "Version Configuration\nUpdate the variables in the chunk below before running the freeze. All values are required.\n\n\nCode\nversion_label &lt;- \"v1.0\"  # e.g., \"v2.0\" or \"v1.1\"\nversion_message &lt;- \"Initial processed-data freeze capturing all final datasets.\"\nversion_note &lt;- \"Highlights: Initial release of FOIA, SDIS, and NDIS final datasets.\""
+    "text": "Version Configuration\nUpdate the description fields if you want to add extra context to the release.\n\n\nCode\nversion_message &lt;- \"Processed-data freeze capturing all final datasets.\"\nversion_note &lt;- \"Highlights: Add release-specific notes here.\""
   },
   {
     "objectID": "analysis/version_freeze.html#setup",
@@ -46,7 +46,7 @@
     "href": "analysis/version_freeze.html#determine-version-target",
     "title": "Processed Data Version Freeze",
     "section": "Determine Version Target",
-    "text": "Determine Version Target\n\n\nCode\n# Validate version label\nversion_regex &lt;- \"^v(\\\\d+)\\\\.(\\\\d+)$\"\nif (!str_detect(version_label, version_regex)) {\n  stop(\"version_label must follow the pattern v#.# (e.g., v1.0, v2.1).\")\n}\n\nif (version_label %in% basename(fs::dir_ls(processed_root, type = \"directory\", recurse = FALSE))) {\n  stop(glue(\"Version {version_label} already exists under data/versioned_data/. Please pick a new label.\"))\n}\n\ntarget_version &lt;- version_label\nversion_label_used &lt;- \"manual\"\n\ntarget_dir &lt;- fs::path(processed_root, target_version)\nfs::dir_create(target_dir)\n\nfreeze_timestamp &lt;- now(tzone = \"UTC\")\n\nglue(\"Creating processed data release: {target_version} at {target_dir}\") %&gt;% message()\n\n\nCreating processed data release: v1.0 at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0\n\n\nCode\nglue(\"Version label: {version_label_used}\") %&gt;% message()\n\n\nVersion label: manual"
+    "text": "Determine Version Target\n\n\nCode\nfreeze_timestamp &lt;- now(tzone = \"UTC\")\ntimestamp_label &lt;- format(freeze_timestamp, \"%Y%m%dT%H%M%SZ\")\ntarget_version &lt;- timestamp_label\ntarget_dir &lt;- fs::path(processed_root, target_version)\n\nsuffix &lt;- 1\nwhile (fs::dir_exists(target_dir)) {\n  target_version &lt;- glue(\"{timestamp_label}-run{suffix}\")\n  target_dir &lt;- fs::path(processed_root, target_version)\n  suffix &lt;- suffix + 1\n}\n\nfs::dir_create(target_dir)\n\nglue(\"Creating processed data release: {target_version} at {target_dir}\") %&gt;% message()\n\n\nCreating processed data release: 20251110T035752Z at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/20251110T035752Z\n\n\nCode\nglue(\"Release timestamp (UTC): {freeze_timestamp}\") %&gt;% message()\n\n\nRelease timestamp (UTC): 2025-11-10 03:57:52.297531"
   },
   {
     "objectID": "analysis/version_freeze.html#collect-final-datasets",
@@ -67,7 +67,7 @@
     "href": "analysis/version_freeze.html#generate-readme",
     "title": "Processed Data Version Freeze",
     "section": "Generate README",
-    "text": "Generate README\n\n\nCode\nreadme_path &lt;- fs::path(target_dir, \"README.md\")\n\nreadme_lines &lt;- c(\n  \"# Processed Data Release\",\n  \"\",\n  glue(\"- Version: {target_version}\"),\n  glue(\"- Frozen on: {format(freeze_timestamp, '%Y-%m-%d %H:%M:%S %Z')}\"),\n  glue(\"- Summary: {version_message}\"),\n  glue(\"- Notes: {version_note}\"),\n  \"\",\n  glue(\"All files listed below now live in `data/versioned_data/{target_version}/`.\"),\n  \"\"\n)\n\nfile_listing &lt;- purrr::map2_dfr(\n  copy_results$files_copied,\n  copy_results$source_final,\n  function(files, src) {\n    if (!length(files)) return(tibble(source_path = character()))\n    tibble(\n      source_path = fs::path_rel(fs::path(src, files), start = here())\n    )\n  }\n)\n\nreadme_lines &lt;- c(readme_lines, \"## Source Files\", \"\")\n\nif (nrow(file_listing) == 0) {\n  readme_lines &lt;- c(readme_lines, \"- (no files found in final directories)\")\n} else {\n  readme_lines &lt;- c(readme_lines, paste0(\"- `\", file_listing$source_path, \"`\"))\n}\n\nwriteLines(readme_lines, readme_path)\nglue(\"README written to {readme_path}\") %&gt;% message()\n\n\nREADME written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0/README.md"
+    "text": "Generate README\n\n\nCode\nreadme_path &lt;- fs::path(target_dir, \"README.md\")\n\nreadme_lines &lt;- c(\n  \"# Processed Data Release\",\n  \"\",\n  glue(\"- Version: {target_version}\"),\n  glue(\"- Frozen on: {format(freeze_timestamp, '%Y-%m-%d %H:%M:%S %Z')}\"),\n  glue(\"- Summary: {version_message}\"),\n  glue(\"- Notes: {version_note}\"),\n  \"\",\n  glue(\"All files listed below now live in `data/versioned_data/{target_version}/`.\"),\n  \"\"\n)\n\nfile_listing &lt;- purrr::map2_dfr(\n  copy_results$files_copied,\n  copy_results$source_final,\n  function(files, src) {\n    if (!length(files)) return(tibble(source_path = character()))\n    tibble(\n      source_path = fs::path_rel(fs::path(src, files), start = here())\n    )\n  }\n)\n\nreadme_lines &lt;- c(readme_lines, \"## Source Files\", \"\")\n\nif (nrow(file_listing) == 0) {\n  readme_lines &lt;- c(readme_lines, \"- (no files found in final directories)\")\n} else {\n  readme_lines &lt;- c(readme_lines, paste0(\"- `\", file_listing$source_path, \"`\"))\n}\n\nwriteLines(readme_lines, readme_path)\nglue(\"README written to {readme_path}\") %&gt;% message()\n\n\nREADME written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/20251110T035752Z/README.md"
   },
   {
     "objectID": "analysis/version_freeze.html#summary",

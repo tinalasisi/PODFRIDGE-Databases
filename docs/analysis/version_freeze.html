@@ -224,16 +224,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This notebook lets you freeze all finalized datasets (<code>data/*/final</code>) into a single release under <code>data/versioned_data/</code>. Set <code>version_label</code>, <code>version_message</code>, and <code>version_note</code> in the chunk below, run the notebook, and the files will be copied into a new <code>versioned_data/&lt;version&gt;/</code> folder alongside an auto-generated README summarizing the release.</p>
+<p>This notebook lets you freeze all finalized datasets (<code>data/*/final</code>) into a single release under <code>data/versioned_data/</code>. Each run automatically stamps the release with the current UTC datetime so you never have to manually create version labels. Update the optional summary/note variables in the chunk below, run the notebook, and the files will be copied into a new <code>versioned_data/&lt;timestamp&gt;/</code> folder alongside an auto-generated README summarizing the release.</p>
 <section id="version-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="version-configuration">Version Configuration</h2>
-<p>Update the variables in the chunk below before running the freeze. All values are required.</p>
+<p>Update the description fields if you want to add extra context to the release.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version_label <span class="ot">&lt;-</span> <span class="st">"v1.0"</span>  <span class="co"># e.g., "v2.0" or "v1.1"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>version_message <span class="ot">&lt;-</span> <span class="st">"Initial processed-data freeze capturing all final datasets."</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>version_note <span class="ot">&lt;-</span> <span class="st">"Highlights: Initial release of FOIA, SDIS, and NDIS final datasets."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version_message <span class="ot">&lt;-</span> <span class="st">"Processed-data freeze capturing all final datasets."</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>version_note <span class="ot">&lt;-</span> <span class="st">"Highlights: Add release-specific notes here."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -279,35 +278,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate version label</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>version_regex <span class="ot">&lt;-</span> <span class="st">"^v(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.(</span><span class="sc">\\</span><span class="st">d+)$"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">str_detect</span>(version_label, version_regex)) {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"version_label must follow the pattern v#.# (e.g., v1.0, v2.1)."</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (version_label <span class="sc">%in%</span> <span class="fu">basename</span>(fs<span class="sc">::</span><span class="fu">dir_ls</span>(processed_root, <span class="at">type =</span> <span class="st">"directory"</span>, <span class="at">recurse =</span> <span class="cn">FALSE</span>))) {</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="fu">glue</span>(<span class="st">"Version {version_label} already exists under data/versioned_data/. Please pick a new label."</span>))</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>target_version <span class="ot">&lt;-</span> version_label</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>version_label_used <span class="ot">&lt;-</span> <span class="st">"manual"</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>target_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(processed_root, target_version)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(target_dir)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>freeze_timestamp <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UTC"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Creating processed data release: {target_version} at {target_dir}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>freeze_timestamp <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UTC"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>timestamp_label <span class="ot">&lt;-</span> <span class="fu">format</span>(freeze_timestamp, <span class="st">"%Y%m%dT%H%M%SZ"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>target_version <span class="ot">&lt;-</span> timestamp_label</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>target_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(processed_root, target_version)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>suffix <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (fs<span class="sc">::</span><span class="fu">dir_exists</span>(target_dir)) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  target_version <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"{timestamp_label}-run{suffix}"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  target_dir <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">path</span>(processed_root, target_version)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  suffix <span class="ot">&lt;-</span> suffix <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(target_dir)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Creating processed data release: {target_version} at {target_dir}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Creating processed data release: v1.0 at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0</code></pre>
+<pre><code>Creating processed data release: 20251110T035752Z at /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/20251110T035752Z</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Version label: {version_label_used}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"Release timestamp (UTC): {freeze_timestamp}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Version label: manual</code></pre>
+<pre><code>Release timestamp (UTC): 2025-11-10 03:57:52.297531</code></pre>
 </div>
 </div>
 </section>
@@ -442,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"README written to {readme_path}"</span>) <span class="sc">%&gt;%</span> <span class="fu">message</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>README written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/v1.0/README.md</code></pre>
+<pre><code>README written to /Users/tlasisi/GitHub/PODFRIDGE-Databases/data/versioned_data/20251110T035752Z/README.md</code></pre>
 </div>
 </div>
 </section>
