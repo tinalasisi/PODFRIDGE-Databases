@@ -513,7 +513,7 @@ All flagged points are removed to produce the cleaned dataset.
 
 Following visual verification and analysis of the raw data (filtered to January 1, 2012 onwards), a focused rule set was applied to the Arrestee Profiles metric:
 
-- **Zero Error Detection:** Flags zero values appearing after positive values specifically in the California jurisdiction
+- **Zero Error Detection:** Flags zero values appearing after positive values 
 - **No value propagation or other rules were applied** based on the observed data patterns
 
 All flagged zero error points are removed to produce the cleaned dataset.

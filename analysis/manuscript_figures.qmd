@@ -215,12 +215,13 @@ figure_combined + plot_annotation(
 )
 
 ggsave(
-  filename = file.path(figures_dir, "fig3_maps.png"),
+  filename = file.path(figures_dir, "fig3_maps.pdf"),
   plot = figure_combined,
   width = 9,
   height = 4,
   dpi = 300,
-  units = "in"
+  units = "in",
+  device = cairo_pdf
 )
 ```
 
@@ -272,12 +273,13 @@ p_anomaly_distribution <- ggplot(anomaly_plot_data,
 p_anomaly_distribution
 
 ggsave(
-  filename = file.path(figures_dir, "fig5_anomaly_log.png"),
+  filename = file.path(figures_dir, "fig5_anomaly_log.pdf"),
   plot = p_anomaly_distribution,
   width = 12,
   height = 6,
   dpi = 300,
-  units = "in"
+  units = "in",
+  device = cairo_pdf
 )
 ```
 
@@ -379,12 +381,13 @@ figure_heatmaps <- heatmap_raw + heatmap_after_clean +
 figure_heatmaps
 
 ggsave(
-  filename = file.path(figures_dir, "fig6_heatmap_raw_clean.png"),
+  filename = file.path(figures_dir, "fig6_heatmap_raw_clean.pdf"),
   plot = figure_heatmaps,
   width = 10,
   height = 7.5,
   dpi = 300,
-  units = "in"
+  units = "in",
+  device = cairo_pdf
 )
 ```
 
@@ -773,7 +776,7 @@ p_investigations_grid <- ggplot() +
     axis.title = element_blank(),
     plot.title = element_text(size = 19, face = "bold", hjust = 0, margin = margin(b = 4))
   ) +
-  labs(x = "Year", y = NULL, title = "(C) Investigations Aided")
+  labs(x = "Year", y = NULL, title = "(E) Investigations Aided")
 
 plots_grid <- (p_offender + p_arrestee) /
               (p_forensic + p_total) /
@@ -787,9 +790,10 @@ plots_grid <- plots_grid +
 
 plots_grid
 
-ggsave(file.path(figures_dir, "fig7_verification_grid.png"),
-       plot = plots_grid,
-       width = 20,
-       height = 18,
-       dpi = 300)
+ggsave(file.path(figures_dir, "fig7_verification_grid.pdf"),
+  plot = plots_grid,
+  width = 20,
+  height = 20,
+  dpi = 300,
+  device = cairo_pdf)
 ```
